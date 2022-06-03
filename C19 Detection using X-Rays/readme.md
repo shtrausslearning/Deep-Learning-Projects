@@ -25,3 +25,6 @@
 - [4] Once decided, <code>x-rays</code> will be sorted into two folders <code>covid</code> & <code>normal</code>
 - [5] Run <code>main.py</code>, which will display the <code>accuracy</code> on both <code>training</code> & </code>validation</code> datasets
 
+## Result
+- After 10 <code>epoch</code>, the <code>CNN</code> model accuracy was 
+
