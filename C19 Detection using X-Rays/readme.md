@@ -15,7 +15,7 @@ The dataset being used in this project have been combined from two different sou
 - <code>Source 1</code> contains images from <code>x-rays</code> of patients who have been labeled to be corona positive patients
 - <code>Source 2</code> contains images from normal <code>x-rays</code>
 
-Image <code>resolution</code>
+Image <code>resolution</code>:
 - (224,224,3) 
 
 The following <code>augmentations</code> were used:
