@@ -44,4 +44,4 @@ The following <code>augmentations</code> were used:
 - This was a rather small project, coding is minial & the dataset has been sorted and assembed for us
 - The <code>CNN</code> we used showed some good results, generalising more than overfitting (partly due to the <code>dropout</code> layers)
 - Having trained on a <code>train</code>/<code>validation</code> split, we cannot be fully confident in the result & more thorough <code>Cross Validation</code> is required
-- <code>Ensembling</code> of different models, such as <code>pretrained</code> models often show promising results
+- <code>Ensembling</code> of different models, such as <code>pretrained</code> models often show promising results, so that would be a good next step
