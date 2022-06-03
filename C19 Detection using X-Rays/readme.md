@@ -2,6 +2,11 @@
 
 ## Aim
 
+- The aim of this project is to create a model that will be able to determine from <code>x-rays</code>, which patiets have been labeled corona positive and which are standard x-rays
+- The model will need to find subtle patterns in the images 
+- We will need to find both normal and corona positive x-ray images & utilise the <code>keras</code> deep learning module to classify images
+- We will build a <code>binary classifier</code> 
+
 ## Keywords
 
 <code>x-rays images</code> <code>sorted folders</code>
@@ -13,4 +18,6 @@
 
 ## Files
 <code>main.py</code> - Training File
+
+## Process
 
