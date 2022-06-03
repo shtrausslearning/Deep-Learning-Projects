@@ -23,4 +23,5 @@
 - [2] We need to then create a folder, which will contain both <code>train</code> & <code>validation</code> folders
 - [3] For both <code>train</code> & <code>validation</code>, we need to decide a distribution (how much data is used in training & validation)
 - [4] Once decided, <code>x-rays</code> will be sorted into two folders <code>covid</code> & <code>normal</code>
+- [5] Run <code>main.py</code>, which will display the <code>accuracy</code> on both <code>training</code> & </code>validation</code> datasets
 
