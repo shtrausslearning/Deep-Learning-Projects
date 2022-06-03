@@ -8,7 +8,7 @@
 
 ## Keywords
 
-<code>x-rays images</code> <code>self sorted folders</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
+<code>x-rays images</code> <code>self sorted folders</code> <code>keras</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
 
 ## Dataset
 The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
