@@ -8,7 +8,7 @@
 
 ## Keywords
 
-<code>x-rays images</code> <code>self sorted folders</code> <code>CNN model</code> <code>flow_from_directory</code>
+<code>x-rays images</code> <code>self sorted folders</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
 
 ## Dataset
 - The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
@@ -19,4 +19,8 @@
 <code>main.py</code> - Training File
 
 ## Process
+- [1] First, we need to create a root folder, in which we will be placing our dataset
+- [2] We need to then create a folder, which will contain both <code>train</code> & <code>validation</code> folders
+- [3] For both <code>train</code> & <code>validation</code>, we need to decide a distribution (how much data is used in training & validation)
+- [4] Once decided, <code>x-rays</code> will be sorted into two folders <code>covid</code> & <code>normal</code>
 
