@@ -11,9 +11,14 @@
 <code>x-rays images</code> <code>self sorted folders</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
 
 ## Dataset
-- The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
+The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
 - <code>Source 1</code> contains images from <code>x-rays</code> of patients who have been labeled to be corona positive patients
 - <code>Source 2</code> contains images from normal <code>x-rays</code>
+
+Aside from the input dataset, <code>keras</code> offers image augmentation, the following augmentations were used:
+- shear_range=0.2
+- zoom_range=0.2
+- horizontal_flip=True
 
 ## Files
 <code>main.py</code> - Training File
