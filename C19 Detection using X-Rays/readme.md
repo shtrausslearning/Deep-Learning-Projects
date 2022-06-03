@@ -15,10 +15,15 @@ The dataset being used in this project have been combined from two different sou
 - <code>Source 1</code> contains images from <code>x-rays</code> of patients who have been labeled to be corona positive patients
 - <code>Source 2</code> contains images from normal <code>x-rays</code>
 
-Aside from the input dataset, <code>keras</code> offers image augmentation, the following augmentations were used:
+Image <code>resolution</code>
+- (224,224,3) 
+
+The following <code>augmentations</code> were used:
 - shear_range=0.2
 - zoom_range=0.2
 - horizontal_flip=True
+- rescale=1/255
+
 
 ## Files
 <code>main.py</code> - Training File
