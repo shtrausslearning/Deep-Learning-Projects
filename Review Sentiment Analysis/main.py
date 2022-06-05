@@ -145,3 +145,11 @@ hist = model.fit(X_train,YTr,
 # 157/157 [==============================] - 58s 367ms/step - loss: 0.0729 - acc: 0.9769 - val_loss: 0.4707 - val_acc: 0.8412
 # Epoch 7/10
 # 157/157 [==============================] - 56s 359ms/step - loss: 0.0471 - acc: 0.9861 - val_loss: 0.5152 - val_acc: 0.8406
+
+''' Evaluation on Test Set '''
+# Having trained our model, let's test how well it performs on onseen data
+
+model.evaluate(X_test,Yt)
+
+# > 782/782 [==============================] - 16s 21ms/step - loss: 0.4679 - acc: 0.8047
+# > [0.4679102599620819, 0.8046799898147583]
