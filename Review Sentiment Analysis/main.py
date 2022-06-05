@@ -155,8 +155,10 @@ model.evaluate(X_test,Yt)
 # > [0.4679102599620819, 0.8046799898147583]
 
 ''' Create a custom review & use model to sentiment '''
+# When we want to utilise the model to conduct a sentiment analysis
+# we can load the model, h5 format
 
-# It can be used to reconstruct the model identically.
+# It can be used to reconstruct the model identically
 reconstructed_model = load_model("best_model.h5")
 
 def pred_imdb(sentence,model):
@@ -180,7 +182,8 @@ def pred_imdb(sentence,model):
     final_input = pp.sequence.pad_sequences([inp],maxlen=500)
 
     # Finally predict the sentiment
-    print(model.predict(final_input))
+    return model.predict(final_input)
     
+# Predict if sent is a good or bad 
 sent = "This movie is really bad"
 pred_imdb(sent,reconstructed_model)
