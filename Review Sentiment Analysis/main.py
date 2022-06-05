@@ -90,10 +90,16 @@ print(f'Shape After Padding (X_test)  : {X_test.shape}')
 
 # [note] 
 # Embedding layer will accept a 2-D tensor -> padding was needed
-# Embedding matrix that gets trained and is shared
-# among all the inputs and RNN cells
 # Vocab size is 10,000, representation of each word 
 # must be a vector of length 64
+
+# Embedding matrix that gets trained and is shared among all the inputs and RNN cells
+# Input to the embedding layer will be a 2D matrix of size (batch_size, maxlen of the sentences)
+# and we already defined the maximum length of the sentences to be 500
+# The embedding matrix is of size (vocab_size, K), vocab_size = 10,000 and K = 64 (here)
+# The output from this embedding layer will be of size (batch_size, maxlen of the sentence, K)
+# When we defined the embedding layer in the above code, we passed the parameter (10,000, 64) 
+# meaning the vocabulary size is 10,000 & the representation of each word must be a vector of length 64.
 
 model = Sequential()
 model.add(Embedding(10000,64))
@@ -128,3 +134,18 @@ hist = model.fit(X_train,YTr,
                  epochs=10,
                  batch_size=128,
                  callbacks=[cb1,cb2])
+
+# Epoch 1/10
+# 157/157 [==============================] - 60s 374ms/step - loss: 0.5817 - acc: 0.6905 - val_loss: 0.4157 - val_acc: 0.8282
+# Epoch 2/10
+# 157/157 [==============================] - 57s 365ms/step - loss: 0.3630 - acc: 0.8530 - val_loss: 0.3966 - val_acc: 0.8374
+# Epoch 3/10
+# 157/157 [==============================] - 57s 360ms/step - loss: 0.2498 - acc: 0.9026 - val_loss: 0.3663 - val_acc: 0.8578
+# Epoch 4/10
+# 157/157 [==============================] - 58s 368ms/step - loss: 0.1892 - acc: 0.9288 - val_loss: 0.4033 - val_acc: 0.8594
+# Epoch 5/10
+# 157/157 [==============================] - 57s 366ms/step - loss: 0.1172 - acc: 0.9610 - val_loss: 0.4450 - val_acc: 0.8586
+# Epoch 6/10
+# 157/157 [==============================] - 58s 367ms/step - loss: 0.0729 - acc: 0.9769 - val_loss: 0.4707 - val_acc: 0.8412
+# Epoch 7/10
+# 157/157 [==============================] - 56s 359ms/step - loss: 0.0471 - acc: 0.9861 - val_loss: 0.5152 - val_acc: 0.8406
