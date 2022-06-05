@@ -1,11 +1,12 @@
-from tensorflow.python.keras.datasets import imdb 
-from tensorflow.python.keras.preprocessing import sequence
-from tensorflow.python.keras.layers import Embedding,SimpleRNN,Dense
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.callbacks import ModelCheckpoint
-from tensorflow.python.keras.callbacks import EarlyStopping
+from tensorflow.keras.datasets import imdb
+from tensorflow.keras.preprocessing import sequence
 
-import numpy as np 
+from tensorflow.keras.layers import Embedding,SimpleRNN,Dense
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.callbacks import ModelCheckpoint
+from tensorflow.keras.callbacks import EarlyStopping
+
+import numpy as np
 import pandas as pd 
 import os
 
