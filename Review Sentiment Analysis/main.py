@@ -153,3 +153,34 @@ model.evaluate(X_test,Yt)
 
 # > 782/782 [==============================] - 16s 21ms/step - loss: 0.4679 - acc: 0.8047
 # > [0.4679102599620819, 0.8046799898147583]
+
+''' Create a custom review & use model to sentiment '''
+
+# It can be used to reconstruct the model identically.
+reconstructed_model = load_model("best_model.h5")
+
+def pred_imdb(sentence,model):
+
+    inp = []
+    print(f'Input sentence: \n{sentence}')
+
+    # get dict mapper
+    dict_word = imdb.get_word_index() # get dict mapper
+
+    # convert words to int
+    for word in sentence.split():
+        if word in dict_word.keys():
+            inp.append(dict_word[word])
+        else:
+            inp.append(1)
+
+    print(f'Converted sentence: \n{inp}')
+
+    # Perform padding
+    final_input = pp.sequence.pad_sequences([inp],maxlen=500)
+
+    # Finally predict the sentiment
+    print(model.predict(final_input))
+    
+sent = "This movie is really bad"
+pred_imdb(sent,reconstructed_model)
