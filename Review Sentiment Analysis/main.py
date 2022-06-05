@@ -1,6 +1,5 @@
 from tensorflow.python.keras.datasets import imdb 
 from tensorflow.python.keras.preprocessing import sequence
-
 from tensorflow.python.keras.layers import Embedding,SimpleRNN,Dense
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.callbacks import ModelCheckpoint
@@ -18,8 +17,11 @@ import os
 print("The length of the Training Dataset is ", len(XTr),' reviews')
 print("The length of the Testing Dataset is ", len(XTe),' reviews')
 
+# > The length of the Training Dataset is  25000  reviews
+# > The length of the Testing Dataset is  25000  reviews
+
 ''' Print Example '''
-# numeric representation of the words
+# numeric representation of the words (1D arrays)
 
 print(f'\nReview:\n{XTr[0]}')
 print(f'\nLength of Review: {len(XTr[0])}')
@@ -67,6 +69,7 @@ def to_text(review):
 to_text(XTr[0])
 
 ''' Perform Padding '''
+# Convert 1D array -> 2D matrix
 
 # Each review’s maximum length should be 500. 
 # If it is less than that, then add extra 0’s at 
@@ -78,8 +81,18 @@ X_test = sequence.pad_sequences(XTe,maxlen=500)
 print(f'Shape After Padding (X_train) : {X_train.shape}')
 print(f'Shape After Padding (X_test)  : {X_test.shape}')
 
+# > Shape After Padding (X_train) : (25000, 500)
+# > Shape After Padding (X_test)  : (25000, 500)
+
 ''' Sequential Model '''
 # Binary Classifier 
+
+# [note] 
+# Embedding layer will accept a 2-D tensor -> padding was needed
+# Embedding matrix that gets trained and is shared
+# among all the inputs and RNN cells
+# Vocab size is 10,000, representation of each word 
+# must be a vector of length 64
 
 model = Sequential()
 model.add(Embedding(10000,64))
@@ -114,5 +127,3 @@ hist = model.fit(X_train,YTr,
                  epochs=10,
                  batch_size=128,
                  callbacks=[cb1,cb2])
-
-
