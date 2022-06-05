@@ -184,6 +184,6 @@ def pred_imdb(sentence,model):
     # Finally predict the sentiment
     return model.predict(final_input)
     
-# Predict if sent is a good or bad 
+# Predict if sent is a good or bad review
 sent = "This movie is really bad"
 pred_imdb(sent,reconstructed_model)
