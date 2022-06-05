@@ -71,9 +71,10 @@ to_text(XTr[0])
 
 ''' Perform Padding '''
 # Convert 1D array -> 2D matrix
+# Embedding layer in our model will accept a 2-D tensor
 
-# Each review’s maximum length should be 500. 
-# If it is less than that, then add extra 0’s at 
+# Each review’s maximum length should be 500
+# If it is less than that, then add extra 0s at 
 # the end of the array
 
 X_train = sequence.pad_sequences(XTr,maxlen=500)
@@ -88,18 +89,13 @@ print(f'Shape After Padding (X_test)  : {X_test.shape}')
 ''' Sequential Model '''
 # Binary Classifier 
 
-# [note] 
-# Embedding layer will accept a 2-D tensor -> padding was needed
-# Vocab size is 10,000, representation of each word 
-# must be a vector of length 64
-
 # Embedding matrix that gets trained and is shared among all the inputs and RNN cells
 # Input to the embedding layer will be a 2D matrix of size (batch_size, maxlen of the sentences)
 # and we already defined the maximum length of the sentences to be 500
-# The embedding matrix is of size (vocab_size, K), vocab_size = 10,000 and K = 64 (here)
-# The output from this embedding layer will be of size (batch_size, maxlen of the sentence, K)
+# The embedding matrix is of size (vocab_size, K), vocab_size (10,000) & K (64) (here)
+# The output from this embedding layer size (batch_size, maxlen of the sentence, K)
 # When we defined the embedding layer in the above code, we passed the parameter (10,000, 64) 
-# meaning the vocabulary size is 10,000 & the representation of each word must be a vector of length 64.
+# meaning the vocab_size (10,000) & the representation of each word must be a vect of length 64
 
 model = Sequential()
 model.add(Embedding(10000,64))
