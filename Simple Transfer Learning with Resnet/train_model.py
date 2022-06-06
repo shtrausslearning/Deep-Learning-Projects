@@ -23,6 +23,9 @@ from keras.applications.resnet50 import preprocess_input
 # Check the output by running the code shown above.
 
 ''' Create our own Classifier '''
+# modify the tail end of the model & make
+# prediction using existing weights 
+
 # Number of classes
 n_classes = 5
 
@@ -30,7 +33,6 @@ n_classes = 5
 model = ResNet50(include_top = False, 
                  weights = 'imagenet', 
                  input_shape = (224,224,3))
-# print(model.summary())
 
 # Building our classifier 
 av1 = GlobalAveragePooling2D()(model.output)
@@ -41,7 +43,6 @@ fc2 = Dense(n_classes, activation = 'softmax')(d1) # probability of each class
 # Our classification model
 model_new = Model(inputs = model.input, 
                   outputs = fc2)
-model_new.summary()
 
 ''' Make Some Predictions '''
 # using the existing model
@@ -54,9 +55,10 @@ def load_img(path):
     x = preprocess_input(x)
     return x
   
-# decode_predictions can't be used because we added
-# our own classifier 
-image_path = 'image.png'
+# decode_predictions can't be used 
+# because we added our own classifier 
+
+image_path = 'image.PNG
 image = load_img(path)
 pred = model_new.predict(image)
 print(np.argmax(pred))
@@ -70,6 +72,8 @@ model_new.compile(loss = 'categorical_crossentropy',
                   metrics = ['accuracy'])
 
 ''' Training the model '''
+# train model on some data (X_train, y_train)
+# set non trainable layers
 
 def set_nontrainable(n):
   
@@ -83,7 +87,7 @@ def set_nontrainable(n):
   print(model_new.summary())
 
 # Train the classifier
-hist = model_new.fit(X_train, Y_train, 
+hist = model_new.fit(X_train, y_train, 
                      shuffle = True, 
                      batch_size = 16, 
                      epochs = 8, 
