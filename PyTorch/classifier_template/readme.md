@@ -1,5 +1,5 @@
 
-'''
+```
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -15,4 +15,4 @@ X_train, X_val, y_train, y_val = train_test_split(X, y,
 
 sc = StandardScaler()
 sc.fit(X_train)
-'''
+```
