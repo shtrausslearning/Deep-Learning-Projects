@@ -74,7 +74,7 @@ fig.show()
 #### Create Data Loaders
 - Create a tensor(s) from Numpy Arrays <code>X_train_tensor</code>, <code>y_train_tensor</code>, <code>X_val_tensor</code>, <code>y_val_tensor</code>
 - Create a Dataset(s) (contains all data) <code>train_dataset</code>, <code>val_dataset</code>
-- Create a DataLoader(s) (batch loading) <code>train_loader</code>, <code>val_loader</code>
+- Create a DataLoader(s) (batch loading during training) <code>train_loader</code>, <code>val_loader</code>
 
 ```python
 
