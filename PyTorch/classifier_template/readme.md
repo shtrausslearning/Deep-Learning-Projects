@@ -110,31 +110,24 @@ class pyRun(object):
     
     def __init__(self, model, loss_fn, optimizer):
 
-        self.model = model
-        self.loss_fn = loss_fn
-        self.optimizer = optimizer
+        self.model = model       # Model
+        self.loss_fn = loss_fn   # Loss Function
+        self.optimizer = optimizer  # Optimiser
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        # Let's send the model to the specified device right away
-        self.model.to(self.device)
+        self.model.to(self.device)  # send to device 
 
-        # These attributes are defined here, but since they are
-        # not informed at the moment of creation, we keep them None
         self.train_loader = None
         self.val_loader = None
         self.writer = None
         
-        # These attributes are going to be computed internally
-        self.losses = []
-        self.val_losses = []
-        self.total_epochs = 0
+        self.losses = []       # training loss data storage
+        self.val_losses = []   # validation loss data storage
+        self.total_epochs = 0  # total number of iteration loops
 
-        # Creates the train_step function for our model, 
-        # loss function and optimizer
-        # Note: there are NO ARGS there! It makes use of the class
-        # attributes directly
-        self.train_step = self._make_train_step()
-        # Creates the val_step function for our model and loss
-        self.val_step = self._make_val_step()
+        # Creates the train_step function for our model
+
+        self.train_step = self._make_train_step()  # create training step function
+        self.val_step = self._make_val_step() # create validation step function
 
     # Used in minibatch
     def to(self, device):
@@ -155,9 +148,9 @@ class pyRun(object):
     ''' Private Classes '''
 
     # Training step
+    # Makes use of global class attributes 
+    
     def _make_train_step(self):
-        # This method does not need ARGS... it can refer to
-        # the attributes: self.model, self.loss_fn and self.optimizer
         
         # Builds function that performs a step in the train loop
         def perform_train_step(x, y):
@@ -165,35 +158,33 @@ class pyRun(object):
             self.model.train()             # set model to train mode
             yhat = self.model(x)           # compute model prediction (forward pass)
             loss = self.loss_fn(yhat, y)   # compute the loss 
-            loss.backward() # compute gradients for both a,b parameters (backward pass)
-            self.optimizer.step()      # update parameters using gradients and lr
-            self.optimizer.zero_grad() # reset gradients
+            loss.backward()                # compute gradients for both a,b parameters (backward pass)
+            self.optimizer.step()          # update parameters using gradients and lr
+            self.optimizer.zero_grad()     # reset gradients
 
-            return loss.item() # Returns the loss
+            return loss.item()             # Returns the loss
 
-        # Returns the function that will be called inside the train loop
-        return perform_train_step
+        return perform_train_step # return the funct that will be called inside train loop
     
     def _make_val_step(self):
-        # Builds function that performs a step in the validation loop
+    
+        # Performs a step in the validation loop
         def perform_val_step(x, y):
-            # Sets model to EVAL mode
-            self.model.eval()
+        
+            self.model.eval() # set model to eval mode
 
-            # Step 1 - Computes our model's predicted output - forward pass
-            yhat = self.model(x)
-            # Step 2 - Computes the loss
-            loss = self.loss_fn(yhat, y)
+            yhat = self.model(x)   # compute models predicted output (forward pass)
+            loss = self.loss_fn(yhat, y)  # compute the loss function
             # There is no need to compute Steps 3 and 4, since we don't update parameters during evaluation
             return loss.item()
 
         return perform_val_step
-            
-        # The mini-batch can be used with both loaders
-        # The argument `validation`defines which loader and 
-        # corresponding step function is going to be used
         
-    def _mini_batch(self, validation=False):
+    # Mini Batch usable with both data loaders
+        
+    def _mini_batch(self, 
+                    validation=False): # determines which step function to use
+                    
         if validation:
             data_loader = self.val_loader
             step = self.val_step
@@ -268,11 +259,9 @@ class pyRun(object):
         torch.save(checkpoint, filename)
 
     def load_checkpoint(self, filename):
-        # Loads dictionary
-        checkpoint = torch.load(filename)
-
-        # Restore state for model and optimizer
-        self.model.load_state_dict(checkpoint['model_state_dict'])
+    
+        checkpoint = torch.load(filename)  # load dict
+        self.model.load_state_dict(checkpoint['model_state_dict'])  # restore state for model & optimiser
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
         self.total_epochs = checkpoint['epoch']
@@ -282,16 +271,12 @@ class pyRun(object):
         self.model.train() # always use TRAIN for resuming training   
 
     def predict(self, x):
-        # Set is to evaluation mode for predictions
-        self.model.eval() 
-        # Takes a Numpy input and make it a float tensor
-        x_tensor = torch.as_tensor(x).float()
-        # Send input to device and uses model for prediction
-        y_hat_tensor = self.model(x_tensor.to(self.device))
-        # Set it back to train mode
-        self.model.train()
-        # Detaches it, brings it to CPU and back to Numpy
-        return y_hat_tensor.detach().cpu().numpy()
+ 
+        self.model.eval()  # set to evaluation mode for predicitons
+        x_tensor = torch.as_tensor(x).float() # numpy input -> float tensor
+        y_hat_tensor = self.model(x_tensor.to(self.device)) # send input to device & predict
+        self.model.train() # set back to train mode
+        return y_hat_tensor.detach().cpu().numpy() # detaches it & brings to CPU & back to Numpy
     
     def plot_losses(self):
         
