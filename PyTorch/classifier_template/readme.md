@@ -105,22 +105,6 @@ val_loader = DataLoader(dataset=val_dataset,
 
 ```python
 
-'''
-
-Attributes:
-model
-loss_fn
-optimiser
-
-train_step : train step function uses global vars
-val_step : validation step function uses global vars
-
-
-
-'''
-
-
-
 class pyRun(object):
     
     def __init__(self, model, loss_fn, optimiser):
