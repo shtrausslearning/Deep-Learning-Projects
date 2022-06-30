@@ -7,6 +7,8 @@
 
 #### Create Dataset
 
+- <code>sklearn</code> make_moons creates a <code>two</code> class data structure
+
 ```python
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
