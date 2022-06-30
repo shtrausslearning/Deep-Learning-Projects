@@ -1,5 +1,5 @@
 
-#### CREATE DATASET 
+#### <code>CREATE DATASET</code>
 
 - We'll be utilising a simple datase, containing two classes
 - Our problem will be a binary classification problem
