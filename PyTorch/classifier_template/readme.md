@@ -1,5 +1,5 @@
 
-```
+```python
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
