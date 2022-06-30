@@ -1,8 +1,11 @@
 
-#### Create Dataset
+#### Binary Classification Example
 
-- We'll be utilising a simple datase, containing two classes
-- Our problem will be a binary classification problem
+- We'll be utilising a <code>simple dataset, containing two classes
+- Our problem will be a <code>binary</code> classification problem
+
+
+#### Create Dataset
 
 ```python
 from sklearn.datasets import make_moons
@@ -20,4 +23,8 @@ X_train, X_val, y_train, y_val = train_test_split(X, y,
 
 sc = StandardScaler()
 sc.fit(X_train)
+
+X_train = sc.transform(X_train)
+X_val = sc.transform(X_val)
+
 ```
