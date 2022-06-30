@@ -1,4 +1,9 @@
 
+### Create dataset 
+
+- We'll be utilising a simple datase, containing two classes
+- Our problem will be a binary classification problem
+
 ```python
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
