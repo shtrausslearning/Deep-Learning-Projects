@@ -70,3 +70,33 @@ fig.update_layout(coloraxis_showscale=False)
 fig.show()
 
 ```
+
+#### Create Data Loaders
+- Create a tensor
+- create a Dataset (contains all data)
+- Create a DataLoader (batch loading)
+
+```python
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# Builds tensors from numpy arrays
+x_train_tensor = torch.as_tensor(X_train).float()
+y_train_tensor = torch.as_tensor(y_train[:,None]).float()
+x_val_tensor = torch.as_tensor(X_val).float()
+y_val_tensor = torch.as_tensor(y_val[:,None]).float()
+
+# Builds dataset containing ALL data points
+train_dataset = TensorDataset(x_train_tensor, y_train_tensor)
+val_dataset = TensorDataset(x_val_tensor, y_val_tensor)
+
+# Builds a loader of each set
+batch_size = 10
+train_loader = DataLoader(dataset=train_dataset,
+                          batch_size=batch_size, 
+                          shuffle=True)
+
+val_loader = DataLoader(dataset=val_dataset,
+                        batch_size=batch_size)
+                        
+```
