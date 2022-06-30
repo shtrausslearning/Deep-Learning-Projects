@@ -1,7 +1,7 @@
 
 #### Binary Classification Example
 
-- We'll be utilising a <code>simple dataset, containing two classes
+- We'll be utilising a simple dataset, containing two classes
 - Our problem will be a <code>binary</code> classification problem
 
 
