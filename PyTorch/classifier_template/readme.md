@@ -105,52 +105,49 @@ val_loader = DataLoader(dataset=val_dataset,
 
 ```python
 
+'''
+
+Attributes:
+model
+loss_fn
+optimiser
+
+train_step : train step function uses global vars
+val_step : validation step function uses global vars
+
+
+
+'''
+
+
+
 class pyRun(object):
     
-    
-    def __init__(self, model, loss_fn, optimizer):
+    def __init__(self, model, loss_fn, optimiser):
 
-        self.model = model       # Model
-        self.loss_fn = loss_fn   # Loss Function
-        self.optimizer = optimizer  # Optimiser
+        self.model = model
+        self.loss_fn = loss_fn
+        self.optimiser = optimiser
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.model.to(self.device)  # send to device 
+        self.model.to(self.device)
 
         self.train_loader = None
         self.val_loader = None
         self.writer = None
         
-        self.losses = []       # training loss data storage
-        self.val_losses = []   # validation loss data storage
-        self.total_epochs = 0  # total number of iteration loops
+        self.losses = []
+        self.val_losses = []
+        self.total_epochs = 0
 
-        # Creates the train_step function for our model
-
-        self.train_step = self._make_train_step()  # create training step function
-        self.val_step = self._make_val_step() # create validation step function
-
-    # Used in minibatch
-    def to(self, device):
-        self.device = device
-        self.model.to(self.device)
-
-    # set dataloaders
-    def set_loaders(self, train_loader, val_loader=None):
-        self.train_loader = train_loader
-        self.val_loader = val_loader
-
-    # set tensorboard
-    def set_tensorboard(self, name, folder='runs'):
-        # This method allows the user to define a SummaryWriter to interface with TensorBoard
-        suffix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        self.writer = SummaryWriter('{}/{}_{}'.format(folder, name, suffix))
+        # Train Step Functions
+        self.train_step = self._make_train_step()
+        self.val_step = self._make_val_step()
         
     ''' Private Classes '''
-
-    # Training step
-    # Makes use of global class attributes 
     
     def _make_train_step(self):
+        # This method does not need ARGS... it can refer to
+        # the attributes: self.model, self.loss_fn and self.optimizer
         
         # Builds function that performs a step in the train loop
         def perform_train_step(x, y):
@@ -158,33 +155,35 @@ class pyRun(object):
             self.model.train()             # set model to train mode
             yhat = self.model(x)           # compute model prediction (forward pass)
             loss = self.loss_fn(yhat, y)   # compute the loss 
-            loss.backward()                # compute gradients for both a,b parameters (backward pass)
-            self.optimizer.step()          # update parameters using gradients and lr
-            self.optimizer.zero_grad()     # reset gradients
+            loss.backward() # compute gradients for both a,b parameters (backward pass)
+            self.optimizer.step()      # update parameters using gradients and lr
+            self.optimizer.zero_grad() # reset gradients
 
-            return loss.item()             # Returns the loss
+            return loss.item() # Returns the loss
 
-        return perform_train_step # return the funct that will be called inside train loop
+        # Returns the function that will be called inside the train loop
+        return perform_train_step
     
     def _make_val_step(self):
-    
-        # Performs a step in the validation loop
+        # Builds function that performs a step in the validation loop
         def perform_val_step(x, y):
-        
-            self.model.eval() # set model to eval mode
+            # Sets model to EVAL mode
+            self.model.eval()
 
-            yhat = self.model(x)   # compute models predicted output (forward pass)
-            loss = self.loss_fn(yhat, y)  # compute the loss function
+            # Step 1 - Computes our model's predicted output - forward pass
+            yhat = self.model(x)
+            # Step 2 - Computes the loss
+            loss = self.loss_fn(yhat, y)
             # There is no need to compute Steps 3 and 4, since we don't update parameters during evaluation
             return loss.item()
 
         return perform_val_step
+            
+        # The mini-batch can be used with both loaders
+        # The argument `validation`defines which loader and 
+        # corresponding step function is going to be used
         
-    # Mini Batch usable with both data loaders
-        
-    def _mini_batch(self, 
-                    validation=False): # determines which step function to use
-                    
+    def _mini_batch(self, validation=False):
         if validation:
             data_loader = self.val_loader
             step = self.val_step
@@ -208,13 +207,30 @@ class pyRun(object):
         loss = np.mean(mini_batch_losses)
         return loss
 
+    ''' Class Methods '''
+    
+    def to(self, device):
+        self.device = device
+        self.model.to(self.device)
+    
+    def set_loaders(self, train_loader, val_loader=None):
+        self.train_loader = train_loader
+        self.val_loader = val_loader
+    
+    def set_tensorboard(self, name, folder='runs'):
+        # This method allows the user to define a SummaryWriter to interface with TensorBoard
+        suffix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+        self.writer = SummaryWriter('{}/{}_{}'.format(folder, name, suffix))
+    
     def set_seed(self, seed=42):
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False    
         torch.manual_seed(seed)
         np.random.seed(seed)
     
-    def train(self, n_epochs, seed=42):
+    def train(self,
+              n_epochs,
+              seed=42):
         
         self.set_seed(seed)
 
@@ -222,19 +238,22 @@ class pyRun(object):
 
             self.total_epochs += 1
 
+            # Training 
+            
             # inner loop
             # Performs training using mini-batches
             loss = self._mini_batch(validation=False)
             self.losses.append(loss)
 
-            # VALIDATION
-            # no gradients in validation!
+            # Validation & no gradients in validation!
+            
             with torch.no_grad():
+                
                 # Performs evaluation using mini-batches
                 val_loss = self._mini_batch(validation=True)
                 self.val_losses.append(val_loss)
 
-            # If a SummaryWriter has been set...
+            # If a SummaryWriter has been set
             if self.writer:
                 scalars = {'training': loss}
                 if val_loss is not None:
@@ -245,7 +264,6 @@ class pyRun(object):
                                         global_step=epoch)
 
         if self.writer:
-            # Closes the writer
             self.writer.close()
 
     def save_checkpoint(self, filename):
@@ -259,24 +277,31 @@ class pyRun(object):
         torch.save(checkpoint, filename)
 
     def load_checkpoint(self, filename):
-    
-        checkpoint = torch.load(filename)  # load dict
-        self.model.load_state_dict(checkpoint['model_state_dict'])  # restore state for model & optimiser
+
+        checkpoint = torch.load(filename) # loads dict
+
+        # Restore state for model and optimizer
+        self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
         self.total_epochs = checkpoint['epoch']
         self.losses = checkpoint['loss']
         self.val_losses = checkpoint['val_loss']
 
-        self.model.train() # always use TRAIN for resuming training   
-
+        self.model.train() # always use TRAIN for resuming training 
+        
+    # Inference
+        
     def predict(self, x):
- 
-        self.model.eval()  # set to evaluation mode for predicitons
-        x_tensor = torch.as_tensor(x).float() # numpy input -> float tensor
-        y_hat_tensor = self.model(x_tensor.to(self.device)) # send input to device & predict
-        self.model.train() # set back to train mode
-        return y_hat_tensor.detach().cpu().numpy() # detaches it & brings to CPU & back to Numpy
+
+        self.model.eval() # set to evaluation mode for predictions
+        x_tensor = torch.as_tensor(x).float() # numpy & make float tensor
+        y_hat_tensor = self.model(x_tensor.to(self.device)) # send input to device & use model for predictions
+        self.model.train() # set it back to train mode
+
+        return y_hat_tensor.detach().cpu().numpy() # detach it, brings it to CPU and back to np
+    
+    # Plot losses
     
     def plot_losses(self):
         
