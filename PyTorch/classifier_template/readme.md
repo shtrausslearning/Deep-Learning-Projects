@@ -8,6 +8,7 @@
 #### Create Dataset
 
 - <code>sklearn</code> make_moons creates a <code>two</code> class data structure
+- <code>scaling</code> will be used before importing the data into the neural network
 
 ```python
 from sklearn.datasets import make_moons
@@ -32,6 +33,8 @@ X_val = sc.transform(X_val)
 ```
 
 #### Visualise Dataset
+
+- Having split the data into a <code>training</code> and <code>validation</code> datasets, let's visualise it
 
 ```python
 
