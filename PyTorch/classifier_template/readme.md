@@ -8,6 +8,7 @@
 #### Create Dataset
 
 - <code>sklearn</code> make_moons creates a <code>two</code> class data structure
+  - <code>samples</code> 400, <code>noise</code> 0.8
 - <code>scaling</code> will be used before importing the data into the neural network
 
 ```python
