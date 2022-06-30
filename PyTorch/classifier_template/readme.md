@@ -30,3 +30,39 @@ X_train = sc.transform(X_train)
 X_val = sc.transform(X_val)
 
 ```
+
+#### Visualise Dataset
+
+```python
+
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+fig = make_subplots(rows=1, cols=2,subplot_titles=['Train','Validation'])
+itrace = px.scatter(X_train,
+                    color=y_train,
+                   )['data'][0]
+trace = px.scatter(X_val,
+                   color=y_val)['data'][0]
+
+fig.add_trace(itrace, row=1, col=1)
+fig.add_trace(trace, row=1, col=2)
+
+fig.update_layout(template='plotly_white',
+                  title='Train / Validation Data Splitting',
+                  font=dict(family='sans-serif',size=12),
+                  width=1200)
+
+fig.update_traces({'marker_line_width':1.5, 
+                   'marker_line_color':"black",
+                   'marker_size':8,
+                   'opacity':1.0,
+#                    'marker':{'showscale':True,'reversescale':True, 'cmid':0, 'size':10},
+                  })
+
+fig.update_coloraxes(colorscale="tealgrn")
+fig.update_layout(coloraxis_showscale=False)
+fig.show()
+
+```
