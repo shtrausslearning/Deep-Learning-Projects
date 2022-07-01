@@ -174,8 +174,8 @@ class pyRun(object):
             yhat = self.model(x)           # compute model prediction (forward pass)
             loss = self.loss_fn(yhat, y)   # compute the loss 
             loss.backward() # compute gradients for both a,b parameters (backward pass)
-            self.optimizer.step()      # update parameters using gradients and lr
-            self.optimizer.zero_grad() # reset gradients
+            self.optimiser.step()      # update parameters using gradients and lr
+            self.optimiser.zero_grad() # reset gradients
 
             return loss.item() # Returns the loss
             
