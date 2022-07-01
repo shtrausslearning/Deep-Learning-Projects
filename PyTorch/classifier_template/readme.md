@@ -1,5 +1,5 @@
 
-#### Binary Classification Example
+#### PyTorch Basic Setup
 
 - We'll be utilising a simple dataset, containing two classes
 - Our problem will be a <code>binary</code> classification problem
@@ -100,7 +100,8 @@ val_loader = DataLoader(dataset=val_dataset,
                         
 ```
 
-What do dataloaders contain:
+What do <code>dataloaders</code> contain:
+- Batch Data (subset of the entire dataset)
 
 ```python
 for x,y in train_loader:
