@@ -1,8 +1,10 @@
 
 ## PyTorch Basic Setup
 
-- We'll be utilising a simple dataset, containing two classes
+- We'll be utilising a simple dataset, containing two classes [0,1]
 - Our problem will be a <code>binary</code> classification problem
+- Train model on a <code>training</code> & <code>validation</code> datasets
+- Display the <code>loss</code> history for the model on both datasets
 
 ### Create Dataset
 
