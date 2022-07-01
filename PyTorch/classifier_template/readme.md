@@ -323,7 +323,7 @@ optimizer = optim.SGD(model.parameters(), lr=0.01)
 loss_fn = nn.BCEWithLogitsLoss()
 ```
 
-### Train Model
+### Train Neural Network
 - Instantiate class <code>pyRun</code>
 
 ```Python
