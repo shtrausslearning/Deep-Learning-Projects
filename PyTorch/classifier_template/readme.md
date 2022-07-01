@@ -318,8 +318,8 @@ model = Net()
 
 - Set prerequisites to <code>pyRun</code> : <code>loss function</code> & <code>optimiser</code>
 - Model can either output <code>logits</code> or <code>probabilities</code> 
-- Whatever the choice is, make sure you are using the appropriate loss function for the model
-- Model <code>Net()</code> requires **WithLogits** loss function as <code>nn.Sigmoid()</code> is not added
+  - Whatever the choice is, make sure you are using the appropriate loss function for the model
+  - Model <code>Net()</code> requires **WithLogits** loss function as <code>nn.Sigmoid()</code> is not added
 
 ```Python
 optimizer = optim.SGD(model.parameters(), lr=0.01)
