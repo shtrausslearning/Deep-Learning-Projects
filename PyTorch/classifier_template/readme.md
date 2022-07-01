@@ -100,6 +100,27 @@ val_loader = DataLoader(dataset=val_dataset,
                         
 ```
 
+What do dataloaders contain:
+
+```python
+for x,y in train_loader:
+    print(x,y)
+    break
+```
+
+```
+tensor([[-1.3243,  1.4676],
+        [ 0.0957, -1.8608],
+        [-0.1862,  2.0344],
+        [-1.0247,  1.2672],
+        [-0.6044,  0.7080]]) tensor([[0.],
+        [1.],
+        [0.],
+        [0.],
+        [0.]])
+        
+```
+
 #### Create a custom PyTorch class
 
 **Attributes:**
