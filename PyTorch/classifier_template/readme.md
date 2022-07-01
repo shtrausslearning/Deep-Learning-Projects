@@ -313,13 +313,12 @@ class Net(nn.Module):
         x = self.fc3(x)
         return x
         
-model = Net()
-        
+model = Net() 
 ```
 
 - Set prerequisites to <code>pyRun</code> : <code>loss function</code> & <code>optimiser</code>
 
-```
+```Python
 optimizer = optim.SGD(model.parameters(), lr=0.01)
 loss_fn = nn.BCEWithLogitsLoss()
 ```
@@ -356,3 +355,17 @@ fig.show()
 
 ### Inference on Test Data
 
+- Inference & show hit/misses of <code>classifier</code>
+
+```Python
+
+test_x, test_y = val_dataset[:]
+
+model.eval()
+logits = model(test_x.to(device))
+probs = torch.sigmoid(logits)
+probs
+
+threshold = 0.5
+confusion_matrix(some_y, (probs.cpu() >= threshold))
+```
