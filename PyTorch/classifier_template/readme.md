@@ -5,6 +5,7 @@
 - Our problem will be a <code>binary</code> classification problem
 - Train model on a <code>training</code> & <code>validation</code> datasets
 - Display the <code>loss</code> history for the model on both datasets
+- <code>inference</code> on part of the <code>validation</code> dataset
 
 ### Create Dataset
 
