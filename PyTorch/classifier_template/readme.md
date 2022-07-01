@@ -70,7 +70,7 @@ fig.show()
 
 ```
 
-#### Create Data Loaders
+#### Data Preparation
 - Create a tensor(s) from Numpy Arrays <code>X_train_tensor</code>, <code>y_train_tensor</code>, <code>X_val_tensor</code>, <code>y_val_tensor</code>
 - Create a Dataset(s) (contains all data) <code>train_dataset</code>, <code>val_dataset</code>
 - Create a DataLoader(s) (batch loading during training) <code>train_loader</code>, <code>val_loader</code>
@@ -112,14 +112,12 @@ val_loader = DataLoader(dataset=val_dataset,
 **General Class Methods:**
 - <code>to</code> : move data to CPU or GPU
 - <code>set_loaders</code> : store data loaders in local variables
-- <code>set_tensorboard</code>
 - <code>set_seed</code> : set seed 
 - <code>train</code> : train model on both datasets
 - <code>save_checkpoint</code> : save model, optmiser data needed to restart training
 - <code>load_checkpoint</code> : load model,            "
 - <code>predict</code> : predict on test data
 - <code>plot_losses</code> : plot the training loss history 
-- <code>add_graph</code>
 
 ```python
 
@@ -135,21 +133,16 @@ class pyRun(object):
 
         self.train_loader = None
         self.val_loader = None
-        self.writer = None
         
         self.losses = []
         self.val_losses = []
         self.total_epochs = 0
 
-        # Train Step Functions
-        self.train_step = self._make_train_step()
-        self.val_step = self._make_val_step()
+        self.train_step = self._make_train_step() # store training step func
+        self.val_step = self._make_val_step()  # store validatio step func
     
     def _make_train_step(self):
-        # This method does not need ARGS... it can refer to
-        # the attributes: self.model, self.loss_fn and self.optimizer
-        
-        # Builds function that performs a step in the train loop
+
         def perform_train_step(x, y):
 
             self.model.train()             # set model to train mode
@@ -160,9 +153,8 @@ class pyRun(object):
             self.optimizer.zero_grad() # reset gradients
 
             return loss.item() # Returns the loss
-
-        # Returns the function that will be called inside the train loop
-        return perform_train_step
+            
+        return perform_train_step # return func used in training loop
     
     def _make_val_step(self):
         # Builds function that performs a step in the validation loop
@@ -178,10 +170,6 @@ class pyRun(object):
             return loss.item()
 
         return perform_val_step
-            
-        # The mini-batch can be used with both loaders
-        # The argument `validation`defines which loader and 
-        # corresponding step function is going to be used
         
     def _mini_batch(self, validation=False):
         if validation:
@@ -194,8 +182,6 @@ class pyRun(object):
         if data_loader is None:
             return None
             
-        # Once the data loader and step function, this is the same
-        # mini-batch loop we had before
         mini_batch_losses = []
         for x_batch, y_batch in data_loader:
             x_batch = x_batch.to(self.device)
@@ -229,8 +215,6 @@ class pyRun(object):
 
         for epoch in range(n_epochs):
 
-            # Train & Validate (w/o grad)
-
             self.total_epochs += 1
             loss = self._mini_batch(validation=False)
             self.losses.append(loss)
@@ -238,18 +222,6 @@ class pyRun(object):
             with torch.no_grad():
                 val_loss = self._mini_batch(validation=True) # eval w/ mini-batches
                 self.val_losses.append(val_loss)
-
-            if self.writer:
-                scalars = {'training': loss}
-                if val_loss is not None:
-                    scalars.update({'validation': val_loss})
-                # Records both losses for each epoch under the main tag "loss"
-                self.writer.add_scalars(main_tag='loss',
-                                        tag_scalar_dict=scalars,
-                                        global_step=epoch)
-
-        if self.writer:
-            self.writer.close()
 
     def save_checkpoint(self, filename):
     
@@ -299,15 +271,5 @@ class pyRun(object):
         fig.update_traces(marker=dict(line=dict(width=0.5, color='white')),
                           opacity=0.75)
         fig.show()
-        
-    def set_tensorboard(self, name, folder='runs'):
-        suffix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        self.writer = SummaryWriter('{}/{}_{}'.format(folder, name, suffix))
-
-    def add_graph(self):
-        # Fetches a single mini-batch so we can use add_graph
-        if self.train_loader and self.writer:
-            x_sample, y_sample = next(iter(self.train_loader))
-            self.writer.add_graph(self.model, x_sample.to(self.device))
 
 ```
