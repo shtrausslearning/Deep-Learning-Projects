@@ -1,10 +1,10 @@
 
-#### PyTorch Basic Setup
+## PyTorch Basic Setup
 
 - We'll be utilising a simple dataset, containing two classes
 - Our problem will be a <code>binary</code> classification problem
 
-#### Create Dataset
+### Create Dataset
 
 - <code>sklearn</code> make_moons creates a <code>two</code> class data structure (<code>samples</code> 400, <code>noise</code> 0.8)
 - Training/Test split is utilised (<code>test_size</code> 0.2, <code>shuffle</code> True)
@@ -32,7 +32,7 @@ X_val = sc.transform(X_val)
 
 ```
 
-#### Visualise Dataset
+### Visualise Dataset
 
 - Having split the data into a <code>training</code> and <code>validation</code> datasets, let's visualise it
 
@@ -70,7 +70,7 @@ fig.show()
 
 ```
 
-#### Data Preparation
+### Data Preparation
 - Create a tensor(s) from Numpy Arrays <code>X_train_tensor</code>, <code>y_train_tensor</code>, <code>X_val_tensor</code>, <code>y_val_tensor</code>
 - Create a Dataset(s) (contains all data) <code>train_dataset</code>, <code>val_dataset</code>
 - Create a DataLoader(s) (batch loading during training) <code>train_loader</code>, <code>val_loader</code>
@@ -122,7 +122,7 @@ tensor([[-1.3243,  1.4676],
         
 ```
 
-#### Create a custom PyTorch class
+### PyTorch Training/Inference Operation Class
 
 **Attributes:**
 - <code>model</code> : model architecture nn.sequence
