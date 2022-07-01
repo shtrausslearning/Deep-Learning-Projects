@@ -296,7 +296,7 @@ class pyRun(object):
 
 ### Set Neural Network 
 
-- Set Class
+- Set <code>PyTorch</code> compatible class (req. <code>init</code> & <code>forward</code>)
 
 ```Python
 class Net(nn.Module):
