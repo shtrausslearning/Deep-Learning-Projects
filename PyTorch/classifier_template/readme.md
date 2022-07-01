@@ -4,7 +4,6 @@
 - We'll be utilising a simple dataset, containing two classes
 - Our problem will be a <code>binary</code> classification problem
 
-
 #### Create Dataset
 
 - <code>sklearn</code> make_moons creates a <code>two</code> class data structure (<code>samples</code> 400, <code>noise</code> 0.8)
@@ -116,8 +115,8 @@ val_loader = DataLoader(dataset=val_dataset,
 - <code>set_tensorboard</code>
 - <code>set_seed</code> : set seed 
 - <code>train</code> : train model on both datasets
-- <code>save_checkpoint</code>
-- <code>load_checkpoint</code>
+- <code>save_checkpoint</code> : save model, optmiser data needed to restart training
+- <code>load_checkpoint</code> : load model,            "
 - <code>predict</code> : predict on test data
 - <code>plot_losses</code> : plot the training loss history 
 - <code>add_graph</code>
@@ -145,8 +144,6 @@ class pyRun(object):
         # Train Step Functions
         self.train_step = self._make_train_step()
         self.val_step = self._make_val_step()
-        
-    ''' Private Classes '''
     
     def _make_train_step(self):
         # This method does not need ARGS... it can refer to
@@ -209,8 +206,6 @@ class pyRun(object):
 
         loss = np.mean(mini_batch_losses)
         return loss
-
-    ''' Class Methods '''
     
     def to(self, device):
         self.device = device
@@ -270,7 +265,6 @@ class pyRun(object):
             self.writer.close()
 
     def save_checkpoint(self, filename):
-        # Builds dictionary with all elements for resuming training
         checkpoint = {'epoch': self.total_epochs,
                       'model_state_dict': self.model.state_dict(),
                       'optimizer_state_dict': self.optimizer.state_dict(),
@@ -293,8 +287,6 @@ class pyRun(object):
 
         self.model.train() # always use TRAIN for resuming training 
         
-    # Inference
-        
     def predict(self, x):
 
         self.model.eval() # set to evaluation mode for predictions
@@ -303,8 +295,6 @@ class pyRun(object):
         self.model.train() # set it back to train mode
 
         return y_hat_tensor.detach().cpu().numpy() # detach it, brings it to CPU and back to np
-    
-    # Plot losses
     
     def plot_losses(self):
         
