@@ -293,3 +293,66 @@ class pyRun(object):
         fig.show()
 
 ```
+
+### Set Neural Network 
+
+- Set Class
+
+```Python
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(2,1000)
+        self.fc2 = nn.Linear(1000,100)
+        self.fc3 = nn.Linear(100,1)
+        
+    def forward(self,inputs):
+        x = self.fc1(inputs)
+#         x = self.fc1(inputs)
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+        
+model = Net()
+        
+```
+
+- Set prerequisites to <code>pyRun</code> : <code>loss function</code> & <code>optimiser</code>
+
+```
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+loss_fn = nn.BCEWithLogitsLoss()
+```
+
+### Train Model
+- Instantiate class <code>pyRun</code>
+
+```Python
+sbs = pyRun(model,      # model 
+            loss_fn,    # loss function 
+            optimizer)  # set optimiser
+```
+
+- Set <code>DataLoaders</code>
+
+```Python
+# Set DataLoaders
+sbs.set_loaders(train_loader,
+                val_loader)
+```  
+              
+- Train model with <code>train</code> method
+
+```Python
+sbs.train(n_epochs=100)
+```
+
+- Visualise <code>loss</code> history
+
+```Python
+fig = sbs.plot_losses()
+fig.show()
+```
+
+### Inference on Test Data
+
