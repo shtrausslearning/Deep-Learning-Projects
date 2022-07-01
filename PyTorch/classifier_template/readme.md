@@ -104,22 +104,22 @@ val_loader = DataLoader(dataset=val_dataset,
 #### Create a custom PyTorch class
 
 **Attributes:**
-- <code>model</code>
-- <code>loss_fn</code>
-- <code>optimizer</code>
-- <code>train_loader</code>
-- <code>val_loader</code>
+- <code>model</code> : model architecture nn.sequence
+- <code>loss_fn</code> : loss function 
+- <code>optimizer</code> : optimiser
+- <code>train_loader</code> : storage space for training dataloader
+- <code>val_loader</code> : storage space for test dataloader
 
 **General Class Methods:**
-- <code>to</code>
-- <code>set_loaders</code>
+- <code>to</code> : move data to CPU or GPU
+- <code>set_loaders</code> : store data loaders in local variables
 - <code>set_tensorboard</code>
-- <code>set_seed</code>
-- <code>train</code>
+- <code>set_seed</code> : set seed 
+- <code>train</code> : train model on both datasets
 - <code>save_checkpoint</code>
 - <code>load_checkpoint</code>
-- <code>predict</code>
-- <code>plot_losses</code>
+- <code>predict</code> : predict on test data
+- <code>plot_losses</code> : plot the training loss history 
 - <code>add_graph</code>
 
 ```python
