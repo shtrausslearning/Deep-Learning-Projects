@@ -103,14 +103,14 @@ val_loader = DataLoader(dataset=val_dataset,
 
 #### Create a custom PyTorch class
 
-Attributes:
+**Attributes:**
 - <code>model</code>
 - <code>loss_fn</code>
 - <code>optimizer</code>
 - <code>train_loader</code>
 - <code>val_loader</code>
 
-General Class Methods:
+**General Class Methods:**
 - <code>to</code>
 - <code>set_loaders</code>
 - <code>set_tensorboard</code>
