@@ -215,11 +215,6 @@ class pyRun(object):
         self.train_loader = train_loader
         self.val_loader = val_loader
     
-    def set_tensorboard(self, name, folder='runs'):
-        # This method allows the user to define a SummaryWriter to interface with TensorBoard
-        suffix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-        self.writer = SummaryWriter('{}/{}_{}'.format(folder, name, suffix))
-    
     def set_seed(self, seed=42):
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False    
@@ -234,24 +229,16 @@ class pyRun(object):
 
         for epoch in range(n_epochs):
 
-            self.total_epochs += 1
+            # Train & Validate (w/o grad)
 
-            # Training 
-            
-            # inner loop
-            # Performs training using mini-batches
+            self.total_epochs += 1
             loss = self._mini_batch(validation=False)
             self.losses.append(loss)
-
-            # Validation & no gradients in validation!
             
             with torch.no_grad():
-                
-                # Performs evaluation using mini-batches
-                val_loss = self._mini_batch(validation=True)
+                val_loss = self._mini_batch(validation=True) # eval w/ mini-batches
                 self.val_losses.append(val_loss)
 
-            # If a SummaryWriter has been set
             if self.writer:
                 scalars = {'training': loss}
                 if val_loss is not None:
@@ -265,6 +252,7 @@ class pyRun(object):
             self.writer.close()
 
     def save_checkpoint(self, filename):
+    
         checkpoint = {'epoch': self.total_epochs,
                       'model_state_dict': self.model.state_dict(),
                       'optimizer_state_dict': self.optimizer.state_dict(),
@@ -276,8 +264,6 @@ class pyRun(object):
     def load_checkpoint(self, filename):
 
         checkpoint = torch.load(filename) # loads dict
-
-        # Restore state for model and optimizer
         self.model.load_state_dict(checkpoint['model_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
@@ -285,7 +271,7 @@ class pyRun(object):
         self.losses = checkpoint['loss']
         self.val_losses = checkpoint['val_loss']
 
-        self.model.train() # always use TRAIN for resuming training 
+        self.model.train() # when resuming training
         
     def predict(self, x):
 
@@ -313,6 +299,10 @@ class pyRun(object):
         fig.update_traces(marker=dict(line=dict(width=0.5, color='white')),
                           opacity=0.75)
         fig.show()
+        
+    def set_tensorboard(self, name, folder='runs'):
+        suffix = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+        self.writer = SummaryWriter('{}/{}_{}'.format(folder, name, suffix))
 
     def add_graph(self):
         # Fetches a single mini-batch so we can use add_graph
