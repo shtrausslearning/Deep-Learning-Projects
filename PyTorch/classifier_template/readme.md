@@ -179,19 +179,14 @@ class pyRun(object):
 
             return loss.item() # Returns the loss
             
-        return perform_train_step # return func used in training loop
+        return perform_train_step # return function used in training loop
     
     def _make_val_step(self):
-        # Builds function that performs a step in the validation loop
+  
         def perform_val_step(x, y):
-            # Sets model to EVAL mode
-            self.model.eval()
-
-            # Step 1 - Computes our model's predicted output - forward pass
-            yhat = self.model(x)
-            # Step 2 - Computes the loss
-            loss = self.loss_fn(yhat, y)
-            # There is no need to compute Steps 3 and 4, since we don't update parameters during evaluation
+            self.model.eval() # eval mode
+            yhat = self.model(x) # model prediction output (forward pass)
+            loss = self.loss_fn(yhat, y) # compute loss 
             return loss.item()
 
         return perform_val_step
