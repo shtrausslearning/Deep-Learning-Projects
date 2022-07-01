@@ -94,18 +94,12 @@ class Net(nn.Module):
         
     def forward(self,inputs):
         x = self.fc1(inputs)
-#         x = self.fc1(inputs)
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
 
-# model = Net().to(device)
 model = Net()
-
-# Defines a SGD optimizer to update the parameters
 optimiser = optim.SGD(model.parameters(), lr=0.01)
-
-# # Defines a BCE loss function
 loss_fn = nn.BCEWithLogitsLoss()
 
 class pyRun(object):
@@ -204,34 +198,12 @@ class pyRun(object):
         for epoch in range(n_epochs):
 
             self.total_epochs += 1
-
-            # Training 
-            
-            # inner loop
-            # Performs training using mini-batches
             loss = self._mini_batch(validation=False)
             self.losses.append(loss)
 
-            # Validation & no gradients in validation!
-            
             with torch.no_grad():
-                
-                # Performs evaluation using mini-batches
                 val_loss = self._mini_batch(validation=True)
                 self.val_losses.append(val_loss)
-
-            # If a SummaryWriter has been set
-            if self.writer:
-                scalars = {'training': loss}
-                if val_loss is not None:
-                    scalars.update({'validation': val_loss})
-                # Records both losses for each epoch under the main tag "loss"
-                self.writer.add_scalars(main_tag='loss',
-                                        tag_scalar_dict=scalars,
-                                        global_step=epoch)
-
-        if self.writer:
-            self.writer.close()
 
     def save_checkpoint(self, filename):
         # Builds dictionary with all elements for resuming training
