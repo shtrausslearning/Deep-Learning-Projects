@@ -100,7 +100,7 @@ val_loader = DataLoader(dataset=val_dataset,
                         
 ```
 
-What do <code>dataloaders</code> contain:
+What do <code>DataLoaders</code> contain:
 - Batch Data (subset of the entire dataset)
 
 ```python
@@ -128,11 +128,11 @@ tensor([[-1.3243,  1.4676],
 - <code>model</code> : model architecture nn.sequence
 - <code>loss_fn</code> : loss function 
 - <code>optimizer</code> : optimiser
-- <code>train_loader</code> : storage space for training dataloader
-- <code>val_loader</code> : storage space for test dataloader
+- <code>train_loader</code> : storage space for training <code>DataLoader</code>
+- <code>val_loader</code> : storage space for test <code>DataLoader</code>
 
 **General Class Methods:**
-- <code>to</code> : move data to CPU or GPU
+- <code>to</code> : move data to <code>CPU</code> or <code>GPU</code>
 - <code>set_loaders</code> : store data loaders in local variables
 - <code>set_seed</code> : set seed 
 - <code>train</code> : train model on both datasets
