@@ -52,7 +52,7 @@ display(df.head())
 
 ### Data Preparation
 - Quite straightforward **0.8**/**0.2** train/test split of the dataset with <code>suffle</code>
-- Standardise dataset; rescale the distribution of values so that the mean of observed values is 0 and the standard deviation is 1
+- Standardise dataset; rescale the distribution of values so that the <code>mean</code> is 0 and the <code>standard deviation</code> is 1
 
 ```python
 
