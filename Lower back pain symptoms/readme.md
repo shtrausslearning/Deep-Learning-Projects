@@ -145,3 +145,13 @@ class Network(nn.Module):
         return x
 
 ```
+
+```Python
+- Instantiate neural network class <code>Network</code>
+- Set optimiser <code>Adam</code> with a <code>learning rate</code> of **1e-4**
+
+model = Network()
+opt = optim.Adam(model.parameters(), lr=1e-4)
+loss = nn.BCEWithLogitsLoss()
+
+```
