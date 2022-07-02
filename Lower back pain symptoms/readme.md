@@ -22,7 +22,7 @@ While lower back pain is extremely common, the symptoms and severity of lower ba
 ### 3 | Purpose of this study
 
 - Considering the clinical importance of lower back pain, I have chosen the lower back pain dataset which contains various measurements of physical spine data. 
-- The goal of this analysis is to predict whether a patient will display abnormal (pain) or normal (no pain) given physical spine data.
+- The goal of this analysis is to predict whether a patient will display **abnormal** (pain) or **normal** (no pain) given physical spine data.
 
 
 ### 4 | Import Dataset
