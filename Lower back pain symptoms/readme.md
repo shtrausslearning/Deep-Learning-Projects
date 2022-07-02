@@ -423,6 +423,7 @@ epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.7
 </div>
 
 - Create a function that will plot the <code>loss</code> & <code>metric</code> stored in **loss_hist**,**metric_hist**
+- During training, <code>precision</code>, <code>recall</code>, <code>f1</code>, <code>accuracy</code> are all stored, let's only view the harmonic mean, since the two classes are slightly <code>imbalanced</code>
 
 ```python
 
@@ -478,4 +479,8 @@ plot_res(metric_hist,'f1')
 ```
 
 ![](https://i.imgur.com/xKg03zD.png)
+
+### 10 | Conclusion
+- In this brief study we aimed at creating a <code>classifier</code> that could classify between two types <code>normal</code> & <code>abnormal</code>
+- Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to obtain a classifier 
 
