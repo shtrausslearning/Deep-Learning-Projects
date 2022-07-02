@@ -497,6 +497,11 @@ confusion_matrix(some_y[:10], (probs.cpu() >= threshold))
 
 ```
 
+```
+array([[4, 0],
+       [0, 6]])
+```
+
 ![](https://i.imgur.com/xKg03zD.png)
 
 ### 11 | Conclusion
