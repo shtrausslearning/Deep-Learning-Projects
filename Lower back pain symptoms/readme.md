@@ -14,7 +14,7 @@ Lower back pain can be caused by a variety of problems with any parts of the com
 
 While lower back pain is extremely common, the symptoms and severity of lower back pain vary greatly. A simple lower back muscle strain might be excruciating enough to necessitate an emergency room visit, while a degenerating disc might cause only mild, intermittent discomfort.
 
-This data set is about to identify a person is <code>abnormal</code> or <code>normal<code> using collected physical spine details/data.
+This data set is about to identify a person is <code>abnormal</code> or <code>normal</code> using collected physical spine details/data.
 
 
 ### Import Dataset
@@ -35,4 +35,34 @@ encode_map = {
 
 df['Class_att'].replace(encode_map, inplace=True)
 display(df.head())
+```
+
+### Data Preparation
+
+```python
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+
+y = df['Class_att']
+X = df.drop(['Class_att'],axis=1)
+
+X_train, X_val, y_train, y_val = train_test_split(X, y, 
+                                                  test_size=0.20,
+                                                  random_state=13,
+                                                  shuffle=True)
+print(f'X_train: {X_train.shape}')
+print(f'X_val: {X_val.shape}')
+
+X_train = X_train.values
+X_val = X_val.values
+y_train = y_train.values
+y_val = y_val.values
+
+sc = StandardScaler()
+sc.fit(X_train)
+
+X_train = sc.transform(X_train)
+X_val = sc.transform(X_val)
+
 ```
