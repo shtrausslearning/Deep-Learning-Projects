@@ -522,6 +522,7 @@ array([[4, 0],
 - Due to imbalanced, we decided to focus on the <code>f1</code> metric score 
 - Highest <code>generalisation</code> f1 score:
 > epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
+- The performance on the <code>test</code> data was quite promising showing no misses at all in the <code>confusion matrix</code>
 - Such performance is a good start, however there is a need to improve the <code>classifier</code> model, some possible options:
   - Improvement of the neural network model (Adjust parameters that generalise <code>nn.Dropout(p=0.1)</code>, <Code>nn.BatchNorm1d(64)</code>)
   - Gain more data & retrain the model, the size can likely be a factor for poor generalisation performance on new data
