@@ -50,6 +50,21 @@ display(df.head())
 | 4  | 49.71285934 | 9.652074879 | 28.317406   | 40.06078446 | 108.1687249 | 7.918500615  | 0.543360472 | 35.494  | 15.9546 | 8.87237  | -16.378376 | 24.9171 | 1.0         |
 ```
 
+- Check the <code>value_count</code> for <code>target</code> **Class_att**
+- The class balance is slightly favoured towards **Abnormal**
+
+```python
+df['Class_att'].value_counts()
+```
+
+```
+
+1    210
+0    100
+Name: Class_att, dtype: int64
+
+```
+
 ### Data Preparation
 - Quite straightforward **0.8**/**0.2** train/test split of the dataset with <code>suffle</code>
 - Standardise dataset; rescale the distribution of values so that the <code>mean</code> is 0 and the <code>standard deviation</code> is 1
