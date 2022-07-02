@@ -389,28 +389,33 @@ epochs=params_train["epochs"]
 
 ```
 
-epoch: 180 | train loss: 0.225 | val loss: 0.331 | train-f1: 94.375 val-f1: 89.750
-epoch: 181 | train loss: 0.262 | val loss: 0.335 | train-f1: 92.000 val-f1: 89.750
-epoch: 182 | train loss: 0.249 | val loss: 0.335 | train-f1: 90.562 val-f1: 89.750
-epoch: 183 | train loss: 0.213 | val loss: 0.346 | train-f1: 93.750 val-f1: 89.750
+epoch: 176 | train loss: 0.185 | val loss: 0.330 | train-f1: 95.688 val-f1: 89.500
+epoch: 177 | train loss: 0.186 | val loss: 0.332 | train-f1: 95.812 val-f1: 89.500
+epoch: 178 | train loss: 0.176 | val loss: 0.328 | train-f1: 96.125 val-f1: 89.500
+epoch: 179 | train loss: 0.180 | val loss: 0.330 | train-f1: 95.312 val-f1: 89.500
+epoch: 180 | train loss: 0.173 | val loss: 0.319 | train-f1: 95.688 val-f1: 89.500
+epoch: 181 | train loss: 0.216 | val loss: 0.336 | train-f1: 94.062 val-f1: 89.500
+epoch: 182 | train loss: 0.209 | val loss: 0.314 | train-f1: 95.312 val-f1: 89.500
+epoch: 183 | train loss: 0.170 | val loss: 0.315 | train-f1: 96.688 val-f1: 89.500
+epoch: 184 | train loss: 0.200 | val loss: 0.331 | train-f1: 94.125 val-f1: 89.500
+epoch: 185 | train loss: 0.191 | val loss: 0.324 | train-f1: 95.688 val-f1: 89.500
+epoch: 186 | train loss: 0.191 | val loss: 0.332 | train-f1: 94.125 val-f1: 89.500
+epoch: 187 | train loss: 0.226 | val loss: 0.327 | train-f1: 93.125 val-f1: 89.500
+epoch: 188 | train loss: 0.193 | val loss: 0.317 | train-f1: 95.125 val-f1: 89.500
+epoch: 189 | train loss: 0.198 | val loss: 0.322 | train-f1: 94.625 val-f1: 89.500
 Saving best model weights!
-epoch: 184 | train loss: 0.214 | val loss: 0.334 | train-f1: 94.875 val-f1: 89.750
-epoch: 185 | train loss: 0.230 | val loss: 0.331 | train-f1: 94.625 val-f1: 89.750
-epoch: 186 | train loss: 0.236 | val loss: 0.337 | train-f1: 94.625 val-f1: 89.750
-epoch: 187 | train loss: 0.232 | val loss: 0.339 | train-f1: 93.312 val-f1: 89.750
-epoch: 188 | train loss: 0.261 | val loss: 0.323 | train-f1: 92.125 val-f1: 89.750
-epoch: 189 | train loss: 0.218 | val loss: 0.332 | train-f1: 93.688 val-f1: 89.750
-epoch: 190 | train loss: 0.271 | val loss: 0.341 | train-f1: 93.000 val-f1: 89.750
-epoch: 191 | train loss: 0.211 | val loss: 0.328 | train-f1: 95.688 val-f1: 89.750
-epoch: 192 | train loss: 0.243 | val loss: 0.330 | train-f1: 94.438 val-f1: 89.750
-epoch: 193 | train loss: 0.247 | val loss: 0.330 | train-f1: 94.312 val-f1: 89.750
-epoch: 194 | train loss: 0.232 | val loss: 0.334 | train-f1: 94.812 val-f1: 89.750
-epoch: 195 | train loss: 0.242 | val loss: 0.332 | train-f1: 93.562 val-f1: 91.000
-epoch: 196 | train loss: 0.231 | val loss: 0.331 | train-f1: 94.750 val-f1: 89.750
-epoch: 197 | train loss: 0.230 | val loss: 0.335 | train-f1: 94.562 val-f1: 89.750
-epoch: 198 | train loss: 0.269 | val loss: 0.326 | train-f1: 91.938 val-f1: 91.000
-epoch: 199 | train loss: 0.232 | val loss: 0.329 | train-f1: 94.062 val-f1: 89.750
-epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.750
+epoch: 190 | train loss: 0.167 | val loss: 0.328 | train-f1: 97.312 val-f1: 89.500
+epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
+epoch: 192 | train loss: 0.171 | val loss: 0.318 | train-f1: 96.312 val-f1: 89.500
+epoch: 193 | train loss: 0.252 | val loss: 0.334 | train-f1: 93.312 val-f1: 89.500
+epoch: 194 | train loss: 0.175 | val loss: 0.314 | train-f1: 96.688 val-f1: 89.500
+epoch: 195 | train loss: 0.205 | val loss: 0.317 | train-f1: 96.250 val-f1: 89.500
+epoch: 196 | train loss: 0.217 | val loss: 0.328 | train-f1: 93.688 val-f1: 89.500
+epoch: 197 | train loss: 0.205 | val loss: 0.325 | train-f1: 93.312 val-f1: 89.500
+epoch: 198 | train loss: 0.207 | val loss: 0.316 | train-f1: 94.000 val-f1: 89.500
+epoch: 199 | train loss: 0.196 | val loss: 0.318 | train-f1: 95.062 val-f1: 89.500
+epoch: 200 | train loss: 0.178 | val loss: 0.313 | train-f1: 95.625 val-f1: 89.500
+Total Time: 18.311
 
 ```
 
@@ -509,4 +514,4 @@ array([[4, 0],
 - Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to create a classifier that will be able to distinguish between the two types
 - Due to imbalanced, we decided to focus on the f1 metric score 
 - Highest <code>generalisation</code> f1 score:
-> epoch: 194 | train loss: 0.210 | val loss: 0.316 | train-f1: 93.750 val-f1: 90.500
+> epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
