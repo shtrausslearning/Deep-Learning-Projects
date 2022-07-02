@@ -88,3 +88,31 @@ X_train: (248, 12)
 X_val: (62, 12)
 
 ```
+
+- Create <code>tensors</code> of type <code>float</code>
+- Create datasets containing <code>tensors</code>
+- Create <code>DataLoader</code> with a <code>batch_size</code> 16
+
+```Python
+
+X_train_tensor = torch.FloatTensor(X_train)
+X_val_tensor = torch.FloatTensor(X_val)
+y_train_tensor = torch.FloatTensor(y_train)
+y_val_tensor = torch.FloatTensor(y_val)
+
+# Builds dataset containing ALL data points
+train_dataset = TensorDataset(X_train_tensor,
+                              y_train_tensor)
+val_dataset = TensorDataset(X_val_tensor,
+                            y_val_tensor)
+
+# Builds a loader of each set
+batch_size = 16
+train_loader = DataLoader(dataset=train_dataset,
+                          batch_size=batch_size, 
+                          shuffle=True)
+
+val_loader = DataLoader(dataset=val_dataset,
+                        batch_size=batch_size)
+
+```
