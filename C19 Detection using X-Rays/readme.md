@@ -27,11 +27,10 @@ The following <code>augmentations</code> were used:
 - horizontal_flip=True
 - rescale=1/255
 
-
-## Files:
+### 4 | Files of Study:
 <code>main.py</code> - Training File
 
-## Process:
+### 5 | Process:
 - [1] First, we need to create a root folder, in which we will be placing our dataset
 - [2] We need to then create a folder, which will contain both <code>train</code> & <code>validation</code> folders
 - [3] For both <code>train</code> & <code>validation</code>, we need to decide a distribution (how much data is used in training & validation)
