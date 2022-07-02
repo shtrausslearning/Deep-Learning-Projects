@@ -395,33 +395,25 @@ epochs=params_train["epochs"]
 
 ```
 
-epoch: 176 | train loss: 0.185 | val loss: 0.330 | train-f1: 95.688 val-f1: 89.500
-epoch: 177 | train loss: 0.186 | val loss: 0.332 | train-f1: 95.812 val-f1: 89.500
-epoch: 178 | train loss: 0.176 | val loss: 0.328 | train-f1: 96.125 val-f1: 89.500
-epoch: 179 | train loss: 0.180 | val loss: 0.330 | train-f1: 95.312 val-f1: 89.500
-epoch: 180 | train loss: 0.173 | val loss: 0.319 | train-f1: 95.688 val-f1: 89.500
-epoch: 181 | train loss: 0.216 | val loss: 0.336 | train-f1: 94.062 val-f1: 89.500
-epoch: 182 | train loss: 0.209 | val loss: 0.314 | train-f1: 95.312 val-f1: 89.500
-epoch: 183 | train loss: 0.170 | val loss: 0.315 | train-f1: 96.688 val-f1: 89.500
-epoch: 184 | train loss: 0.200 | val loss: 0.331 | train-f1: 94.125 val-f1: 89.500
-epoch: 185 | train loss: 0.191 | val loss: 0.324 | train-f1: 95.688 val-f1: 89.500
-epoch: 186 | train loss: 0.191 | val loss: 0.332 | train-f1: 94.125 val-f1: 89.500
-epoch: 187 | train loss: 0.226 | val loss: 0.327 | train-f1: 93.125 val-f1: 89.500
-epoch: 188 | train loss: 0.193 | val loss: 0.317 | train-f1: 95.125 val-f1: 89.500
-epoch: 189 | train loss: 0.198 | val loss: 0.322 | train-f1: 94.625 val-f1: 89.500
+epoch: 184 | train loss: 0.198 | val loss: 0.289 | train-f1: 94.688 val-f1: 92.250
+epoch: 185 | train loss: 0.213 | val loss: 0.303 | train-f1: 94.312 val-f1: 91.000
+epoch: 186 | train loss: 0.165 | val loss: 0.304 | train-f1: 96.812 val-f1: 91.000
+epoch: 187 | train loss: 0.151 | val loss: 0.305 | train-f1: 96.438 val-f1: 91.000
+epoch: 188 | train loss: 0.190 | val loss: 0.311 | train-f1: 93.438 val-f1: 91.000
+epoch: 189 | train loss: 0.177 | val loss: 0.301 | train-f1: 93.812 val-f1: 91.000
+epoch: 190 | train loss: 0.152 | val loss: 0.295 | train-f1: 96.000 val-f1: 91.000
+epoch: 191 | train loss: 0.141 | val loss: 0.304 | train-f1: 96.812 val-f1: 91.000
 Saving best model weights!
-epoch: 190 | train loss: 0.167 | val loss: 0.328 | train-f1: 97.312 val-f1: 89.500
-epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
-epoch: 192 | train loss: 0.171 | val loss: 0.318 | train-f1: 96.312 val-f1: 89.500
-epoch: 193 | train loss: 0.252 | val loss: 0.334 | train-f1: 93.312 val-f1: 89.500
-epoch: 194 | train loss: 0.175 | val loss: 0.314 | train-f1: 96.688 val-f1: 89.500
-epoch: 195 | train loss: 0.205 | val loss: 0.317 | train-f1: 96.250 val-f1: 89.500
-epoch: 196 | train loss: 0.217 | val loss: 0.328 | train-f1: 93.688 val-f1: 89.500
-epoch: 197 | train loss: 0.205 | val loss: 0.325 | train-f1: 93.312 val-f1: 89.500
-epoch: 198 | train loss: 0.207 | val loss: 0.316 | train-f1: 94.000 val-f1: 89.500
-epoch: 199 | train loss: 0.196 | val loss: 0.318 | train-f1: 95.062 val-f1: 89.500
-epoch: 200 | train loss: 0.178 | val loss: 0.313 | train-f1: 95.625 val-f1: 89.500
-Total Time: 18.311
+epoch: 192 | train loss: 0.231 | val loss: 0.290 | train-f1: 92.375 val-f1: 92.250
+epoch: 193 | train loss: 0.165 | val loss: 0.282 | train-f1: 97.438 val-f1: 92.250
+epoch: 194 | train loss: 0.152 | val loss: 0.285 | train-f1: 98.500 val-f1: 92.250
+epoch: 195 | train loss: 0.159 | val loss: 0.296 | train-f1: 97.312 val-f1: 91.000
+epoch: 196 | train loss: 0.173 | val loss: 0.293 | train-f1: 94.875 val-f1: 92.250
+epoch: 197 | train loss: 0.179 | val loss: 0.296 | train-f1: 94.562 val-f1: 91.000
+epoch: 198 | train loss: 0.148 | val loss: 0.297 | train-f1: 96.500 val-f1: 92.250
+epoch: 199 | train loss: 0.158 | val loss: 0.300 | train-f1: 97.062 val-f1: 91.000
+epoch: 200 | train loss: 0.224 | val loss: 0.293 | train-f1: 94.188 val-f1: 91.000
+Total Time: 18.386
 
 ```
 
@@ -522,6 +514,7 @@ array([[4, 0],
 - Due to imbalanced, we decided to focus on the <code>f1</code> metric score 
 - Highest <code>generalisation</code> f1 score:
 > epoch: 198 | train loss: 0.148 | val loss: 0.297 | train-f1: **96.500** val-f1: **92.250**
+- The total training time (both datasets) was only 18.386s, which makes this model quite efficient
 - The performance on the <code>test</code> data was quite promising showing no misses at all in the <code>confusion matrix</code>
 - Such performance is a good start, however there is a need to improve the <code>classifier</code> model, some possible options:
   - Improvement of the neural network model (Adjust parameters that generalise <code>nn.Dropout(p=0.1)</code>, <Code>nn.BatchNorm1d(64)</code>)
