@@ -2,7 +2,7 @@
 
 ### 1 | Chronic Lower Backpain
 
-Chronic lower back pain (CLBP) is a major cause of disability worldwide. CLBP prevalence in adults has increased by more than 100% in the last decade and continues to rise in older populations (Allegri et al. 2016). Given, the complexity of lower back pain the severity of symptoms can differ from person to person. For this reason, **CLBP is often difficult to diagnose** requiring complex clinical decision-making, which can still result in misdiagnosis *[Allegri et al. 2016)]*
+**[Chronic lower back pain (CLBP)](https://www.hopkinsmedicine.org/health/conditions-and-diseases/back-pain/7-ways-to-treat-chronic-back-pain-without-surgery)** is a major cause of disability worldwide. CLBP prevalence in adults has increased by more than 100% in the last decade and continues to rise in older populations (Allegri et al. 2016). Given, the complexity of lower back pain the severity of symptoms can differ from person to person. For this reason, **CLBP is often difficult to diagnose** requiring complex clinical decision-making, which can still result in misdiagnosis *[Allegri et al. 2016)]*
 
 ### 2 | Dataset Description
 
