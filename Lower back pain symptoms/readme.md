@@ -89,9 +89,9 @@ X_val: (62, 12)
 
 ```
 
-- Create <code>tensors</code> of type <code>float</code>
+- Create <code>tensors</code> of type <code>float</code> of all split data using <code>train_test_split</code>
 - Create datasets containing <code>tensors</code>
-- Create <code>DataLoader</code> with a <code>batch_size</code> 16
+- Create <code>DataLoader</code> with a <code>batch_size</code> 16 & <code>shuffle</code> option
 
 ```Python
 
