@@ -15,13 +15,17 @@
 
 > While lower back pain is extremely common, the symptoms and severity of lower back pain vary greatly. A simple lower back muscle strain might be excruciating enough to necessitate an emergency room visit, while a degenerating disc might cause only mild, intermittent discomfort.
 
-Chronic lower back pain (CLBP) is a major cause of disability worldwide. CLBP prevalence in adults has increased by more than 100% in the last decade and continues to rise in older populations (Allegri et al. 2016). Given, the complexity of lower back pain the severity of symptoms can differ from person to person. For this reason, CLBP is often difficult to diagnose requiring complex clinical decision-making, which can still result in misdiagnosis (Allegri et al. 2016).
+### 2 | Chronic Lower Backpain
+
+Chronic lower back pain (CLBP) is a major cause of disability worldwide. CLBP prevalence in adults has increased by more than 100% in the last decade and continues to rise in older populations (Allegri et al. 2016). Given, the complexity of lower back pain the severity of symptoms can differ from person to person. For this reason, **CLBP is often difficult to diagnose** requiring complex clinical decision-making, which can still result in misdiagnosis *[Allegri et al. 2016)]*
+
+### 3 | Purpose of this study
 
 - Considering the clinical importance of lower back pain, I have chosen the lower back pain dataset which contains various measurements of physical spine data. 
 - The goal of this analysis is to predict whether a patient will display abnormal (pain) or normal (no pain) given physical spine data.
 
 
-### 2 | Import Dataset
+### 4 | Import Dataset
 
 - Import dataset from **[dataset](https://www.kaggle.com/datasets/sammy123/lower-back-pain-symptoms-dataset)**, 
 - <code>features</code> **12 features (anonimised)**, <code>target</code> **Class_att**
@@ -69,7 +73,7 @@ Name: Class_att, dtype: int64
 
 ```
 
-### 3 | Data Preparation
+### 5 | Data Preparation
 - Quite straightforward **0.8**/**0.2** train/test split of the dataset with <code>suffle</code>
 - Standardise dataset; rescale the distribution of values so that the <code>mean</code> is 0 and the <code>standard deviation</code> is 1
 
@@ -152,7 +156,7 @@ torch.Size([16, 12]) tensor([1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1.,
 
 ```
 
-### 4 | Define Model
+### 6 | Define Model
 - Define the neural network <code>classifier</code>
 
 ```Python
@@ -194,7 +198,7 @@ loss = nn.BCEWithLogitsLoss()
 
 ```
 
-### 5 | Training Functions
+### 7 | Training Functions
 
 - Define some helper functions for the main function <code>tain_val</code>
 
@@ -344,7 +348,7 @@ def train_val(model, params,verbose=False):
 
 ```
 
-### 6 | Train the neural network model
+### 8 | Train the neural network model
 
 - Set <code>device</code> which will be used in training
 - Set <code>ReduceLROnPlateau</code> option to adjust the **learning rate** on the run
@@ -410,7 +414,7 @@ epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.7
 
 ```
 
-### 7 | Visualise Training Results
+### 9 | Visualise Training Results
 
 <div style="color:white;display:fill;border-radius:8px;
             background-color:#03112A;font-size:150%;
