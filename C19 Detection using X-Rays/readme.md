@@ -2,7 +2,8 @@
 
 ### 1 | Purpose of this study
 
-- The aim of this project is to create a model that will be able to determine from <code>x-rays</code>, which patiets have been labeled corona positive (option 1) and which are standard x-rays (option 2)
+- The aim of this project is to create a model that will be able to determine from <code>x-rays</code>:
+  - Which patiets have been labeled **corona positive** (option 1) and which are **standard x-rays** (option 2)
 - The model will need to find subtle patterns in the images, so we'll need to utilise <code>CNN</code> models & build a <code>binary classifier</code> 
 - We will need to find both normal and corona positive <code>x-ray</code> images & utilise the <code>keras</code> deep learning module to classify images 
 
