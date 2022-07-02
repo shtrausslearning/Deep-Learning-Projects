@@ -50,6 +50,7 @@ display(df.head())
 ```
 
 ### Data Preparation
+- Quite straightforward **0.8**/**0.2** train/test split of the dataset with <code>suffle</code>
 
 ```python
 
