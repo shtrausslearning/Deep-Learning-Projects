@@ -328,8 +328,8 @@ def train_val(model, params,verbose=False):
 ### Train the neural network model
 
 - Set <code>device</code> which will be used in training
-- - Set <code>ReduceLROnPlateau</code> option to adjust the **learning rate** on the run
-- Define training <code>params</code> (**dict**)
+- Set <code>ReduceLROnPlateau</code> option to adjust the **learning rate** on the run
+- Define training <code>params</code> dictionary
 - Trained models via **train_val** output **model**, **loss data** **metric data**
 
 ```Python
@@ -359,6 +359,8 @@ nn_model,loss_hist,metric_hist=train_val(model,        # set model
 epochs=params_train["epochs"] 
 
 ```
+
+- Training process output with <code>verbose</code>
 
 ```
 
