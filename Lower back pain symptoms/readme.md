@@ -117,6 +117,22 @@ val_loader = DataLoader(dataset=val_dataset,
 
 ```
 
+- Data loader contains:
+
+```python
+
+for x,y in train_loader:
+    print(x.shape,y)
+    break
+    
+```
+
+```
+
+torch.Size([16, 12]) tensor([1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1., 1., 1., 1.])
+
+```
+
 ### Define Model
 - Define the neural network <code>classifier</code>
 
