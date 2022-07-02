@@ -19,7 +19,7 @@
 The two sources are used to create a one unified dataset
 
 Image <code>resolution</code>:
-- (224,224,3) 
+- (224,224,3) [px]
 
 The following <code>augmentations</code> were used:
 - shear_range=0.2
