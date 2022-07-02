@@ -159,10 +159,10 @@ torch.Size([16, 12]) tensor([1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1.,
 ### 6 | Define Model
 - Define the neural network <code>classifier</code>
 - The addition of <code>dropout</code> layers is quite a straightforward option in any neural network
-  - <code>Dropout</code> on the other hand, modify the network itself. It randomly drops neurons from the neural network during training in each iteration [source](https://www.kdnuggets.com/2019/12/5-techniques-prevent-overfitting-neural-networks.html)
+  - <code>Dropout</code> on the other hand, modify the network itself. It randomly drops neurons from the neural network during training in each iteration  - [source](https://www.kdnuggets.com/2019/12/5-techniques-prevent-overfitting-neural-networks.html)
   
-- "The addition of <code>bach normalisation</code> from experimentation has been shown to improve the convergence properties (loss)"
-  - "**loss** of the network with <code>batch normalization</code> reduces much faster than the normal network because of the covariance shift" [source](https://towardsdatascience.com/batch-normalization-and-dropout-in-neural-networks-explained-with-pytorch-47d7a8459bcd)
+- The addition of <code>bach normalisation</code> from experimentation has been shown to improve the convergence properties (loss)
+  - **loss** of the network with <code>batch normalization</code> reduces much faster than the normal network because of the covariance shift - [source](https://towardsdatascience.com/batch-normalization-and-dropout-in-neural-networks-explained-with-pytorch-47d7a8459bcd)
 
 ```Python
 
