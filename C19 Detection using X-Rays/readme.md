@@ -1,19 +1,19 @@
 ![](https://i.imgur.com/XilezGZ.png)
 
-## Aim:
+### 1 | Purpose of this study
 
 - The aim of this project is to create a model that will be able to determine from <code>x-rays</code>, which patiets have been labeled corona positive (option 1) and which are standard x-rays (option 2)
 - The model will need to find subtle patterns in the images, so we'll need to utilise <code>CNN</code> models & build a <code>binary classifier</code> 
 - We will need to find both normal and corona positive <code>x-ray</code> images & utilise the <code>keras</code> deep learning module to classify images 
 
-## Keywords
+### 2 | Study Keywords 
 
-<code>x-rays images</code> <code>self sorted folders</code> <code>keras</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
+<code>x-rays</code> <code>images</code> <code>self sorted folders</code> <code>keras</code> <code>CNN model</code> <code>flow_from_directory</code> <code>image augmentation</code>
 
-## Dataset:
-The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
-> - <code>Source 1</code> contains images from <code>x-rays</code> of patients who have been **labeled** to be corona positive patients
-> - <code>Source 2</code> contains images from normal <code>x-rays</code> 
+### 3 | Assembling Dataset
+- The dataset being used in this project have been combined from two different sources **[source 1](https://github.com/ieee8023/covid-chestxray-dataset)** **[source 2](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)**
+  - <code>Source 1</code> contains images from <code>x-rays</code> of patients who have been **labeled** to be corona positive patients
+  - <code>Source 2</code> contains images from normal <code>x-rays</code> 
 
 The two sources are used to create a one unified dataset
 
