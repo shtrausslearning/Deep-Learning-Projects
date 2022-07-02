@@ -515,3 +515,6 @@ array([[4, 0],
 - Due to imbalanced, we decided to focus on the f1 metric score 
 - Highest <code>generalisation</code> f1 score:
 > epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
+
+### 12 | References
+- Allegri et al., 2016, Mechanisms of low back pain: A guide for diagnosis and therapy. F1000Research, 5, 1530. doi:10.12688/f1000research.8105.1
