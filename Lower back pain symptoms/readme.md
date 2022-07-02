@@ -463,6 +463,5 @@ plot_res(metric_hist,'f1')
 
 ```
 
-```
 ![](https://i.imgur.com/rcFredj.png)
-```
+
