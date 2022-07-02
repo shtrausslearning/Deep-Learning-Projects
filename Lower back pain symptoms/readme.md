@@ -480,7 +480,7 @@ plot_res(metric_hist,'f1')
 
 ### 10 | Inference 
 
-- Let's check how well the data generalises on some test data, given the small number of rows in the data, let's just use part of the <code>validation</code> data
+- Let's check how well the data generalises on some test data, given the small number of rows in the data, let's just use part of the <code>validation</code> data, which works too, as we didn't train on the dataset
 - We'll use a <code>threshold</code> of **0.5** & construct a <code>confusion matrix</code>
 
 ```python
@@ -506,5 +506,7 @@ array([[4, 0],
 
 ### 11 | Conclusion
 - In this brief study we aimed at creating a <code>classifier</code> that could classify between two types <code>normal</code> & <code>abnormal</code>
-- Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to obtain a classifier 
-
+- Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to create a classifier that will be able to distinguish between the two types
+- Due to imbalanced, we decided to focus on the f1 metric score 
+- Highest <code>generalisation</code> f1 score:
+> epoch: 194 | train loss: 0.210 | val loss: 0.316 | train-f1: 93.750 val-f1: 90.500
