@@ -99,6 +99,20 @@ val_generator = test_datagen.flow_from_directory('dataset/Val',
                                                  
 ```
 
+### Train Model
+
+```python
+
+''' Train the Model '''
+
+hist = model.fit(train_generator, 
+                 validation_data=val_generator, 
+                 epochs = 6, 
+                 verbose=0,
+                 validation_steps=2)
+
+```
+
 ## Result:
 - After 10 <code>epoch</code> (dataset passes), the <code>CNN</code> model accuracy for training was **0.9480** and **0.9667**
 
