@@ -82,7 +82,7 @@ X_val = sc.transform(X_val)
 
 ```
 
-```python
+```
 
 X_train: (248, 12)
 X_val: (62, 12)
