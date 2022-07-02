@@ -426,7 +426,8 @@ Total Time: 18.386
 </div>
 
 - Create a function that will plot the <code>loss</code> & <code>metric</code> stored in **loss_hist**,**metric_hist**
-- During training, <code>precision</code>, <code>recall</code>, <code>f1</code>, <code>accuracy</code> are all stored, let's only view the harmonic mean, since the two classes are slightly <code>imbalanced</code>
+- During training, <code>precision</code>, <code>recall</code>, <code>f1</code>, <code>accuracy</code> are all stored
+- Let's only view the harmonic mean of <code>precision</code> & <code>recall</code>, since the two classes are slightly <code>imbalanced</code>
 
 ```python
 
