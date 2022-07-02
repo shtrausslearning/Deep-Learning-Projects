@@ -121,10 +121,10 @@ val_loader = DataLoader(dataset=val_dataset,
 
 ```Python
 
-class BinaryClassification(nn.Module):
+class Network(nn.Module):
     
     def __init__(self):
-        super(BinaryClassification, self).__init__()
+        super(Network, self).__init__()
         self.layer_1 = nn.Linear(12, 64) 
         self.layer_2 = nn.Linear(64, 64)
         self.layer_out = nn.Linear(64, 1) 
