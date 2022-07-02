@@ -37,7 +37,7 @@ The following <code>augmentations</code> were used:
 - [4] Once decided, <code>x-rays</code> will be sorted into two folders <code>covid</code> & <code>normal</code>
 - [5] Run <code>main.py</code>, which will display the <code>accuracy</code> on both <code>training</code> & </code>validation</code> datasets
 
-### Define a Model
+### 6 | Define a Model
 
 ```python
 
@@ -61,7 +61,7 @@ model.add(Dense(1, activation="sigmoid"))  # for binary classification
 
 ```
 
-### Compile Model
+### 7 | Compile Model
 
 ```python
 
@@ -76,7 +76,7 @@ model.compile(loss="binary_crossentropy",
 
 ```
 
-### Create Data Generators
+### 8 | Create Data Generators
 
 ```python
 
@@ -99,7 +99,7 @@ val_generator = test_datagen.flow_from_directory('dataset/Val',
                                                  
 ```
 
-### Train Model
+### 9 | Train Model
 
 ```python
 
@@ -113,10 +113,10 @@ hist = model.fit(train_generator,
 
 ```
 
-## Result:
+## 10 | Result:
 - After 10 <code>epoch</code> (dataset passes), the <code>CNN</code> model accuracy for training was **0.9480** and **0.9667**
 
-## Discussion:
+## 11 | Discussion:
 - This was a rather small project, coding is minial & the dataset has been sorted and assembed for us
 - The <code>CNN</code> we used showed some good results, generalising more than overfitting (partly due to the <code>dropout</code> layers)
 - Having trained on a <code>train</code>/<code>validation</code> split, we cannot be fully confident in the result & more thorough <code>Cross Validation</code> is required
