@@ -369,6 +369,7 @@ params_train={
  "write_metric" : 'accuracy'                           # set metric to be printed on screen
 }
 
+# Train the model
 nn_model,loss_hist,metric_hist=train_val(model,        # set model
                                          params_train, # set training parameters
                                          verbose=True) # option for verbose
@@ -399,8 +400,65 @@ epoch: 194 | train loss: 0.232 | val loss: 0.334 | train-f1: 94.812 val-f1: 89.7
 epoch: 195 | train loss: 0.242 | val loss: 0.332 | train-f1: 93.562 val-f1: 91.000
 epoch: 196 | train loss: 0.231 | val loss: 0.331 | train-f1: 94.750 val-f1: 89.750
 epoch: 197 | train loss: 0.230 | val loss: 0.335 | train-f1: 94.562 val-f1: 89.750
-**epoch: 198 | train loss: 0.269 | val loss: 0.326 | train-f1: 91.938 val-f1: 91.000**
+epoch: 198 | train loss: 0.269 | val loss: 0.326 | train-f1: 91.938 val-f1: 91.000
 epoch: 199 | train loss: 0.232 | val loss: 0.329 | train-f1: 94.062 val-f1: 89.750
 epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.750
+
+```
+
+### Visualise Training Results
+
+- Create a function that will plot the <code>loss</code> & <code>metric</code> stored in **loss_hist**,**metric_hist**
+
+```python
+
+def plot_res(metric_hist,name):
+    
+    fig = make_subplots(rows=1, cols=2,
+                        subplot_titles=['lost_hist',f'metric_{name}'])
+
+    # Training Data 
+
+    fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
+                             y=loss_hist["train"],
+                              line=dict(color="#3D3D3D",width=2),
+                             name='train-loss'),row=1, col=1)
+    fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
+                             y=metric_hist["train"][name],
+                             line=dict(color="#3D3D3D",width=2),
+                             name=f'train-{name}'),row=1, col=2)
+
+    # Validation Data
+
+    fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
+                             y=loss_hist["val"],
+                             line=dict(color="#176C8F",width=2),
+                             name='val-loss'),row=1, col=1)
+    fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
+                             y=metric_hist["val"][name],
+                             line=dict(color="#176C8F",width=2),
+                             name=f'val-{name}'),row=1, col=2)
+
+    fig.update_layout(template='plotly_white',
+                      title='Train / Validation Data Splitting',
+                      font=dict(family='sans-serif',size=12),
+                      width=1200)
+
+    fig.update_traces({'marker_line_width':3, 
+                       'marker_line_color':"black",
+                       'marker_size':8,
+                       'opacity':1.0,
+                       'marker':{'showscale':True,'reversescale':True, 'cmid':0, 'size':10},
+                      })
+
+    fig.update_coloraxes(colorscale="tealgrn")
+    fig.update_layout(coloraxis_showscale=False)
+    fig.show()
+
+```
+
+```python
+
+plot_res(metric_hist,'f1')
 
 ```
