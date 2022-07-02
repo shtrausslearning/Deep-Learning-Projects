@@ -380,17 +380,27 @@ epochs=params_train["epochs"]
 
 ```
 
-epoch: 189 | train loss: 0.130 | val loss: 0.392 | train-accuracy: 96.231 val-accuracy: 80.000
-epoch: 190 | train loss: 0.161 | val loss: 0.393 | train-accuracy: 94.385 val-accuracy: 80.000
-epoch: 191 | train loss: 0.151 | val loss: 0.399 | train-accuracy: 95.769 val-accuracy: 80.000
-epoch: 192 | train loss: 0.155 | val loss: 0.386 | train-accuracy: 95.692 val-accuracy: 82.143
-epoch: 193 | train loss: 0.166 | val loss: 0.394 | train-accuracy: 94.923 val-accuracy: 82.143
-epoch: 194 | train loss: 0.179 | val loss: 0.396 | train-accuracy: 93.308 val-accuracy: 80.857
-epoch: 195 | train loss: 0.130 | val loss: 0.399 | train-accuracy: 96.154 val-accuracy: 80.000
-epoch: 196 | train loss: 0.113 | val loss: 0.395 | train-accuracy: 97.231 val-accuracy: 80.000
-epoch: 197 | train loss: 0.156 | val loss: 0.391 | train-accuracy: 95.692 val-accuracy: 80.286
-epoch: 198 | train loss: 0.167 | val loss: 0.397 | train-accuracy: 92.000 val-accuracy: 82.143
-epoch: 199 | train loss: 0.117 | val loss: 0.397 | train-accuracy: 98.077 val-accuracy: 82.143
-epoch: 200 | train loss: 0.167 | val loss: 0.397 | train-accuracy: 95.231 val-accuracy: 82.143
+epoch: 180 | train loss: 0.225 | val loss: 0.331 | train-f1: 94.375 val-f1: 89.750
+epoch: 181 | train loss: 0.262 | val loss: 0.335 | train-f1: 92.000 val-f1: 89.750
+epoch: 182 | train loss: 0.249 | val loss: 0.335 | train-f1: 90.562 val-f1: 89.750
+epoch: 183 | train loss: 0.213 | val loss: 0.346 | train-f1: 93.750 val-f1: 89.750
+Saving best model weights!
+epoch: 184 | train loss: 0.214 | val loss: 0.334 | train-f1: 94.875 val-f1: 89.750
+epoch: 185 | train loss: 0.230 | val loss: 0.331 | train-f1: 94.625 val-f1: 89.750
+epoch: 186 | train loss: 0.236 | val loss: 0.337 | train-f1: 94.625 val-f1: 89.750
+epoch: 187 | train loss: 0.232 | val loss: 0.339 | train-f1: 93.312 val-f1: 89.750
+epoch: 188 | train loss: 0.261 | val loss: 0.323 | train-f1: 92.125 val-f1: 89.750
+epoch: 189 | train loss: 0.218 | val loss: 0.332 | train-f1: 93.688 val-f1: 89.750
+epoch: 190 | train loss: 0.271 | val loss: 0.341 | train-f1: 93.000 val-f1: 89.750
+epoch: 191 | train loss: 0.211 | val loss: 0.328 | train-f1: 95.688 val-f1: 89.750
+epoch: 192 | train loss: 0.243 | val loss: 0.330 | train-f1: 94.438 val-f1: 89.750
+epoch: 193 | train loss: 0.247 | val loss: 0.330 | train-f1: 94.312 val-f1: 89.750
+epoch: 194 | train loss: 0.232 | val loss: 0.334 | train-f1: 94.812 val-f1: 89.750
+epoch: 195 | train loss: 0.242 | val loss: 0.332 | train-f1: 93.562 val-f1: 91.000
+epoch: 196 | train loss: 0.231 | val loss: 0.331 | train-f1: 94.750 val-f1: 89.750
+epoch: 197 | train loss: 0.230 | val loss: 0.335 | train-f1: 94.562 val-f1: 89.750
+**epoch: 198 | train loss: 0.269 | val loss: 0.326 | train-f1: 91.938 val-f1: 91.000**
+epoch: 199 | train loss: 0.232 | val loss: 0.329 | train-f1: 94.062 val-f1: 89.750
+epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.750
 
 ```
