@@ -358,7 +358,9 @@ nn_model,loss_hist,metric_hist=train_val(model,        # set model
                                          verbose=True) # option for verbose
 epochs=params_train["epochs"] 
 
-```python
+```
+
+```
 
 epoch: 189 | train loss: 0.130 | val loss: 0.392 | train-accuracy: 96.231 val-accuracy: 80.000
 epoch: 190 | train loss: 0.161 | val loss: 0.393 | train-accuracy: 94.385 val-accuracy: 80.000
