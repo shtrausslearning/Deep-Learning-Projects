@@ -478,9 +478,28 @@ plot_res(metric_hist,'f1')
 
 ```
 
+### 10 | Inference 
+
+- Let's check how well the data generalises on some test data, given the small number of rows in the data, let's just use part of the <code>validation</code> data
+- We'll use a <code>threshold</code> of **0.5** & construct a <code>confusion matrix</code>
+
+```python
+
+X_test, y_test = val_dataset[:10]
+
+model.eval() 
+logits = nn_model(X_test.to(device)) 
+probs = torch.sigmoid(logits)
+probs # get probabilities 
+
+threshold = .5
+confusion_matrix(some_y[:10], (probs.cpu() >= threshold))
+
+```
+
 ![](https://i.imgur.com/xKg03zD.png)
 
-### 10 | Conclusion
+### 11 | Conclusion
 - In this brief study we aimed at creating a <code>classifier</code> that could classify between two types <code>normal</code> & <code>abnormal</code>
 - Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to obtain a classifier 
 
