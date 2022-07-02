@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/v9294LO.png)
 
-### Description
+### 1 | Description
 
 310 Observations, 13 Attributes (12 Numeric Predictors, 1 Binary Class Attribute - No Demographics)
 
@@ -18,7 +18,7 @@ While lower back pain is extremely common, the symptoms and severity of lower ba
 This data set is about to identify a person is <code>abnormal</code> or <code>normal</code> using collected physical spine details/data.
 
 
-### Import Dataset
+### 2 | Import Dataset
 
 - Import dataset from **[dataset](https://www.kaggle.com/datasets/sammy123/lower-back-pain-symptoms-dataset)**, 
 - <code>features</code> **12 features (anonimised)**, <code>target</code> **Class_att**
@@ -66,7 +66,7 @@ Name: Class_att, dtype: int64
 
 ```
 
-### Data Preparation
+### 3 | Data Preparation
 - Quite straightforward **0.8**/**0.2** train/test split of the dataset with <code>suffle</code>
 - Standardise dataset; rescale the distribution of values so that the <code>mean</code> is 0 and the <code>standard deviation</code> is 1
 
