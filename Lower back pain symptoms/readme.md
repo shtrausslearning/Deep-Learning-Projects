@@ -309,3 +309,35 @@ def train_val(model, params,verbose=False):
 
 ```
 
+### Train the neural network model
+
+- Set <code>device</code> which will be used in training
+- - Set <code>ReduceLROnPlateau</code> option to adjust the **learning rate** on the run
+- Define training <code>params</code> (**dict**)
+- Trained models via **train_val** output **model**, **loss data** **metric data**
+
+```Python
+
+# device
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+# Set ReduceLROnPlateau
+lr_adapt = ReduceLROnPlateau(opt,mode='min',factor=0.5,patience=20,verbose=0)
+
+# Create Parameter Dictionary
+params_train={
+  "train": train_loader,                               # Set Training Dataloader
+    "val": val_loader,                                 # Set Validation Dataloader
+ "epochs": 200,                                        # Number of Epochs
+ "optimiser": opt,                                     # Set optimiser
+ "lr_change": lr_adapt,                                # Set learning rate adapter
+ "f_loss": loss,                                       # loss function 
+ "weight_path": "weights.pt",                          # set weights path 
+ "eval_func" : ['accuracy','f1','recall','precision'], # set metrics to be evaluated & saved
+ "write_metric" : 'accuracy'                           # set metric to be printed on screen
+}
+
+nn_model,loss_hist,metric_hist=train_val(model,        # set model
+                                         params_train, # set training parameters
+                                         verbose=True) # option for verbose
+epochs=params_train["epochs"] 
