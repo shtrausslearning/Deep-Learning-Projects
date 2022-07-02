@@ -521,7 +521,7 @@ array([[4, 0],
 - Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to create a classifier that will be able to distinguish between the two types
 - Due to imbalanced, we decided to focus on the <code>f1</code> metric score 
 - Highest <code>generalisation</code> f1 score:
-> epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
+> epoch: 198 | train loss: 0.148 | val loss: 0.297 | train-f1: **96.500** val-f1: **92.250**
 - The performance on the <code>test</code> data was quite promising showing no misses at all in the <code>confusion matrix</code>
 - Such performance is a good start, however there is a need to improve the <code>classifier</code> model, some possible options:
   - Improvement of the neural network model (Adjust parameters that generalise <code>nn.Dropout(p=0.1)</code>, <Code>nn.BatchNorm1d(64)</code>)
