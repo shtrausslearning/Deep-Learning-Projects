@@ -158,3 +158,154 @@ opt = optim.Adam(model.parameters(), lr=1e-4)
 loss = nn.BCEWithLogitsLoss()
 
 ```
+
+### Training Functions
+
+- Define some helper functions for the main function <code>tain_val</code>
+
+```Python
+
+from sklearn.metrics import f1_score,precision_score,recall_score,accuracy_score
+
+# get lr
+def get_lr(opt):
+    for param_group in opt.param_groups:
+        return param_group['lr']
+
+# loss function per batch
+def loss_batch(loss_func, output, target, opt=None):
+    
+    loss = loss_func(output, target) # get loss
+    
+    if(opt is not None):
+        opt.zero_grad()
+        loss.backward()
+        opt.step()
+
+    return loss
+
+# metrics
+
+def accuracy(y_pred, y_test):
+    y_pred_tag = torch.round(torch.sigmoid(y_pred)) # prediction 
+    acc = accuracy_score(y_test,y_pred_tag.detach().numpy())
+    acc = round(100*acc)
+    return acc
+
+def recall(y_pred, y_test):
+    y_pred_tag = torch.round(torch.sigmoid(y_pred)) # prediction 
+    get_recall = recall_score(y_test,y_pred_tag.detach().numpy())
+    get_recall = round(100*get_recall)
+    return get_recall
+
+def precision(y_pred, y_test):
+    y_pred_tag = torch.round(torch.sigmoid(y_pred)) # prediction 
+    get_precision = precision_score(y_test,y_pred_tag.detach().numpy())
+    get_precision = round(100*get_precision)
+    return get_precision
+
+def f1(y_pred, y_test):
+    y_pred_tag = torch.round(torch.sigmoid(y_pred)) # prediction 
+    get_f1 = f1_score(y_test,y_pred_tag.detach().numpy())
+    get_f1 = round(100*get_f1)
+    return get_f1
+
+# calculate metric & loss of entire dataset (epoch)
+def loss_epoch(model,loss_func,dataset_dl,eval_funcs,opt=None):
+    
+    run_loss=0.0
+    
+    t_metric = {}; metric = {}
+    for i in eval_funcs:
+        t_metric[i] = 0.0
+        
+    # internal loop over dataset
+    for xb, yb in dataset_dl:
+        xb=xb.to(device)
+        yb=yb.to(device)
+        y_pred  = model(xb)
+        
+        loss = loss_batch(loss_func,y_pred, yb.unsqueeze(1),opt=opt)
+        
+        for feval in eval_funcs:
+            if(feval == 'accuracy'):
+                t_metric[feval] += accuracy(y_pred, yb.unsqueeze(1))
+            if(feval == 'f1'):
+                t_metric[feval] += f1(y_pred,yb.unsqueeze(1))
+            if(feval == 'recall'):
+                t_metric[feval] += recall(y_pred,yb.unsqueeze(1))
+        
+        run_loss += loss.item()
+    loss=run_loss/len(dataset_dl)  # average loss value
+    
+    for feval in eval_funcs:
+        temp = t_metric[feval]/len(dataset_dl)
+        metric[feval] = temp  # average metric value
+        
+    
+    return loss, metric
+```
+
+- Define the training function; **train_val**
+
+```python
+
+def train_val(model, params,verbose=False):
+    
+    epochs=params["epochs"]
+    loss_func=params["f_loss"]
+    opt=params["optimiser"]
+    train_dl=params["train"]
+    val_dl=params["val"]
+    lr_scheduler=params["lr_change"]
+    weight_path=params["weight_path"]
+    eval_funcs = params['eval_func'] # list of evaluation functions
+    write_metric = params['write_metric']
+    
+    loss_history={"train": [],"val": []} # history of loss values in each epoch
+    best_model_wts = copy.deepcopy(model.state_dict()) # a deep copy of weights for the best performing model
+    best_loss=float('inf') # initialize best loss to a large value
+    
+    tr_dict_eval = {}; te_dict_eval = {}
+    for evals in eval_funcs:
+        tr_dict_eval[evals] = []
+        te_dict_eval[evals] = []
+    
+    for epoch in range(epochs):
+        
+        current_lr=get_lr(opt)
+        model.train()
+        train_loss, train_metric = loss_epoch(model,loss_func,train_dl,eval_funcs,opt)
+        
+        model.eval()
+        with torch.no_grad():
+            val_loss, val_metric = loss_epoch(model,loss_func,val_dl,eval_funcs)
+        
+        if(val_loss < best_loss):
+            best_loss = val_loss
+            best_model_wts = copy.deepcopy(model.state_dict())
+            torch.save(model.state_dict(), weight_path)
+                
+        loss_history["train"].append(train_loss)
+        loss_history["val"].append(val_loss)
+        
+        for evals in eval_funcs:
+            tr_dict_eval[evals].append(train_metric[evals])
+            te_dict_eval[evals].append(val_metric[evals])
+        
+        lr_scheduler.step(val_loss)
+        if current_lr != get_lr(opt):
+            if(verbose):
+                print("Loading best model weights!")
+            model.load_state_dict(best_model_wts) 
+
+        if(verbose):
+            print(f"epoch: {epoch+1+0:03} | train loss: {train_loss:.3f} | val loss: {val_loss:.3f} | train-{write_metric}: {train_metric[write_metric]:.3f} val-{write_metric}: {val_metric[write_metric]:.3f}")
+
+    # load best model weights
+    model.load_state_dict(best_model_wts)
+        
+    return model, loss_history, {'train':tr_dict_eval,'val':te_dict_eval}
+
+```
+
