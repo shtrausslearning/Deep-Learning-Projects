@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/v9294LO.png)
 
-### 1 | Description
+### 1 | Dataset Description
 
 310 Observations, 13 Attributes (12 Numeric Predictors, 1 Binary Class Attribute - No Demographics)
 
@@ -149,7 +149,7 @@ torch.Size([16, 12]) tensor([1., 1., 1., 0., 1., 1., 0., 0., 0., 1., 1., 1., 1.,
 
 ```
 
-### Define Model
+### 4 | Define Model
 - Define the neural network <code>classifier</code>
 
 ```Python
@@ -191,7 +191,7 @@ loss = nn.BCEWithLogitsLoss()
 
 ```
 
-### Training Functions
+### 5 | Training Functions
 
 - Define some helper functions for the main function <code>tain_val</code>
 
@@ -341,7 +341,7 @@ def train_val(model, params,verbose=False):
 
 ```
 
-### Train the neural network model
+### 6 | Train the neural network model
 
 - Set <code>device</code> which will be used in training
 - Set <code>ReduceLROnPlateau</code> option to adjust the **learning rate** on the run
@@ -407,7 +407,7 @@ epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.7
 
 ```
 
-### Visualise Training Results
+### 7 | Visualise Training Results
 
 <div style="color:white;display:fill;border-radius:8px;
             background-color:#03112A;font-size:150%;
