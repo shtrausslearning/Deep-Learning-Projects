@@ -408,6 +408,12 @@ epoch: 200 | train loss: 0.253 | val loss: 0.324 | train-f1: 93.750 val-f1: 89.7
 
 ### Visualise Training Results
 
+<div style="color:white;display:fill;border-radius:8px;
+            background-color:#03112A;font-size:150%;
+            letter-spacing:1.0px">
+    <p style="padding: 8px;color:white;"><b><b><span style='color:#94D4F6'>1.2 |</span></b> Visualise Results</b></p>
+</div>
+
 - Create a function that will plot the <code>loss</code> & <code>metric</code> stored in **loss_hist**,**metric_hist**
 
 ```python
