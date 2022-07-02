@@ -20,6 +20,7 @@ This data set is about to identify a person is <code>abnormal</code> or <code>no
 ### Import Dataset
 
 - Import dataset from **[dataset](https://www.kaggle.com/datasets/sammy123/lower-back-pain-symptoms-dataset)**
+- Original data contains <code>target</code> as <code>strings</code>, let's encode it with a <code>dictionary</code> encode_map
 
 ```python
 import pandas as pd
