@@ -118,6 +118,7 @@ val_loader = DataLoader(dataset=val_dataset,
 ```
 
 ### Define Model
+- Define the neural network <code>classifier</code>
 
 ```Python
 
@@ -146,9 +147,11 @@ class Network(nn.Module):
 
 ```
 
-```Python
 - Instantiate neural network class <code>Network</code>
-- Set optimiser <code>Adam</code> with a <code>learning rate</code> of **1e-4**
+- Set <code>optimiser</code> **Adam** with a <code>learning rate</code> of **1e-4**
+- Set <code>loss function</code> **BCEWithLogitsLoss**
+
+```Python
 
 model = Network()
 opt = optim.Adam(model.parameters(), lr=1e-4)
