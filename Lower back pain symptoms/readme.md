@@ -1,4 +1,4 @@
-![](https://i.imgur.com/v9294LO.png)
+![](https://i.imgur.com/6zyuiVy.png)
 
 ### 1 | Chronic Lower Backpain
 
