@@ -427,22 +427,22 @@ def plot_res(metric_hist,name):
 
     fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
                              y=loss_hist["train"],
-                              line=dict(color="#3D3D3D",width=2),
+                              line=dict(color="#94D4F6",width=2),
                              name='train-loss'),row=1, col=1)
     fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
                              y=metric_hist["train"][name],
-                             line=dict(color="#3D3D3D",width=2),
+                             line=dict(color="#94D4F6",width=2),
                              name=f'train-{name}'),row=1, col=2)
 
     # Validation Data
 
     fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
                              y=loss_hist["val"],
-                             line=dict(color="#176C8F",width=2),
+                             line=dict(color="#454545",width=2),
                              name='val-loss'),row=1, col=1)
     fig.add_trace(go.Scatter(x=[*range(1,epochs+1)],
                              y=metric_hist["val"][name],
-                             line=dict(color="#176C8F",width=2),
+                             line=dict(color="#454545",width=2),
                              name=f'val-{name}'),row=1, col=2)
 
     fig.update_layout(template='plotly_white',
@@ -469,5 +469,5 @@ plot_res(metric_hist,'f1')
 
 ```
 
-![](https://i.imgur.com/rcFredj.png)
+![](https://i.imgur.com/xKg03zD.png)
 
