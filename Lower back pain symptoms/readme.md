@@ -510,11 +510,15 @@ array([[4, 0],
 ```
 
 ### 11 | Conclusion
-- In this brief study we aimed at creating a <code>classifier</code> that could classify between two types <code>normal</code> & <code>abnormal</code>
+- From background reading, **"CLBP is often difficult to diagnose"** (by humans), suggested there is a need to explore whether <code>neural networks</code> can fill in the void & replace humans in this task
+- In this brief study we aimed at creating a <code>classifier</code> that could distinguish between two types <code>normal</code> & <code>abnormal</code>
 - Our neural network <code>classifier</code> built using the <code>PyTorch</code> module allowed us to create a classifier that will be able to distinguish between the two types
-- Due to imbalanced, we decided to focus on the f1 metric score 
+- Due to imbalanced, we decided to focus on the <code>f1</code> metric score 
 - Highest <code>generalisation</code> f1 score:
 > epoch: 191 | train loss: 0.177 | val loss: 0.306 | train-f1: 96.688 val-f1: 90.750
+- Such performance is a good start, however there is a need to improve the <code>classifier</code> model, some possible options:
+  - Improvement of the neural network model (Adjust parameters that generalise <code>nn.Dropout(p=0.1)</code>, <Code>nn.BatchNorm1d(64)</code>)
+  - Gain more data & retrain the model, the size can likely be a factor for poor generalisation performance on new data
 
 ### 12 | References
 - Allegri et al., 2016, Mechanisms of low back pain: A guide for diagnosis and therapy. F1000Research, 5, 1530. doi:10.12688/f1000research.8105.1
