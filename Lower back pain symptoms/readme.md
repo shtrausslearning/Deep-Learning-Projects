@@ -1,7 +1,6 @@
 
 ### Description
 
-'''
 310 Observations, 13 Attributes (12 Numeric Predictors, 1 Binary Class Attribute - No Demographics)
 
 Lower back pain can be caused by a variety of problems with any parts of the complex, interconnected network of spinal muscles, nerves, bones, discs or tendons in the lumbar spine. Typical sources of low back pain include:
@@ -15,8 +14,8 @@ Lower back pain can be caused by a variety of problems with any parts of the com
 
 While lower back pain is extremely common, the symptoms and severity of lower back pain vary greatly. A simple lower back muscle strain might be excruciating enough to necessitate an emergency room visit, while a degenerating disc might cause only mild, intermittent discomfort.
 
-This data set is about to identify a person is abnormal or normal using collected physical spine details/data.
-'''
+This data set is about to identify a person is <code>abnormal</code> or <code>normal<code> using collected physical spine details/data.
+
 
 ### Import Dataset
 
