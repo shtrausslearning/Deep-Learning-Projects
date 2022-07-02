@@ -259,12 +259,12 @@ def train_val(model, params,verbose=False):
     val_dl=params["val"]
     lr_scheduler=params["lr_change"]
     weight_path=params["weight_path"]
-    eval_funcs = params['eval_func'] # list of evaluation functions
+    eval_funcs = params['eval_func'] 
     write_metric = params['write_metric']
     
-    loss_history={"train": [],"val": []} # history of loss values in each epoch
-    best_model_wts = copy.deepcopy(model.state_dict()) # a deep copy of weights for the best performing model
-    best_loss=float('inf') # initialize best loss to a large value
+    loss_history={"train": [],"val": []} 
+    best_model_wts = copy.deepcopy(model.state_dict()) 
+    best_loss=float('inf') 
     
     tr_dict_eval = {}; te_dict_eval = {}
     for evals in eval_funcs:
