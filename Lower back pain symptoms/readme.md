@@ -246,7 +246,7 @@ def loss_epoch(model,loss_func,dataset_dl,eval_funcs,opt=None):
     return loss, metric
 ```
 
-- Define the training function; **train_val**
+- Define the training function; **train_val**, requires arguments <code>model</code> (defined neural network) & <code>params</code> (training parameters)
 
 ```python
 
