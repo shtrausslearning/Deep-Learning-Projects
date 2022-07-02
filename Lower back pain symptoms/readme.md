@@ -483,6 +483,8 @@ plot_res(metric_hist,'f1')
 
 ```
 
+![](https://i.imgur.com/xKg03zD.png)
+
 ### 10 | Inference 
 
 - Let's check how well the data generalises on some test data, given the small number of rows in the data, let's just use part of the <code>validation</code> data, which works too, as we didn't train on the dataset
@@ -506,8 +508,6 @@ confusion_matrix(some_y[:10], (probs.cpu() >= threshold))
 array([[4, 0],
        [0, 6]])
 ```
-
-![](https://i.imgur.com/xKg03zD.png)
 
 ### 11 | Conclusion
 - In this brief study we aimed at creating a <code>classifier</code> that could classify between two types <code>normal</code> & <code>abnormal</code>
