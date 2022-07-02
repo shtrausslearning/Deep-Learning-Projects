@@ -22,6 +22,7 @@ This data set is about to identify a person is <code>abnormal</code> or <code>no
 - Import dataset from **[dataset](https://www.kaggle.com/datasets/sammy123/lower-back-pain-symptoms-dataset)**, 
 - <code>features</code> **12 features (anonimised)**, <code>target</code> **Class_att**
 - Original data contains <code>target</code> as <code>strings</code>, let's encode it with a <code>dictionary</code> encode_map
+- **Class_att** contains two unique categories; <code>abnormal</code> : 1 <code>normal</code> 0
 
 ```python
 import pandas as pd
