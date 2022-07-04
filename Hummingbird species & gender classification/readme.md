@@ -23,7 +23,10 @@
 ### 4 | The dataset
 
 ```Python
+
 ''' Visualise Image Data '''
+# Visualise a certain number of images in a folder using <code>ImageGrid</code>
+
 def show_grid(image_list,nrows,ncols,label_list=None,
               show_labels=False,savename=None,
               figsize=(20,10),showaxis='off'):
