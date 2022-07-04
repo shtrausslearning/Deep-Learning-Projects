@@ -22,7 +22,7 @@
 
 ### 4 | The dataset
 
-- The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets
+- The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets, so the <code>train/test</code> split has already been done for us
 
 ```python
 ''' Folder Pathways'''
@@ -46,6 +46,31 @@ os.listdir(train_folder)
 ```
 
 > ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
+
+- Let's check how many images there are in each folder
+
+```python
+
+class_types = len(os.listdir(train_folder))
+print('Number of classes for Classification: ',class_types)
+class_names = os.listdir(train_folder)
+print(f'The class names are {class_names}\n')
+
+print('Training dataset:')
+for i in class_names:
+    print(i + ':' + str(len(os.listdir(train_folder+i))))
+
+print('\nValidation dataset:')
+for i in class_names:
+    print(i + ':' + str(len(os.listdir(val_folder+i))))
+    
+print('\nTest dataset:')
+for i in class_names:
+    print(i + ':' + str(len(os.listdir(test_folder+i))))
+    
+```
+
+### 5 | Visualisation of Images
 
 ```python
 
