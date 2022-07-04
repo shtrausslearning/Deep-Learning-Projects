@@ -47,7 +47,8 @@ os.listdir(train_folder)
 
 > ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
 
-- Let's check how many images there are in each folder
+- Let's check how many images there are in each folder <code>Rufous female</code>, <code>No bird</code>, <code>Broadtailed female</code> & <code>Broadtailed male</code>
+- We have a total of **4 classes**, so we'll be treating the problem as as <code>multiclass</code> classification problem
 
 ```python
 
@@ -68,6 +69,29 @@ print('\nTest dataset:')
 for i in class_names:
     print(i + ':' + str(len(os.listdir(test_folder+i))))
     
+```
+
+```
+Number of classes for Classification:  4
+The class names are ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
+
+Training dataset:
+Rufous_female:100
+No_bird:100
+Broadtailed_female:100
+Broadtailed_male:100
+
+Validation dataset:
+Rufous_female:20
+No_bird:20
+Broadtailed_female:20
+Broadtailed_male:20
+
+Test dataset:
+Rufous_female:20
+No_bird:20
+Broadtailed_female:20
+Broadtailed_male:20
 ```
 
 ### 5 | Visualisation of Images
