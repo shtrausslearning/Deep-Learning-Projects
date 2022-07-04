@@ -22,10 +22,29 @@
 
 ### 4 | The dataset
 
-```Python
+```python
+
+os.listdir(main_folder)
+
+```
+
+```
+
+['video_test', 'All_images', 'hummingbirds']
+
+```
+
+```python
+
+os.listdir(train_folder)
+
+```
+
+
+```python
 
 ''' Visualise Image Data '''
-# Visualise a certain number of images in a folder using <code>ImageGrid</code>
+# Visualise a certain number of images in a folder using ImageGrid
 
 def show_grid(image_list,nrows,ncols,label_list=None,
               show_labels=False,savename=None,
