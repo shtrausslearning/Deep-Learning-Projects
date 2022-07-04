@@ -19,4 +19,4 @@
 
 ### 3 | Project goal 
 
-- The ultimate goal is to have a **<span style='color:#B6DA32'>classification system</span>** that can address such the above stated varieties in an image & **<span style='color:#B6DA32'>correctly distinguish very similar bird species</span>**.
+- The ultimate goal is to have a classification system that can address such the above stated varieties in an image & correctly distinguish very similar bird species
