@@ -165,4 +165,17 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___16_0.png)
 
+#### **REVIEWING THE DATA**
+- In the context of bird monitoring, what I think this dataset outlines more than anything else is that you don't need to place cameras right next to the feeder, which for some species can be offputting & the images don't need to be of perfect quality in order to create a classifier that can identify hummingbird species accurately.
+- Most hummingbirds are very similar in shape and are <b>mostly differentiable by their colours</b>, so one channel CNN input network would be less effective than a three channel network, and we have to rely on all colour channels to distinguish the species.
+- Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, most hummingbirds <b>seem amost identical to the naked eye</b>, especially in images which are slightly underexposed. As a result, it would be of great benefit to create a model that can identify the specie as accurately as possible at any given feeder.
+- The <b>model heavily relies on accurate initial training label data</b> in order to be able to accurately classify the current set of hummingbirds on unseed data, so it was assumed that the dataset labels are as accurate as possible.
 
+<div style="color:white;display:fill;border-radius:8px;
+            background-color:#03112A;font-size:150%;
+            letter-spacing:1.0px">
+    <p style="padding: 8px;color:white;"><b><b><span style='color:#B6DA32'>2.2 |</span></b> Model training data</b></p>
+</div>
+
+- The modelling dataset is not very big; 100 images per class for <b>training</b> & 20 images per class for <b>validation</b> and <b>test</b> evaluation, used during training and subsequently for inference.
+- The <b>classes are also well balanced</b>, containing the same number of images per class, thus we don't need to alter the balance of samples of each class.
