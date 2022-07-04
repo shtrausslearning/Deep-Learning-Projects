@@ -98,6 +98,41 @@ Broadtailed_male:20
 
 ### 5 | Image Exploration
 
+- Using the following function, we can visualise the various types of class images
+
+```python
+
+''' Visualise Image Data '''
+# Visualise a certain number of images in a folder using ImageGrid
+
+def show_grid(image_list,nrows,ncols,label_list=None,
+              show_labels=False,savename=None,
+              figsize=(20,10),showaxis='off'):
+    
+    if type(image_list) is not list:
+        if(image_list.shape[-1]==1):
+            image_list = [image_list[i,:,:,0] for i in range(image_list.shape[0])]
+        elif(image_list.shape[-1]==3):
+            image_list = [image_list[i,:,:,:] for i in range(image_list.shape[0])]
+    fig = plt.figure(None, figsize,frameon=False)
+    grid = ImageGrid(fig, 111,  # similar to subplot(111)
+                     nrows_ncols=(nrows, ncols),  # creates 2x2 grid of axes
+                     axes_pad=0.3,  # pad between axes in inch.
+                     share_all=True)
+    
+    for i in range(nrows*ncols):
+        ax = grid[i]
+        img = Image.open(image_list[i])
+        ax.imshow(img,cmap='Greys_r')  # The AxesGrid object work as a list of axes.
+        ax.axis(showaxis)
+        if show_labels:
+            ax.set_title(class_mapping[y_int[i]])
+    if savename != None:
+        plt.savefig(savename,bbox_inches='tight')
+        
+
+```
+
 #### **RUFOUS FEMALE**
 - The addition of the <b>female as opposed to the male</b> is an interesting choice for the dataset, making it indeed very challenging for the model, due to the high similarity of different species' image values. The female, unlike the male is very similar to the <b>broadtail female</b>, <b>especially when in the shade</b>, we actually have quite a few such cases, as seen in the images below.
 - However we can notice that in all images, colours of the back/rump are <b>quite dull, more saturated, but with hints of green</b>, just enough to be able to make out the green colour.
