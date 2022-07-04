@@ -28,18 +28,13 @@ os.listdir(main_folder)
 
 ```
 
-```
-
-['video_test', 'All_images', 'hummingbirds']
-
-```
+> ['video_test', 'All_images', 'hummingbirds']
 
 ```python
-
 os.listdir(train_folder)
-
 ```
 
+> ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
 
 ```python
 
