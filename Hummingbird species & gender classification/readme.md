@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/icqghBp.png)
 
-### 1 | Hummingbird monitoring
+### 1 | Hummingbird monitoring & Project Purpose
 
 - The purpose of this project is to create an image <code>classifier</code> for hummingbird **species** and **genders** that visit feeders. 
 - The ultimate goal is to have a classification system that can be deployed at any feeder, which is important to the continued monitoring of hummingbird species and bird  migration patterns. 
@@ -8,7 +8,6 @@
 - Hummingbird migration is otherwise reliant on individual bird watchers to see and report their observations. 
 - If avid bird lovers setup a similar system, then conservation organizations would have better information on migratory and breeding patterns. 
 - This knowledge can be used to determine if specific changes in the environment or ecology has positively or negatively impacted bird life.
-
 
 - With the increased affordability of visual monitoring equipment, it has become practical for anyone to contribute to such a wonderful cause & help make each sighting more valid. 
 
@@ -20,7 +19,7 @@
 
 - In this study, we will focus our attention to a bird called the <b>hummingbird</b>. What is useful about this specie is that, despite being quite distinguishible in shape, <b>they have a variery of unique colouring</b>, which means that if images are of poor quality, it may be hard for humans or models to distinguish them.
 
-#### **<span style='color:#B6DA32'>USING MODELS TO HELP IDENTIFY SPECIES</span>**
+#### **<span style='color:#B6DA32'>USING MODELS TO HELP IDENTIFY GENDER & SPECIES</span>**
 
 - In the entire process of <b>expert identification</b> & dealing with various image related inconsistencies outlied previously, manual identification for monitoring can be quite labourous, so an automated system of identification can go a long way.
 - In our quest to create an automated approach, we can be left with a collection or under or over exposed images that will create difficulties for the model to distinguish between different classes correctly. 
