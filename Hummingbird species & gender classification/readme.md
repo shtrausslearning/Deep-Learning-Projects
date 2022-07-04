@@ -110,6 +110,8 @@ Broadtailed_male:20
 - Without adequate lighting and refence to multiple frames (such as from a video), one could easily mislabel the species.
 - The boadtail female colour definitely stand out more, the two species so far have very similar bagrounds & the ocassional feeder.
 
+![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___12_0.png)
+
 #### **BROADTAIL MALE**
 - Like the adult female, the males also have green and buffy flanks.
 - What separates the male broadtail from the female and even from the Rufous female is the **distinctive rose/magenta throats**.
@@ -118,10 +120,14 @@ Broadtailed_male:20
 - We can also note some images don't visibly have this distinctive red colour throat (at least to the naked eye), one possible reason being that the bird is <b>in the shade at the time of capture</b>. It's also possible that the images are not correctly labeled, which cannot also be ruled out. However we can clearly note that the model will need to adapt to images <b>taken under direct sunlight</b> and <b>different shade variations</b>, which create some problematic scenarios.
 - And <b>last but not least</b>, we can't rule out <b>immature males</b> from the pack as well. They are extremly similar to female as well.
 
+![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___14_0.png)
+
 #### **NO BIRD**
 - Given the amount of background noise/clutter (non bird pixels) we have in our images, <b>no_bird images seem like significant additions</b>.
 - Especially important are the <b>flag</b> & <b>feeder</b> images which we saw in the background of some of the hummingbird images.
 - The subset is quite self explanatory, no birds are present in any of the images, showing the environment around the feeder.
+
+![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___16_0.png)
 
 ```python
 
