@@ -98,7 +98,8 @@ Broadtailed_male:20
 
 ### 5 | Image Exploration
 
-- Using the function <code>show_grid</code>, we can visualise the various types of class images & make some remarks
+- Using the function <code>show_grid</code>, we can visualise the various types of class images
+- We have four classes, let's make some remarks about each class 
 
 ```python
 
@@ -164,34 +165,4 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___16_0.png)
 
-```python
 
-''' Visualise Image Data '''
-# Visualise a certain number of images in a folder using ImageGrid
-
-def show_grid(image_list,nrows,ncols,label_list=None,
-              show_labels=False,savename=None,
-              figsize=(20,10),showaxis='off'):
-    
-    if type(image_list) is not list:
-        if(image_list.shape[-1]==1):
-            image_list = [image_list[i,:,:,0] for i in range(image_list.shape[0])]
-        elif(image_list.shape[-1]==3):
-            image_list = [image_list[i,:,:,:] for i in range(image_list.shape[0])]
-    fig = plt.figure(None, figsize,frameon=False)
-    grid = ImageGrid(fig, 111,  # similar to subplot(111)
-                     nrows_ncols=(nrows, ncols),  # creates 2x2 grid of axes
-                     axes_pad=0.3,  # pad between axes in inch.
-                     share_all=True)
-    
-    for i in range(nrows*ncols):
-        ax = grid[i]
-        img = Image.open(image_list[i])
-        ax.imshow(img,cmap='Greys_r')  # The AxesGrid object work as a list of axes.
-        ax.axis(showaxis)
-        if show_labels:
-            ax.set_title(class_mapping[y_int[i]])
-    if savename != None:
-        plt.savefig(savename,bbox_inches='tight')
-        
-```
