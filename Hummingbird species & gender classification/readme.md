@@ -98,7 +98,7 @@ Broadtailed_male:20
 
 ### 5 | Image Exploration
 
-- Using the following function, we can visualise the various types of class images
+- Using the function <code>show_grid</code>, we can visualise the various types of class images & make some remarks
 
 ```python
 
