@@ -22,6 +22,8 @@
 
 ### 4 | The dataset
 
+- The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets
+
 ```python
 ''' Folder Pathways'''
 main_folder = '/kaggle/input/hummingbirds-at-my-feeders/'
