@@ -23,6 +23,15 @@
 ### 4 | The dataset
 
 ```python
+''' Folder Pathways'''
+main_folder = '/kaggle/input/hummingbirds-at-my-feeders/'
+train_folder = '/kaggle/input/hummingbirds-at-my-feeders/hummingbirds/train/'
+val_folder = '/kaggle/input/hummingbirds-at-my-feeders/hummingbirds/valid/'
+test_folder = '/kaggle/input/hummingbirds-at-my-feeders/hummingbirds/test/'
+video_folder = '/kaggle/input/hummingbirds-at-my-feeders/video_test/'
+```
+
+```python
 
 os.listdir(main_folder)
 
