@@ -71,7 +71,9 @@ for i in class_names:
     
 ```
 
-> '''
+- The class distribution is even, the <code>training</code> data containing 100 samples per class & both <code>validation</code> and <code>test</code> data containing 20 samples per class
+
+```
 Number of classes for Classification:  4
 The class names are ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
 
@@ -92,7 +94,7 @@ Rufous_female:20
 No_bird:20
 Broadtailed_female:20
 Broadtailed_male:20
-'''
+```
 
 ### 5 | Visualisation of Images
 
