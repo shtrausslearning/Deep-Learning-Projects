@@ -9,6 +9,7 @@
 - If avid bird lovers setup a similar system, then conservation organizations would have better information on migratory and breeding patterns. 
 - This knowledge can be used to determine if specific changes in the environment or ecology has positively or negatively impacted bird life.
 
+
 - With the increased affordability of visual monitoring equipment, it has become practical for anyone to contribute to such a wonderful cause & help make each sighting more valid. 
 
 #### **<span style='color:#B6DA32'>ARISING INCONSISTENCIES</span>**
