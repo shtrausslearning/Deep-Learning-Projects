@@ -16,3 +16,7 @@
 - In this study, we will focus our attention to a bird called the <b>hummingbird</b>. What is useful about this specie is that, despite being quite distinguishible in shape, <b>they have a variery of unique colouring</b>, which means that if images are of poor quality, it may be hard for humans or models to distinguish them.
 - In the entire process of <b>expert identification</b> & dealing with various image related inconsistencies outlied previously, manual identification for monitoring can be quite labourous, so an automated system of identification can go a long way.
 - In our quest to create an automated approach, we can be left with a collection or under or over exposed images that will create difficulties for the model to distinguish between different classes correctly. 
+
+### 3 | Project goal 
+
+- The ultimate goal is to have a **<span style='color:#B6DA32'>classification system</span>** that can address such the above stated varieties in an image & **<span style='color:#B6DA32'>correctly distinguish very similar bird species</span>**.
