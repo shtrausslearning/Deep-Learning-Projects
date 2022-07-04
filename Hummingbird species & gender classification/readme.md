@@ -71,7 +71,7 @@ for i in class_names:
     
 ```
 
-```
+> '''
 Number of classes for Classification:  4
 The class names are ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
 
@@ -92,7 +92,7 @@ Rufous_female:20
 No_bird:20
 Broadtailed_female:20
 Broadtailed_male:20
-```
+'''
 
 ### 5 | Visualisation of Images
 
