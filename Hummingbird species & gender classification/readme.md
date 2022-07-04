@@ -2,7 +2,7 @@
 
 ### 1 | Hummingbird monitoring
 
-- The purpose of this project is to create an image classifier for hummingbird **species** and **genders** that visit feeders. 
+- The purpose of this project is to create an image <code>classifier</code> for hummingbird **species** and **genders** that visit feeders. 
 - The ultimate goal is to have a classification system that can be deployed at any feeder, which is important to the continued monitoring of hummingbird species and bird  migration patterns. 
 - Such a system is applicable to anywhere that hummingbirds migrate or breed, given additional datasets for those species.
 - Hummingbird migration is otherwise reliant on individual bird watchers to see and report their observations. 
