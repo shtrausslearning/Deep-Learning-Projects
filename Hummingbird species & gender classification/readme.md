@@ -274,6 +274,28 @@ _________________________________________________________________
 ```
 
 ```python
+''' Callback Options During Training '''
+callbacks = [ReduceLROnPlateau(monitor='val_accuracy',patience=2,verbose=0, 
+                               factor=0.5,mode='max',min_lr=0.001),
+             ModelCheckpoint(filepath=f'model_cnn.h5',monitor='val_accuracy',
+                             mode = 'max',verbose=0,save_best_only=True),
+             TqdmCallback(verbose=0)] 
+
+''' Start Training '''
+start = time.time()
+history = model.fit(gen_train,
+                    validation_data = gen_valid,
+                    callbacks=callbacks,
+                    verbose=0,
+                    epochs=cfg.n_epochs  # Training for n_epoch interations
+                   )
+end = time.time()
+print(f'The time taken to execute is {round(end-start,2)} seconds.')
+print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
+
+```
+
+```python
 
 # Function to plot loss & metric (metric_id)
 def plot_keras_metric(history):
