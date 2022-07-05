@@ -215,6 +215,7 @@ Found 80 images belonging to 4 classes.
 
 #### DEFINE CONVOLUTED NEURAL NETWORK
 - Let's define a neural network with two <code>Conv2D</code> layers
+- Compile the model with an <code>optimiser</code> set to **Adam** & <code>loss</code> function set to **categorical_crossentropy**, which is suited to multiclass classification tasks 
 
 ```python
 
