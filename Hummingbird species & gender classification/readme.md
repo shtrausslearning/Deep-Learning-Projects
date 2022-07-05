@@ -200,4 +200,10 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
                         target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
                         batch_size=32,                              # batch size
                         class_mode='categorical')
+```
 
+```
+Found 400 images belonging to 4 classes.
+Found 80 images belonging to 4 classes.
+Found 80 images belonging to 4 classes.
+```
