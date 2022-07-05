@@ -1,5 +1,8 @@
 ![](https://i.imgur.com/icqghBp.png)
 
+Project available on Kaggle: **[Hummingbird Classification | Keras CNN Models](https://www.kaggle.com/code/shtrausslearning/hummingbird-classification-keras-cnn-models)**
+Dataset available on Kaggle: **[Hummingbirds at my feeder](https://www.kaggle.com/datasets/akimball002/hummingbirds-at-my-feeders)**
+
 ### 1 | Hummingbird monitoring
 
 - The purpose of this project is to create an image <code>classifier</code> for hummingbird **species** and **genders** that visit feeders. 
