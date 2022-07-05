@@ -174,5 +174,5 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 - Most hummingbirds are very similar in shape and are <b>mostly differentiable by their colours</b>:
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
-- The <b>model heavily relies on accurate initial training label data</b>
+
 
