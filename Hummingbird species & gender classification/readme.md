@@ -175,4 +175,29 @@ def show_grid(image_list,nrows,ncols,label_list=None,
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
 
+### 5 | Baseline Classifier
+
+- Create <code>data generators</code>, our data are in separate folders so we'll use <code>flow_from_directory</code>
+
+```python
+
+# Define DataGenerators
+train_datagen = ImageDataGenerator(rescale=1.0/255)
+gen_datagen = ImageDataGenerator(rescale=1.0/255)
+
+# DataGenerators via Folder Directory
+gen_train = train_datagen.flow_from_directory(train_folder, 
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
+                        batch_size=32,                              # batch size
+                        class_mode='categorical')    
+
+gen_valid = gen_datagen.flow_from_directory(val_folder,
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
+                        batch_size=32,                              # batch size
+                        class_mode='categorical')
+
+gen_test = gen_datagen.flow_from_directory(test_folder,
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
+                        batch_size=32,                              # batch size
+                        class_mode='categorical')
 
