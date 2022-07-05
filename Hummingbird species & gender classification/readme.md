@@ -637,6 +637,9 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
 #### DEFINE PRETRAINED MODEL FUNCTION
 
 - Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
+- We'll split the model into **two parts** <code>head</code> & <code>tail</code>:
+  - The head part will contain the pretrained model
+  - The tail end will contain our classifier part (<code>flatten<code>, <code>dense</code> & <code>dropout</code> layers
 
 ```python
 
@@ -697,5 +700,42 @@ def pretrained_model(head_id):
                   metrics=['acc',get_f1,get_precision,get_recall])
 
     return model # return compiled model
+
+```
+
+```python
+
+# Pretrained Loaded Model 
+def pretrain_eval(lst_heads,verbose=False):
+
+    lst_history = []
+    for head_id in lst_heads:
+
+        # define CNN head model
+        model = pretrained_model(head_id)
+
+        ''' Callback Options During Training '''
+        callbacks = [ReduceLROnPlateau(monitor='val_acc',patience=2,verbose=0, 
+                                       factor=0.5,mode='max',min_lr=0.001),
+                     ModelCheckpoint(filepath=f'model_{head_id}.h5',monitor='val_acc',
+                                     mode = 'max',verbose=0,save_best_only=True),
+                     TqdmCallback(verbose=0)] 
+
+        ''' Start Training '''
+        start = time.time()
+        history = model.fit(gen_train,
+                            validation_data = gen_valid,
+                            callbacks=callbacks,
+                            verbose=0,
+                            epochs=cfg.n_epochs)
+        end = time.time()
+        if(verbose):
+            print(f'Head Model: {head_id}')
+            print(f'The time taken to execute is {round(end-start,2)} seconds.')
+            print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
+
+        lst_history.append(history)
+        
+    return lst_history
 
 ```
