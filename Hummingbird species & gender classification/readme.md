@@ -639,7 +639,7 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
 - Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
 - We'll split the model into **two parts** <code>head</code> & <code>tail</code>:
   - The head part will contain the pretrained model
-  - The tail end will contain our classifier part (<code>flatten<code>, <code>dense</code> & <code>dropout</code> layers
+  - The tail end will contain our classifier part (<code>flatten</code>, <code>dense</code> & <code>dropout</code> layers)
 
 ```python
 
