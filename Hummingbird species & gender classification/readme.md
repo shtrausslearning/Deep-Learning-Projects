@@ -514,7 +514,7 @@ def get_aug_name(lst_select):
 #### DEFINE TRAINING FUNCTION
 
 - We define a training function, which will loop through all given combinations of augmentation, <code>lst_select</code>
-- Generate Data Generators that correpond to the particular augmentation & train the model, saving the <code>history</code> for each case
+- Generate <code>DataGenerators</code> that correpond to the particular augmentation & train the model, saving the <code>history</code> for each case
 
 ```python
 
@@ -543,7 +543,6 @@ def aug_eval(lst_select=None):
 #### AUGMENTATION COMBINATIONS
 
 Let's test four different image <code>augmentation</code> combinations:
-
 - <b>Combination 1</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>
 - <b>Combination 2</b> : <code>rescale (1/255)</code>, <code>vertical_flip</code>
 - <b>Combination 3</b> : <code>rescale (1/255)</code>, <code>brightness_range (+1.1,+1.5)</code>
@@ -556,15 +555,15 @@ Let's test four different image <code>augmentation</code> combinations:
 lst_select = [[0,1],[0,2],[0,3],[0,1,5,6]] # list of augmentations
 lst_selectn = get_aug_name(lst_select)     # get list of augmentation names
 print(lst_selectn)
-
 ```
 
 ```
 [['rescale', 'horizontal_flip'], ['rescale', 'vertical_flip'], ['rescale', 'brightness_range'], ['rescale', 'horizontal_flip', 'shear_range', 'zoom_range']]
 ```
 
-#### TRAIN A MODEL
-- Train all four models
+#### TRAIN THE MODELS
+- Train the same model defined as before, on augment adjusted datasets
+- The output of <code>aug_eval</code> will return as list of history results
 
 ```python
 lst_select = [[0,1],[0,2],[0,3],[0,1,5,6]] # list of augmentations
@@ -611,19 +610,18 @@ Found 80 images belonging to 4 classes.
        get_recall=0.942, val_loss=0.612, val_acc=0.85, val_get_f1=0.841, val_get_precision=0.85, val_get_recall=0.833, lr=0.001]
 ```
 
+#### REMARKS
 - **POSITIVE INFLUENCE OF BRIGHTNESS AUGMENTAION**
- - It was thought that <b>due to the low brightness nature of a lot of images</b>, an increase in brightness would allow the model to more easily distinguish between different classes. 
- - We can see that when just by the applying the increased brightness augmentation (<b>Combination 3</b>); [0,3]  set to (+1.1,+1.5), the model outperforms all other variations within the first 5 iterations, both on <b>training</b> & <b>validation</b> dataasets, after which the validation accuracy starts to stagnate, and the model starts to show signs of overfitting.
-
+  - It was thought that <b>due to the low brightness nature of a lot of images</b>, an increase in brightness would allow the model to more easily distinguish between different classes. 
+  - We can see that when just by the applying the increased brightness augmentation (<b>Combination 3</b>); [0,3]  set to (+1.1,+1.5), the model outperforms all other variations within the first 5 iterations, both on <b>training</b> & <b>validation</b> dataasets, after which the validation accuracy starts to stagnate, and the model starts to show signs of overfitting.
 - **OTHER OBSERVATIONS**
- - What was interesting to observe was the <b>balance between training/validation accuracies</b>. 
- - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data.
- - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3].
-
+  - What was interesting to observe was the <b>balance between training/validation accuracies</b>. 
+  - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data.
+  - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3].
 - **USING FUNCTIONS**
- - Due to the large number of possible augmentation combinations, it was quite convenient to create and test a <b>list based augmentation selection approach</b>. 
- - This allowed us to simple loop through the various set options. 
- - More testing would be quite interesting to try, however we should next <b>shift our attention to more sophisticated neural networks</b>, since they are more than likely going to allow us to edge the current validaiton accuracy score of our simple network.
+  - Due to the large number of possible augmentation combinations, it was quite convenient to create and test a <b>list based augmentation selection approach</b>. 
+  - This allowed us to simple loop through the various set options. 
+  - More testing would be quite interesting to try, however we should next <b>shift our attention to more sophisticated neural networks</b>, since they are more than likely going to allow us to edge the current validaiton accuracy score of our simple network.
 
 ### 9 | Transfer Learning Models
 
