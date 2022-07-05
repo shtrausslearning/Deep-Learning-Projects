@@ -364,6 +364,8 @@ print(f'The time taken to execute is {round(end-start,2)} seconds.')
 print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
 ```
 
+#### PLOT KERAS HISTORY
+
 - To plot keras' <code>history</code> output, we can use a custom function <code>plot_keras_metric</code>
 
 ```python
@@ -401,3 +403,133 @@ def plot_keras_metric(history):
     fig['layout']['yaxis2'].update(title='', range=[0, 1.1], autorange=False)
     fig.show()
 ```
+
+### 8 | Image Agumentation Model
+
+#### CREATE A CUSTOM TRAINING FUNCTION
+- Let's create a helper function, that will input a **list of ImageDataGenerators**, containing the relevant image data augmentations
+
+```python
+
+''' Evaluate CNN model w/ imported list of augmentation options '''
+# augment_model inputs nested lists of augmentation options & evaluates 
+
+def augment_model(lst_aug):
+
+    # Define DataGenerator, load image data from directory
+    gen_train = lst_aug[0].flow_from_directory(train_folder, 
+                            target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
+                            batch_size=32,          # batch size
+                            class_mode='categorical')    # batch size
+
+    gen_valid = lst_aug[1].flow_from_directory(val_folder,
+                            target_size=(cfg.sshape[0],cfg.sshape[1]),
+                            batch_size=32,
+                            class_mode='categorical')
+
+    gen_test = lst_aug[1].flow_from_directory(test_folder,
+                            target_size=(cfg.sshape[0],cfg.sshape[1]),
+                            batch_size=32,
+                            class_mode='categorical')
+
+    # Define a CNN Model
+    model = keras.models.Sequential([
+        
+        keras.layers.Conv2D(32, kernel_size=3, 
+                                padding="same", 
+                                activation="relu", 
+                                input_shape=cfg.sshape),    
+        keras.layers.Conv2D(64, 
+                            kernel_size=3, 
+                            padding="same", 
+                            activation="relu"),
+        
+        keras.layers.MaxPool2D(),
+        keras.layers.Flatten(),
+        keras.layers.Dropout(0.25),
+        keras.layers.Dense(128, activation="relu"),
+        keras.layers.Dropout(0.5),
+        keras.layers.Dense(cfg.labels, activation="softmax")
+    ])
+    
+    # Compile Model
+    model.compile(optimizer='Adam',
+                  loss='categorical_crossentropy',
+                  metrics=['acc',get_f1,get_precision,get_recall])
+    
+    # Callback Options During Training 
+    callbacks = [ReduceLROnPlateau(monitor='val_accuracy',patience=2,verbose=0, 
+                                   factor=0.5,mode='max',min_lr=0.001),
+                 ModelCheckpoint(filepath=f'model_out.h5',monitor='val_accuracy',
+                                 mode = 'max',verbose=0,save_best_only=True),
+                 TqdmCallback(verbose=0)] 
+    
+    # Evaluate Model
+    history = model.fit(gen_train,
+                        validation_data = gen_valid,
+                        callbacks=callbacks,
+                        verbose=0,epochs=cfg.n_epochs)
+    
+    # Return Result History
+    return history 
+
+```
+
+#### DEFINE MAIN TRAINING LOOP
+
+- Define helper function <code>get_aug_name</code>, for main training loop <code>aug_eval</code>
+- The desired augmentations are stored in a <code>list</code> (numerical form, corresponding to the index found in <code>lst_augopt</code>)
+- This is done to reduce the input size, as the names can get quite long, so its just for convenience
+- <code>lst_augval</code> contains the relevant augmentation values
+
+```python
+
+# lst of augmentation options
+lst_augopt = ['rescale','horizontal_flip','vertical_flip',
+              'brightness_range','rotation_range','shear_range',
+              'zoom_range','width_shift_range','height_shift_range',
+              'channel_shift_range','zca_whitening','featurewise_center',
+              'samplewise_center','featurewise_std_normalization','samplewise_std_normalization']
+
+# lst of default setting corresponding to lst_augopt
+lst_augval = [1.0/255,True,True,  
+              [1.1,1.5],0.2,0.2,
+              0.2,0,0,
+              0,True,False,
+             False,False,False]
+
+# Get Augmentation Names from lst_select options
+def get_aug_name(lst_select):
+    lst_selectn = [];
+    for i in lst_select:
+        tlst_all = []
+        for j in i:
+            tlist_selectn = tlst_all.append(lst_augopt[j])
+        lst_selectn.append(tlst_all)
+    return lst_selectn
+
+```
+
+```python
+
+# Model Evaluation w/ Augmentation
+def aug_eval(lst_select=None):
+
+    ii=-1; lst_history = []
+    for augs in lst_select:
+
+        print('Augmentation Combination')
+        # get dictionary of augmentation options
+        ii+=1; dic_select = dict(zip([lst_augopt[i] for i in lst_select[ii]],[lst_augval[i] for i in lst_select[ii]]))
+        print(dic_select)
+
+        # define augmentation options
+        train_datagen = ImageDataGenerator(**dic_select) # pass arguments
+        gen_datagen = ImageDataGenerator(rescale=1.0/255)
+
+        # evaluate model & return history metric
+        history = augment_model([train_datagen,gen_datagen])
+
+        # store results
+        lst_history.append(history)
+```        
