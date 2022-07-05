@@ -611,17 +611,14 @@ Found 80 images belonging to 4 classes.
 ```
 
 #### REMARKS
-- **POSITIVE INFLUENCE OF BRIGHTNESS AUGMENTAION**
-  - It was thought that <b>due to the low brightness nature of a lot of images</b>, an increase in brightness would allow the model to more easily distinguish between different classes. 
-  - We can see that when just by the applying the increased brightness augmentation (<b>Combination 3</b>); [0,3]  set to (+1.1,+1.5), the model outperforms all other variations within the first 5 iterations, both on <b>training</b> & <b>validation</b> dataasets, after which the validation accuracy starts to stagnate, and the model starts to show signs of overfitting.
-- **OTHER OBSERVATIONS**
-  - What was interesting to observe was the <b>balance between training/validation accuracies</b>. 
-  - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data.
-  - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3].
-- **USING FUNCTIONS**
-  - Due to the large number of possible augmentation combinations, it was quite convenient to create and test a <b>list based augmentation selection approach</b>. 
-  - This allowed us to simple loop through the various set options. 
-  - More testing would be quite interesting to try, however we should next <b>shift our attention to more sophisticated neural networks</b>, since they are more than likely going to allow us to edge the current validaiton accuracy score of our simple network.
+- **Brightness Augmentation**
+  - Due to the low brightness nature of a lot of images, an increase in brightness would allowed the model to more easily distinguish between different classes
+  - We can see that when just by the applying the increased brightness augmentation (<b>Combination 3</b>); [0,3]  set to (+1.1,+1.5), the model outperforms all other variations within the first 5 iterations, both on <b>training</b> & <b>validation</b> datasets, after which the validation accuracy starts to stagnate, and the model starts to show signs of overfitting
+  
+- **Other Observations**
+  - What was interesting to observe was the <b>balance between training/validation accuracies</b>
+  - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data
+  - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3]
 
 ### 9 | Transfer Learning Models
 
