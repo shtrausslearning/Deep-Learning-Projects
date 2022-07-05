@@ -117,7 +117,7 @@ Broadtailed_female:20
 Broadtailed_male:20
 ```
 
-### 5 | Image Exploration
+### 6 | Image Exploration
 
 - Using the function <code>show_grid</code>, we can visualise the various types of class images
 - We have four classes, let's make some remarks about each class 
@@ -196,7 +196,7 @@ def show_grid(image_list,nrows,ncols,label_list=None,
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
 
-### 5 | Baseline model
+### 7 | Baseline model
 
 #### CREATE DATA GENERATORS
 
@@ -295,8 +295,8 @@ _________________________________________________________________
 ```
 
 - Set <code>callbacks</code>:
-  - ReduceLROnPlateau, which adjusts the learning data during training
-  - ModelCheckpoint, which saves model data during training
+  - <code>ReduceLROnPlateau</code>, which adjusts the learning data during training
+  - <code>ModelCheckpoint</code>, which saves model data during training
 
 ```python
 ''' Callback Options During Training '''
