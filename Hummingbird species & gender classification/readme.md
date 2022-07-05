@@ -212,3 +212,34 @@ Found 400 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 ```
+
+#### DEFINE CONVOLUTED NEURAL NETWORK
+
+```python
+
+# Two Convolution Layer CNN
+model = keras.models.Sequential([
+    keras.layers.Conv2D(32, kernel_size=3,
+                            padding="same", 
+                            activation="relu", 
+                            input_shape=cfg.sshape),    
+    keras.layers.Conv2D(64, kernel_size=3, 
+                            padding="same", 
+                            activation="relu"),
+    keras.layers.MaxPool2D(),
+    keras.layers.Flatten(),
+    keras.layers.Dropout(0.25),
+    keras.layers.Dense(128, activation="relu"),
+    keras.layers.Dropout(0.5),
+    keras.layers.Dense(cfg.labels, activation="softmax")
+])
+
+# Show the Model Architecture
+model.summary()
+
+''' Model Compilation '''
+model.compile(optimizer='Adam', 
+              loss='categorical_crossentropy',
+              metrics=['acc',get_f1,get_precision,get_recall])
+
+```
