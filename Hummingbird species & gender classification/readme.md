@@ -135,33 +135,34 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 ```
 
 #### **RUFOUS FEMALE**
-- The addition of the <b>female as opposed to the male</b> is an interesting choice for the dataset, making it indeed very challenging for the model, due to the high similarity of different species' image values. The female, unlike the male is very similar to the <b>broadtail female</b>, <b>especially when in the shade</b>, we actually have quite a few such cases, as seen in the images below.
-- However we can notice that in all images, colours of the back/rump are <b>quite dull, more saturated, but with hints of green</b>, just enough to be able to make out the green colour.
-- We can also note that the images have quite a <b>bit of "noise"</b>, that could potentally affect the accuracy of the model; <b>the feeder & the flag introduce red values into the images</b>, which can affect the model accuracy.
+- The addition of the <b>female as opposed to the male</b> is an interesting choice for the dataset, making it indeed very challenging for the model, due to the high similarity of different species' image values
+- The female, unlike the male is very similar to the <b>broadtail female</b>, <b>especially when in the shade</b>, we actually have quite a few such cases, as seen in the images below
+- However we can notice that in all images, colours of the back/rump are <b>quite dull, more saturated, but with hints of green</b>, just enough to be able to make out the green colour
+- We can also note that the images have quite a <b>bit of "noise"</b>, that could potentally affect the accuracy of the model; <b>the feeder & the flag introduce red values into the images</b>, which can affect the model accuracy
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___10_0.png)
 
 #### **BROADTAIL FEMALE**
-- To the naked eye, there is <b>a lot of similarities</b> between the <b>Rufous</b> & <b>Broadtail Females</b>.
-- Without adequate lighting and refence to multiple frames (such as from a video), one could easily mislabel the species.
-- The boadtail female colour definitely stand out more, the two species so far have very similar bagrounds & the ocassional feeder.
+- To the naked eye, there is <b>a lot of similarities</b> between the <b>Rufous</b> & <b>Broadtail Females</b>
+- Without adequate lighting and refence to multiple frames (such as from a video), one could easily mislabel the species
+- The boadtail female colour definitely stand out more, the two species so far have very similar bagrounds & the ocassional feeder
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___12_0.png)
 
 #### **BROADTAIL MALE**
-- Like the adult female, the males also have green and buffy flanks.
-- What separates the male broadtail from the female and even from the Rufous female is the **distinctive rose/magenta throats**.
-- It's quite likely the model would be easily able to classify any image containing the male from the rest, if the feeder or flag wasn't of similar color.
-- We can clearly observe that the feeder, has both darker spots and lighter spots, lighter spots have values very similar values to the throat.
-- We can also note some images don't visibly have this distinctive red colour throat (at least to the naked eye), one possible reason being that the bird is <b>in the shade at the time of capture</b>. It's also possible that the images are not correctly labeled, which cannot also be ruled out. However we can clearly note that the model will need to adapt to images <b>taken under direct sunlight</b> and <b>different shade variations</b>, which create some problematic scenarios.
-- And <b>last but not least</b>, we can't rule out <b>immature males</b> from the pack as well. They are extremly similar to female as well.
+- Like the adult female, the males also have green and buffy flanks
+- What separates the male broadtail from the female, and even from the Rufous female is the **distinctive rose/magenta throats**.
+- It's quite likely the model would be easily able to classify any image containing the male from the rest
+- We can clearly observe that the feeder, has both darker spots and lighter spots, lighter spots have values very similar values to the throat
+- We can also note in some images, they don't have this distinctive red colour throat (at least to the naked eye), one possible reason being that the bird is <b>in the shade at the time of capture</b>. It's also possible that the images are not correctly labeled, which cannot also be ruled out. However we can clearly note that the model will need to adapt to images <b>taken under direct sunlight</b> and <b>different shade variations</b>, which create some problematic scenarios
+- And <b>last but not least</b>, we can't rule out <b>immature males</b> from the pack as well. They are extremly similar to female as well
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___14_0.png)
 
 #### **NO BIRD**
-- Given the amount of background noise/clutter (non bird pixels) we have in our images, <b>no_bird images seem like significant additions</b>.
+- Given the amount of background noise/clutter (non bird pixels) we have in our images, <b>no_bird images seem like significant additions</b>
 - Especially important are the <b>flag</b> & <b>feeder</b> images which we saw in the background of some of the hummingbird images.
-- The subset is quite self explanatory, no birds are present in any of the images, showing the environment around the feeder.
+- No birds are present in any of the images, showing the environment around the feeder
 
 ![](https://www.kaggleusercontent.com/kf/99926830/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..nnCBGmtM_lkYAJo4IIyhLg.McJxw2Cq5L0j1Awa_cuPV3Psv6rfmJugWJ7DSYJ14sWyAMnjmJ8KHNXqhn3AXcKWvScQLPRnw5P4o1hpdhaPii5_EFU3AYrA_MLHkwXPMUkShmCwxX6yJ8MhDmiMTOYw281AbJMj4-ErMSlrC4aX6UMuyHiGFG4Kdp1itfrVzL0L23GH2gs8g2xSKTUkw8jeJepReHRxvT8_z1TIPOznnytVSP9odtaaD8P_3G_-3NywZIPgVoBQdgm9cHIhgPDFois-IiWXKFxEmhWL5gsdu4UViFACNoBkhxh0IzSnvLqnBWTVcY6sTX8Ta1fEfa_SnlFMNk2ijBEJEzlhQQwOKew8kwlCH_tLNdn9m8U9q_9plL_BaI_scpdEVI0FQUPAhf7m6aYVXy2LZaC_GBaIXWsJTN0ZuGk2PdT57K3Q415ljMRx5ILBkmU9utbjGx3Ft8RVw_FKkxyhSmaPA8q4jtYxv-BUnWMbNwTDl_0PcQovCyyCCczqm2ByB5X4E8_BevMbsdfdOxtQf9yFrxnST0aS3rYuQ8rxXFW5XYsJb_X5BsLegggA9LI6kxuYtd_BO-pJarpsO0yhWmiPZ4dkU-7ziCwTM5DxsGCFK61mpLGmM3gb25cuCaz1UpnboRpZhXbKHiTLfm-6XL_sYDum2fuohiYeg4gLv7nkY198iiCejKhPVKcZ5wgN0CMZ3JmsgbwELyY1dGfOxNeeX4Z0tg.hyHM-Hzr4VkeEiFh8IEEcA/__results___files/__results___16_0.png)
 
@@ -172,6 +173,6 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 
 - Most hummingbirds are very similar in shape and are <b>mostly differentiable by their colours</b>:
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
-- Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, most hummingbirds <b>seem amost identical to the naked eye</b>, especially in images which are slightly underexposed.
-- The <b>model heavily relies on accurate initial training label data</b> in order to be able to accurately classify the current set of hummingbirds on unseed data, so it was assumed that the dataset labels are as accurate as possible.
+- Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
+- The <b>model heavily relies on accurate initial training label data</b>
 
