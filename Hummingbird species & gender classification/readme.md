@@ -242,9 +242,6 @@ Found 80 images belonging to 4 classes.
   - a <code>flattern</code> layer, which creates a single dimension tensor
   - <code>dropout</code> & <code>dense</code> layers interchangably
   - The final <code>dense</code> layer containing a <code>softmax</code> activation function
-- Compile the model:
-  - With an <code>optimiser</code> set to **Adam**
-  - <code>loss</code> function set to **categorical_crossentropy** (multiclass classification tasks)
 
 ```python
 
@@ -298,7 +295,9 @@ _________________________________________________________________
 
 #### COMPILE MODEL
 
-- For evauation metrics we can use the inbuilt ones, callable via string reference or a function name
+- For evauation metrics:
+  - We can use the inbuilt ones (callable via strings eg. 'acc')
+  - Or reference to a function, let's define functions for <code>recall</code>,<code>precision</code>,<code>f1</code>
 
 ```python
 
@@ -322,17 +321,16 @@ def get_f1(y_true, y_pred):
 
 ```
 
-- Compile the model
+- Compile the model:
+  - With an <code>optimiser</code> set to **Adam**
+  - <code>loss</code> function set to **categorical_crossentropy** (multiclass classification tasks)
 
 ```python
-
 ''' Model Compilation '''
 model.compile(optimizer='Adam', 
               loss='categorical_crossentropy',
               metrics=['acc',get_f1,get_precision,get_recall])
 ```
-
-
 
 #### TRAIN MODEL
 
