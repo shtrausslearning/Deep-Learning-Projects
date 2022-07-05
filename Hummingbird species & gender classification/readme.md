@@ -534,3 +534,12 @@ def aug_eval(lst_select=None):
         # store results
         lst_history.append(history)
 ```        
+
+#### AUGMENTATION COMBINATIONS
+
+- Let's test four different image <code>augmentation</code> combinations:
+
+- <b>Combination 1</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>
+- <b>Combination 2</b> : <code>rescale (1/255)</code>, <code>vertical_flip</code>
+- <b>Combination 3</b> : <code>rescale (1/255)</code>, <code>brightness_range (+1.1,+1.5)</code>
+- <b>Combination 4</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>, <code>shear_range (0.2)</code>, <code>zoom_range (0.2)</code>
