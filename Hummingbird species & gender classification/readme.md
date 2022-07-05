@@ -829,3 +829,12 @@ Head Model: efficientnet
 3/3 [==============================] - 5s 46ms/step - loss: 13.1678 - acc: 0.2539 - get_f1: 0.2487 - get_precision: 0.2487 - get_recall: 0.2487
 
 ```
+
+### 11 | Concluding Remarks 
+- In this project, we aimed at creating a <code>classifier</code> that could distinguish between both <code>gender</code> & <code>specie</code>
+- Despite how similar birds of different specie & gender look to the naked eye, our models were able to perform quite well on all three; <code>training</code>, <code>validation</code> & <code>test</code> datasets, which was encouraging
+- The base model was able to achieve a generalisation <code>f1</code> score of **81.6** on the <code>validation</code> set, without any augmentations
+- Using the base model, then different combinations of <code>augmentations</code> were attempted, which improved the <code>f1</code> score to **86.45** when using <code>horizontal_flip</code>, <code>shear_range</code> & <code>zoom_range</code>
+- Being happy with the outcome, then the same augmentation combination were tested with more sophisticated neural networks, of which <code>MobileNet</code> performed quite well, reaching an <code>f1</code> score of **94.79** on the <code>validation</code> dataset
+- The model performed slightly worse on the <code>test</code> data, only scoring an <code>f1</code> score of **89.9**
+- All models were tested on images data of shape <code>(100,100,3)</code>, hence a lot of detail is lost at such resolutions, an improvment in the model can be achieved by simply increasing the resolution 
