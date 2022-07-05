@@ -92,7 +92,8 @@ for i in class_names:
     
 ```
 
-- The class distribution is even, the <code>training</code> data containing **100 samples** per class & both <code>validation</code> and <code>test</code> data containing **20 samples** per class
+- The class distribution is even, the <code>training</code> data containing **100 samples** per class
+- Both <code>validation</code> and <code>test</code> data containing **20 samples** per class
 
 ```
 Number of classes for Classification:  4
@@ -120,7 +121,7 @@ Broadtailed_male:20
 ### 6 | Image Exploration
 
 - Using the function <code>show_grid</code>, we can visualise the various types of class images
-- We have four classes, let's make some remarks about each class 
+- We have **four** classes, let's make some remarks about each class after visualising the sample data
 
 ```python
 
@@ -203,7 +204,7 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 - Before creating <code>data generators</code>, we set set the image augmentation options via <code>ImageDataGenerator</code>, 
 - For the **baseline** model, we'll utilise standard scaling <code>rescale</code>
 - Let's create <code>data generators</code>, our data are in separate folders so we'll use <code>flow_from_directory</code>
-- We'll split the entire dataset into groups & create data of <code>batch size</code> 32 & resize the images to (100,100) px containing 3 channels
+- We'll split the entire dataset into groups & create data of <code>batch size</code> 32 & resize the images to **(100,100)** px containing **3 channels**
 
 ```python
 
@@ -235,7 +236,12 @@ Found 80 images belonging to 4 classes.
 ```
 
 #### DEFINE CONVOLUTED NEURAL NETWORK
-- Let's define a neural network with two <code>Conv2D</code> layers
+- Let's define a neural network:
+  - two <code>Conv2D</code> layers
+  - a maxpooling layer (default (2,2)) pool size)
+  - a <code>flattern</code> layer, which creates a single dimension tensor
+  - <code>dropout</code> & <code>dense</code> layers interchangably
+  - The final <code>dense</code> layer containing a <code>softmax</code> activation function
 - Compile the model with an <code>optimiser</code> set to **Adam** & <code>loss</code> function set to **categorical_crossentropy**, which is suited to multiclass classification tasks 
 
 ```python
