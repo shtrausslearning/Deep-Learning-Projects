@@ -35,7 +35,7 @@ Project Keywords: <br>
   - Use the combination of <code>augmentations</code> that resulted in the best performance & test different pretrained models, find the best performing model (**Section 9**)
   - If the pretrained models outperform the base CNN model, use them for inference on unseen data (**Section 10**)
 
-### 4 | Configuration File
+### 5 | Configuration File
 
 - We'll create a simple configuration class, that will contain all the important control settings
 - number of class labels, shape of the images, number of training epochs & seed value
@@ -54,7 +54,7 @@ class CFG:
 cfg = CFG()
 ```
 
-### 5 | The Dataset
+### 6 | The Dataset
 
 - The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets, so the <code>train/test</code> split has already been done for us
 
@@ -133,7 +133,7 @@ Broadtailed_female:20
 Broadtailed_male:20
 ```
 
-### 6 | Image Exploration
+### 7 | Image Exploration
 
 - Using the function <code>show_grid</code>, we can visualise the various types of class images
 - We have **four** classes, let's make some remarks about each class after visualising the sample data
@@ -212,7 +212,7 @@ def show_grid(image_list,nrows,ncols,label_list=None,
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
 
-### 7 | Baseline model
+### 8 | Baseline model
 
 #### CREATE DATA GENERATORS
 
@@ -424,7 +424,7 @@ def plot_keras_metric(history):
     fig.show()
 ```
 
-### 8 | Image Agumentation Models
+### 9 | Image Agumentation Models
 
 #### CREATE A CUSTOM TRAINING FUNCTION
 - Let's create a helper function, that will input a <code>list</code> of <code>ImageDataGenerators</code>, containing the relevant image data augmentations that we want to apply to the dataset
@@ -634,7 +634,7 @@ Found 80 images belonging to 4 classes.
   - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data
   - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3]
 
-### 9 | Transfer Learning Models
+### 10 | Transfer Learning Models
 
 #### DEFINE DATALOADERS
 
@@ -740,7 +740,7 @@ def pretrained_model(head_id):
 
 #### DEFINE TRAINING FUNCTION
 
-- In this case, we will be looping through all the pretrained <code>head</code> models, as some of them showed better metric performance, compared to the base model
+- Let's define the training function <code>pretrain_eval</code>, which inputs a list of pretrained model names, which will be used as the head model in the <code>sequential</code> model we create using the helper function <code>pretrained_model</code>
 
 ```python
 # Pretrained Loaded Model 
