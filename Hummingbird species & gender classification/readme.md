@@ -476,7 +476,7 @@ def augment_model(lst_aug):
 
 ```
 
-#### DEFINE MAIN TRAINING LOOP
+#### HELPER FUNCTIONS FOR TRAINING LOOP
 
 - Define helper function <code>get_aug_name</code>, for main training loop <code>aug_eval</code>
 - The desired augmentations are stored in a <code>list</code> (numerical form, corresponding to the index found in <code>lst_augopt</code>)
