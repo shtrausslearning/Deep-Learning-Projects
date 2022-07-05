@@ -1,7 +1,11 @@
 ![](https://i.imgur.com/icqghBp.png)
 
-Project available on Kaggle: **[Hummingbird Classification | Keras CNN Models](https://www.kaggle.com/code/shtrausslearning/hummingbird-classification-keras-cnn-models)**
-Dataset available on Kaggle: **[Hummingbirds at my feeder](https://www.kaggle.com/datasets/akimball002/hummingbirds-at-my-feeders)**
+Project available on Kaggle: **[Hummingbird Classification | Keras CNN Models](https://www.kaggle.com/code/shtrausslearning/hummingbird-classification-keras-cnn-models)** <br>
+Dataset available on Kaggle: **[Hummingbirds at my feeder](https://www.kaggle.com/datasets/akimball002/hummingbirds-at-my-feeders)** <br>
+
+Project Keywords: <br>
+<code>keras</code> <code>CNN</code> <code>multiclass</code> <code>classification</code> <code>augmentation</code> <code>dataset from folder</code> <code>pretrained</code> <code>inference</code>
+
 
 ### 1 | Hummingbird monitoring
 
