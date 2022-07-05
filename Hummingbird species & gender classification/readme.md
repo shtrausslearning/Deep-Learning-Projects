@@ -404,7 +404,7 @@ def plot_keras_metric(history):
     fig.show()
 ```
 
-### 8 | Image Agumentation Model
+### 8 | Image Agumentation Models
 
 #### CREATE A CUSTOM TRAINING FUNCTION
 - Let's create a helper function, that will input a <code>list</code> of <code>ImageDataGenerators</code>, containing the relevant image data augmentations that we want to apply to the dataset
@@ -597,4 +597,38 @@ Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 50/50 [01:26<00:00, 1.66s/epoch, loss=0.15, acc=0.947, get_f1=0.95, get_precision=0.959, 
        get_recall=0.942, val_loss=0.612, val_acc=0.85, val_get_f1=0.841, val_get_precision=0.85, val_get_recall=0.833, lr=0.001]
+```
+
+### Transfer Learning Models
+
+#### DEFINE DATALOADERS
+
+- Based on the results from the previous section (Image Agumentation Models), we'll be using the most successful combination for augmentation
+- The augmentations for the training <code>datagenerator</code>: <code>shear_range</code>, <code>zoom_range</code> & <code>horizontal_flip</code>
+
+```python
+
+# Using the best augmentation combination
+train_datagen = ImageDataGenerator(rescale=1.0/255,
+                                   shear_range=0.2,
+                                   zoom_range=0.2,
+                                   horizontal_flip=True,
+                                  )
+gen_datagen = ImageDataGenerator(rescale=1.0/255)
+
+gen_train = train_datagen.flow_from_directory(train_folder, 
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),  # target size
+                        batch_size=32,          # batch size
+                        class_mode='categorical')    # batch size
+
+gen_valid = gen_datagen.flow_from_directory(val_folder,
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),
+                        batch_size=32,
+                        class_mode='categorical')
+
+gen_test = gen_datagen.flow_from_directory(test_folder,
+                        target_size=(cfg.sshape[0],cfg.sshape[1]),
+                        batch_size=32,
+                        class_mode='categorical')
+
 ```
