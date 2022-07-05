@@ -537,9 +537,21 @@ def aug_eval(lst_select=None):
 
 #### AUGMENTATION COMBINATIONS
 
-- Let's test four different image <code>augmentation</code> combinations:
+Let's test four different image <code>augmentation</code> combinations:
 
+```
 - <b>Combination 1</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>
 - <b>Combination 2</b> : <code>rescale (1/255)</code>, <code>vertical_flip</code>
 - <b>Combination 3</b> : <code>rescale (1/255)</code>, <code>brightness_range (+1.1,+1.5)</code>
 - <b>Combination 4</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>, <code>shear_range (0.2)</code>, <code>zoom_range (0.2)</code>
+```
+
+```python
+
+# Select Augmentation
+lst_select = [[0,1],[0,2],[0,3],[0,1,5,6]] # list of augmentations
+lst_selectn = get_aug_name(lst_select)     # get list of augmentation names
+print(lst_selectn)
+
+```
+
