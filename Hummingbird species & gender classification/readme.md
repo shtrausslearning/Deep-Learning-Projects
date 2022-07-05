@@ -565,7 +565,8 @@ Augmentation Combination
 Found 400 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
-50/50 [00:46<00:00, 1.01epoch/s, loss=0.0237, acc=0.995, get_f1=0.996, get_precision=0.998, get_recall=0.995, val_loss=1.19, val_acc=0.775, val_get_f1=0.777, val_get_precision=0.794, val_get_recall=0.76, lr=0.001]
+50/50 [00:46<00:00, 1.01epoch/s, loss=0.0237, acc=0.995, get_f1=0.996, get_precision=0.998,
+       get_recall=0.995, val_loss=1.19, val_acc=0.775, val_get_f1=0.777, val_get_precision=0.794, val_get_recall=0.76, lr=0.001]
 ```
 
 ```
@@ -574,7 +575,8 @@ Augmentation Combination
 Found 400 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
-50/50 [00:47<00:00, 1.10epoch/s, loss=0.011, acc=0.998, get_f1=0.998, get_precision=0.998, get_recall=0.998, val_loss=1.11, val_acc=0.788, val_get_f1=0.781, val_get_precision=0.781, val_get_recall=0.781, lr=0.001]
+50/50 [00:47<00:00, 1.10epoch/s, loss=0.011, acc=0.998, get_f1=0.998, get_precision=0.998,
+       get_recall=0.998, val_loss=1.11, val_acc=0.788, val_get_f1=0.781, val_get_precision=0.781, val_get_recall=0.781, lr=0.001]
 ```
 
 ```
@@ -583,7 +585,8 @@ Augmentation Combination
 Found 400 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
-50/50 [00:54<00:00, 1.18s/epoch, loss=0.114, acc=0.96, get_f1=0.96, get_precision=0.963, get_recall=0.957, val_loss=1.33, val_acc=0.725, val_get_f1=0.673, val_get_precision=0.748, val_get_recall=0.615, lr=0.001]
+50/50 [00:54<00:00, 1.18s/epoch, loss=0.114, acc=0.96, get_f1=0.96, get_precision=0.963, 
+       get_recall=0.957, val_loss=1.33, val_acc=0.725, val_get_f1=0.673, val_get_precision=0.748, val_get_recall=0.615, lr=0.001]
 ```
 
 ```
@@ -592,5 +595,6 @@ Augmentation Combination
 Found 400 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
 Found 80 images belonging to 4 classes.
-50/50 [01:26<00:00, 1.66s/epoch, loss=0.15, acc=0.947, get_f1=0.95, get_precision=0.959, get_recall=0.942, val_loss=0.612, val_acc=0.85, val_get_f1=0.841, val_get_precision=0.85, val_get_recall=0.833, lr=0.001]
+50/50 [01:26<00:00, 1.66s/epoch, loss=0.15, acc=0.947, get_f1=0.95, get_precision=0.959, 
+       get_recall=0.942, val_loss=0.612, val_acc=0.85, val_get_f1=0.841, val_get_precision=0.85, val_get_recall=0.833, lr=0.001]
 ```
