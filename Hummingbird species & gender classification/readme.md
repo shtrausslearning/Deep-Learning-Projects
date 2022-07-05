@@ -372,6 +372,11 @@ print(f'The time taken to execute is {round(end-start,2)} seconds.')
 print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
 ```
 
+```
+50/50 [00:52<00:00, 1.03epoch/s, loss=0.000977, acc=1, get_f1=1, get_precision=1, 
+      get_recall=1, val_loss=1.92, val_acc=0.762, val_get_f1=0.781, val_get_precision=0.781, val_get_recall=0.781, lr=0.001]
+```
+
 #### PLOT KERAS HISTORY
 
 - To plot keras' <code>history</code> output, we can use a custom function <code>plot_keras_metric</code>
