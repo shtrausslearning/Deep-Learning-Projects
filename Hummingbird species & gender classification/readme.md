@@ -177,6 +177,7 @@ def show_grid(image_list,nrows,ncols,label_list=None,
 
 ### 5 | Create Datagenerators
 
+- Before creating <code>data generators</code>, we set set the image augmentation options via <code>ImageDataGenerator</code>, for the **baseline** model, we'll utilise standard scaling <code>rescale</code>
 - Create <code>data generators</code>, our data are in separate folders so we'll use <code>flow_from_directory</code>
 - We'll split the entire dataset into groups & create data of <code>batch size</code> 32
 
