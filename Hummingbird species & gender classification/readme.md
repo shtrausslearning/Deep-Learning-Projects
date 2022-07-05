@@ -332,6 +332,8 @@ print(f'The time taken to execute is {round(end-start,2)} seconds.')
 print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
 ```
 
+- To plot keras' <code>history</code> output, we can use a custom function <code>plot_keras_metric</code>
+
 ```python
 
 # Function to plot loss & metric (metric_id)
