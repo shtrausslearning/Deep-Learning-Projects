@@ -20,6 +20,14 @@
 
 - The ultimate goal is to have a classification system that can address such the above stated varieties in an image & correctly distinguish very similar bird species, it should be deployable at any feeder, which is important to the continued monitoring of hummingbird species and bird  migration patterns. 
 
+### 4 | Model Exploration
+
+- In this study, we'll be looking at creating a few <code>classification</code> models
+  - Create a base convolution neural network (CNN) model & test its performance
+  - Find the best augmentation combination using the same CNN model
+  - Use the combination of augmentations that resulted in the best performance & test different pretrained models, find the best performing model
+  - If the pretrained models outperform the base CNN model, use them for inference on unseen data
+
 ### 4 | Configuration File
 
 - We'll create a simple configuration class, that will contain all the important control settings
