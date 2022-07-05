@@ -563,6 +563,14 @@ print(lst_selectn)
 [['rescale', 'horizontal_flip'], ['rescale', 'vertical_flip'], ['rescale', 'brightness_range'], ['rescale', 'horizontal_flip', 'shear_range', 'zoom_range']]
 ```
 
+#### TRAIN A MODEL
+- Train all four models
+
+```python
+lst_select = [[0,1],[0,2],[0,3],[0,1,5,6]] # list of augmentations
+history = aug_eval(lst_select)             # get list of history results
+```
+
 ```
 Augmentation Combination
 {'rescale': 0.00392156862745098, 'horizontal_flip': True}
@@ -603,7 +611,21 @@ Found 80 images belonging to 4 classes.
        get_recall=0.942, val_loss=0.612, val_acc=0.85, val_get_f1=0.841, val_get_precision=0.85, val_get_recall=0.833, lr=0.001]
 ```
 
-### Transfer Learning Models
+- **POSITIVE INFLUENCE OF BRIGHTNESS AUGMENTAION**
+ - It was thought that <b>due to the low brightness nature of a lot of images</b>, an increase in brightness would allow the model to more easily distinguish between different classes. 
+ - We can see that when just by the applying the increased brightness augmentation (<b>Combination 3</b>); [0,3]  set to (+1.1,+1.5), the model outperforms all other variations within the first 5 iterations, both on <b>training</b> & <b>validation</b> dataasets, after which the validation accuracy starts to stagnate, and the model starts to show signs of overfitting.
+
+- **OTHER OBSERVATIONS**
+ - What was interesting to observe was the <b>balance between training/validation accuracies</b>. 
+ - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data.
+ - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3].
+
+- **USING FUNCTIONS**
+ - Due to the large number of possible augmentation combinations, it was quite convenient to create and test a <b>list based augmentation selection approach</b>. 
+ - This allowed us to simple loop through the various set options. 
+ - More testing would be quite interesting to try, however we should next <b>shift our attention to more sophisticated neural networks</b>, since they are more than likely going to allow us to edge the current validaiton accuracy score of our simple network.
+
+### 9 | Transfer Learning Models
 
 #### DEFINE DATALOADERS
 
@@ -638,7 +660,7 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
 
 ```
 
-#### DEFINE PRETRAINED MODEL 
+#### ASSEMBLE PRETRAINED CLASSIFIER MODEL 
 
 - Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
 - We'll split the model into **two parts** <code>head</code> & <code>tail</code> & assemble a new <code>sequential</code> model:
@@ -709,6 +731,8 @@ def pretrained_model(head_id):
 
 #### DEFINE TRAINING FUNCTION
 
+- In this case, we will be looping through all the pretrained <code>head</code> models
+
 ```python
 # Pretrained Loaded Model 
 def pretrain_eval(lst_heads,verbose=False):
@@ -745,8 +769,32 @@ def pretrain_eval(lst_heads,verbose=False):
 
 ```
 
+#### TRAIN THE MODEL
+
 ```
 ''' Define Model Architectre '''
 lst_heads = ['vgg','resnet','mobilenet','inception','efficientnet']
 history = pretrain_eval(lst_heads)
+```
+
+### 10 | Model Inference
+
+- As the pretrained model 
+
+```python
+
+for head_id in lst_heads:
+    print(f'Head Model: {head_id}')
+    
+    # Load uncompiled model
+    load_model = models.load_model(f"model_{head_id}.h5",compile=False)
+    
+    # Compile model
+    load_model.compile(optimizer='Adam',
+                       loss='categorical_crossentropy',
+                       metrics=['acc',get_f1,get_precision,get_recall])
+    
+    # Evaluate on test dataset
+    scores = load_model.evaluate(gen_test, verbose=1)
+
 ```
