@@ -786,10 +786,39 @@ def pretrain_eval(lst_heads,verbose=False):
 
 #### TRAIN THE MODEL
 
+- Looping through 5 different <code>head</code> models, defined in <code>lst_heads</code>, we train the model by calling <code>pretrain_eval</code>
+
 ```
 ''' Define Model Architectre '''
 lst_heads = ['vgg','resnet','mobilenet','inception','efficientnet']
 history = pretrain_eval(lst_heads)
+```
+
+```
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/vgg16/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+58892288/58889256 [==============================] - 0s 0us/step
+
+50/50 [01:31<00:00, 1.70s/epoch, loss=0.124, acc=0.965, get_f1=0.968, get_precision=0.976, get_recall=0.962, val_loss=0.657, val_acc=0.85, val_get_f1=0.825, val_get_precision=0.838, val_get_recall=0.812, lr=0.001]
+
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/resnet/resnet101_weights_tf_dim_ordering_tf_kernels_notop.h5
+171450368/171446536 [==============================] - 1s 0us/step
+
+50/50 [01:50<00:00, 1.94s/epoch, loss=1.07, acc=0.562, get_f1=0.386, get_precision=0.716, get_recall=0.269, val_loss=1.08, val_acc=0.613, val_get_f1=0.259, val_get_precision=0.6, val_get_recall=0.167, lr=0.001]
+
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/mobilenet/mobilenet_1_0_224_tf_no_top.h5
+17227776/17225924 [==============================] - 0s 0us/step
+
+50/50 [01:28<00:00, 1.77s/epoch, loss=0.00307, acc=1, get_f1=1, get_precision=1, get_recall=1, val_loss=1.2, val_acc=0.837, val_get_f1=0.833, val_get_precision=0.833, val_get_recall=0.833, lr=0.001]
+
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/inception_v3/inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5
+87916544/87910968 [==============================] - 1s 0us/step
+
+50/50 [01:38<00:00, 1.92s/epoch, loss=0.0648, acc=0.978, get_f1=0.978, get_precision=0.978, get_recall=0.978, val_loss=0.786, val_acc=0.775, val_get_f1=0.753, val_get_precision=0.769, val_get_recall=0.74, lr=0.001]
+
+Downloading data from https://storage.googleapis.com/keras-applications/efficientnetb4_notop.h5
+71688192/71686520 [==============================] - 0s 0us/step
+
+50/50 [01:51<00:00, 1.97s/epoch, loss=1.39, acc=0.25, get_f1=0, get_precision=0, get_recall=0, val_loss=1.39, val_acc=0.25, val_get_f1=0, val_get_precision=0, val_get_recall=0, lr=0.001]
 ```
 
 ### 10 | Model Inference
