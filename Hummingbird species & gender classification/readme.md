@@ -20,7 +20,26 @@
 
 - The ultimate goal is to have a classification system that can address such the above stated varieties in an image & correctly distinguish very similar bird species, it should be deployable at any feeder, which is important to the continued monitoring of hummingbird species and bird  migration patterns. 
 
-### 4 | The dataset
+### 4 | Configuration File
+
+- We'll create a simple configuration class, that will contain all the important control settings
+- number of class labels, shape of the images, number of training epochs & seed value
+
+```python
+
+''' Global Configuration Settings '''
+class CFG:
+    
+    def __init__(self):
+        self.labels = 4
+        self.sshape = (100,100,3) # Increasable to 224
+        self.n_epochs = 50
+        self.seed = 221
+
+cfg = CFG()
+```
+
+### 5 | The Dataset
 
 - The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets, so the <code>train/test</code> split has already been done for us
 
@@ -34,18 +53,20 @@ video_folder = '/kaggle/input/hummingbirds-at-my-feeders/video_test/'
 ```
 
 ```python
-
 os.listdir(main_folder)
-
 ```
 
-> ['video_test', 'All_images', 'hummingbirds']
+```
+['video_test', 'All_images', 'hummingbirds']
+```
 
 ```python
 os.listdir(train_folder)
 ```
 
-> ['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
+```
+['Rufous_female', 'No_bird', 'Broadtailed_female', 'Broadtailed_male']
+```
 
 - Let's check how many images there are in each folder <code>Rufous female</code>, <code>No bird</code>, <code>Broadtailed female</code> & <code>Broadtailed male</code>
 - We have a total of **4 classes**, so we'll be treating the problem as as <code>multiclass</code> classification problem
