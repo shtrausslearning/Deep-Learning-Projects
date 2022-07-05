@@ -603,7 +603,8 @@ Found 80 images belonging to 4 classes.
 
 #### DEFINE DATALOADERS
 
-- Based on the results from the previous section (Image Agumentation Models), we'll be using the most successful combination for augmentation
+- Based on the results from the previous section (Image Agumentation Models):
+  - we'll be using the most successful combination for augmentation, which was **combination 4**
 - The augmentations for the training <code>datagenerator</code>: <code>shear_range</code>, <code>zoom_range</code> & <code>horizontal_flip</code>
 
 ```python
