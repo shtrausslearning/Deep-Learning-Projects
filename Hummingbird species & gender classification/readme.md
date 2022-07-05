@@ -407,7 +407,8 @@ def plot_keras_metric(history):
 ### 8 | Image Agumentation Model
 
 #### CREATE A CUSTOM TRAINING FUNCTION
-- Let's create a helper function, that will input a **list of ImageDataGenerators**, containing the relevant image data augmentations
+- Let's create a helper function, that will input a <code>list</code> of <code>ImageDataGenerators</code>, containing the relevant image data augmentations that we want to apply to the dataset
+- <code>model</code>, <code>compilation</code> settings are unchanged from the **baseline model**
 
 ```python
 
