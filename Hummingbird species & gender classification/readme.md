@@ -511,6 +511,11 @@ def get_aug_name(lst_select):
 
 ```
 
+#### DEFINE TRAINING FUNCTION
+
+- We define a training function, which will loop through all given combinations of augmentation, <code>lst_select</code>
+- Generate Data Generators that correpond to the particular augmentation & train the model, saving the <code>history</code> for each case
+
 ```python
 
 # Model Evaluation w/ Augmentation
@@ -539,12 +544,11 @@ def aug_eval(lst_select=None):
 
 Let's test four different image <code>augmentation</code> combinations:
 
-```
 - <b>Combination 1</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>
 - <b>Combination 2</b> : <code>rescale (1/255)</code>, <code>vertical_flip</code>
 - <b>Combination 3</b> : <code>rescale (1/255)</code>, <code>brightness_range (+1.1,+1.5)</code>
 - <b>Combination 4</b> : <code>rescale (1/255)</code>, <code>horizontal_flip</code>, <code>shear_range (0.2)</code>, <code>zoom_range (0.2)</code>
-```
+
 
 ```python
 
@@ -634,7 +638,7 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
 
 ```
 
-#### DEFINE PRETRAINED MODEL FUNCTION
+#### DEFINE PRETRAINED MODEL 
 
 - Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
 - We'll split the model into **two parts** <code>head</code> & <code>tail</code> & assemble a new <code>sequential</code> model:
@@ -703,17 +707,16 @@ def pretrained_model(head_id):
 
 ```
 
-
+#### DEFINE TRAINING FUNCTION
 
 ```python
-
 # Pretrained Loaded Model 
 def pretrain_eval(lst_heads,verbose=False):
 
     lst_history = []
     for head_id in lst_heads:
 
-        # define CNN head model
+        # Define CNN Model
         model = pretrained_model(head_id)
 
         ''' Callback Options During Training '''
@@ -740,4 +743,10 @@ def pretrain_eval(lst_heads,verbose=False):
         
     return lst_history
 
+```
+
+```
+''' Define Model Architectre '''
+lst_heads = ['vgg','resnet','mobilenet','inception','efficientnet']
+history = pretrain_eval(lst_heads)
 ```
