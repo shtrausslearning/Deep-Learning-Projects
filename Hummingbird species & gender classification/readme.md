@@ -175,9 +175,12 @@ def show_grid(image_list,nrows,ncols,label_list=None,
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
 
-### 5 | Create Datagenerators
+### 5 | Baseline model
 
-- Before creating <code>data generators</code>, we set set the image augmentation options via <code>ImageDataGenerator</code>, for the **baseline** model, we'll utilise standard scaling <code>rescale</code>
+#### CREATE DATA GENERATORS
+
+- Before creating <code>data generators</code>, we set set the image augmentation options via <code>ImageDataGenerator</code>, 
+- For the **baseline** model, we'll utilise standard scaling <code>rescale</code>
 - Create <code>data generators</code>, our data are in separate folders so we'll use <code>flow_from_directory</code>
 - We'll split the entire dataset into groups & create data of <code>batch size</code> 32
 
