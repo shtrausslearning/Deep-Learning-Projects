@@ -604,7 +604,7 @@ Found 80 images belonging to 4 classes.
 #### DEFINE DATALOADERS
 
 - Based on the results from the previous section (Image Agumentation Models):
-  - we'll be using the most successful combination for augmentation, which was **combination 4**
+  - We'll be using the most successful combination for augmentation, which was **combination 4**
 - The augmentations for the training <code>datagenerator</code>: <code>shear_range</code>, <code>zoom_range</code> & <code>horizontal_flip</code>
 
 ```python
@@ -631,5 +631,71 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
                         target_size=(cfg.sshape[0],cfg.sshape[1]),
                         batch_size=32,
                         class_mode='categorical')
+
+```
+
+#### DEFINE PRETRAINED MODEL FUNCTION
+
+- Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
+
+```python
+
+# from tensorflow.keras import applications as app
+def pretrained_model(head_id):
+
+    # Define model with different applications
+    model = Sequential()
+
+    ''' Define Head Pretrained Models '''
+
+    if(head_id is 'vgg'):
+        model.add(app.VGG16(input_shape=cfg.sshape,
+                            pooling='avg',
+                            classes=1000,
+                            include_top=False,
+                            weights='imagenet'))
+
+    elif(head_id is 'resnet'):
+        model.add(app.ResNet101(include_top=False,
+                               input_tensor=None,
+                               input_shape=cfg.sshape,
+                               pooling='avg',
+                               classes=100,
+                               weights='imagenet'))
+
+    elif(head_id is 'mobilenet'):
+        model.add(app.MobileNet(alpha=1.0,
+                               depth_multiplier=1,
+                               dropout=0.001,
+                               include_top=False,
+                               weights="imagenet",
+                               input_tensor=None,
+                               input_shape = cfg.sshape,
+                               pooling=None,
+                               classes=1000))
+
+    elif(head_id is 'inception'):
+        model.add(InceptionV3(input_shape = cfg.sshape, 
+                                 include_top = False, 
+                                 weights = 'imagenet'))
+
+    elif(head_id is 'efficientnet'):
+        model.add(EfficientNetB4(input_shape = cfg.sshape, 
+                                    include_top = False, 
+                                    weights = 'imagenet'))
+
+    ''' Tail Model Part '''
+    model.add(Flatten())
+    model.add(Dense(1024,activation='relu'))
+    model.add(Dropout(0.1))
+    model.add(Dense(cfg.labels,activation='softmax'))
+
+    # # freeze main model coefficients
+    model.layers[0].trainable = False
+    model.compile(optimizer='Adam', 
+                  loss='categorical_crossentropy',
+                  metrics=['acc',get_f1,get_precision,get_recall])
+
+    return model # return compiled model
 
 ```
