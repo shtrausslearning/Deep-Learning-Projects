@@ -273,6 +273,10 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
+- Set <code>callbacks</code>:
+  - ReduceLROnPlateau, which adjusts the learning data during training
+  - ModelCheckpoint, which saves model data during training
+
 ```python
 ''' Callback Options During Training '''
 callbacks = [ReduceLROnPlateau(monitor='val_accuracy',patience=2,verbose=0, 
@@ -280,6 +284,11 @@ callbacks = [ReduceLROnPlateau(monitor='val_accuracy',patience=2,verbose=0,
              ModelCheckpoint(filepath=f'model_cnn.h5',monitor='val_accuracy',
                              mode = 'max',verbose=0,save_best_only=True),
              TqdmCallback(verbose=0)] 
+```
+
+- Traing the model, using the <code>fit</code> method 
+
+```python
 
 ''' Start Training '''
 start = time.time()
@@ -292,7 +301,6 @@ history = model.fit(gen_train,
 end = time.time()
 print(f'The time taken to execute is {round(end-start,2)} seconds.')
 print(f'Maximum Train/Val {max(history.history["acc"]):.4f}/{max(history.history["val_acc"]):.4f}')
-
 ```
 
 ```python
@@ -330,4 +338,3 @@ def plot_keras_metric(history):
     fig['layout']['yaxis2'].update(title='', range=[0, 1.1], autorange=False)
     fig.show()
 ```
-
