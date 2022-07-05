@@ -777,7 +777,8 @@ history = pretrain_eval(lst_heads)
 
 ### 10 | Model Inference
 
-- As the pretrained model 
+- As the pretrained models quite substantially outperformed the CNN model we defined in Section 7
+- Let's check how well these models perform on unseen test data
 
 ```python
 
@@ -794,5 +795,20 @@ for head_id in lst_heads:
     
     # Evaluate on test dataset
     scores = load_model.evaluate(gen_test, verbose=1)
+
+```
+
+```
+
+Head Model: vgg
+3/3 [==============================] - 1s 127ms/step - loss: 0.3289 - acc: 0.8992 - get_f1: 0.9010 - get_precision: 0.9275 - get_recall: 0.8763
+Head Model: resnet
+3/3 [==============================] - 3s 47ms/step - loss: 1.0242 - acc: 0.5891 - get_f1: 0.3449 - get_precision: 0.7534 - get_recall: 0.2266
+Head Model: mobilenet
+3/3 [==============================] - 1s 38ms/step - loss: 0.4240 - acc: 0.8867 - get_f1: 0.8721 - get_precision: 0.8799 - get_recall: 0.8646
+Head Model: inception
+3/3 [==============================] - 2s 48ms/step - loss: 0.4712 - acc: 0.7750 - get_f1: 0.7865 - get_precision: 0.8108 - get_recall: 0.7643
+Head Model: efficientnet
+3/3 [==============================] - 5s 46ms/step - loss: 13.1678 - acc: 0.2539 - get_f1: 0.2487 - get_precision: 0.2487 - get_recall: 0.2487
 
 ```
