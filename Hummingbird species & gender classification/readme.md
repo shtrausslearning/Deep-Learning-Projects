@@ -245,8 +245,7 @@ model.compile(optimizer='Adam',
 
 ```
 
->>>
-
+```
 Model: "sequential"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -271,6 +270,41 @@ Total params: 20,500,036
 Trainable params: 20,500,036
 Non-trainable params: 0
 _________________________________________________________________
+```
 
->>>
+```python
+
+# Function to plot loss & metric (metric_id)
+def plot_keras_metric(history):
+
+    # Palettes
+    lst_color = ['#B1D784','#2E8486','#004379','#032B52','#EAEA8A']
+    metric_id = ['loss','get_f1']
+    fig = make_subplots(rows=1, cols=len(metric_id),subplot_titles=metric_id)
+
+    jj=0;
+    for metric in metric_id:     
+
+        jj+=1
+
+        # Main Trace
+        fig.add_trace(go.Scatter(x=[i for i in range(1,cfg.n_epochs+1)],
+                                 y=history.history[metric],
+                                 name=f'train_{metric}',
+                                 line=dict(color=lst_color[0]),mode='lines'),
+                      row=1,col=jj)
+        fig.add_trace(go.Scatter(x=[i for i in range(1,cfg.n_epochs+1)],
+                                 y=history.history['val_'+metric],
+                                 name=f'valid_{metric}',
+                                 line=dict(color=lst_color[3]),mode='lines'),
+                      row=1,col=jj)
+
+    fig.update_layout(yaxis=dict(range=[0,1]),yaxis_range=[0,1],
+                      height=400,width=650,showlegend=False,template='plotly_white',
+                      hovermode="x",title=f'Training')
+    
+    fig['layout']['yaxis'].update(title='', range=[0,5], autorange=True,type='log')
+    fig['layout']['yaxis2'].update(title='', range=[0, 1.1], autorange=False)
+    fig.show()
+```
 
