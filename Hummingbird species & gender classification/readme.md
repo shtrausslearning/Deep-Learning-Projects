@@ -658,8 +658,8 @@ gen_test = gen_datagen.flow_from_directory(test_folder,
 #### ASSEMBLE PRETRAINED CLASSIFIER MODEL 
 
 - Let's look at four different models <code>VGG</code>, <code>ResNet</code>, <code>MobileNet</code>, <code>InceptionV3</code> & <code>EfficientNetB4</code>
-- We'll split the model into **two parts** <code>head</code> & <code>tail</code> & assemble a new <code>sequential</code> model:
-  - The head part will contain the pretrained model
+- We'll split the model into **two parts** <code>head</code> & <code>tail</code> then assemble a new <code>sequential</code> model:
+  - The head part will contain the pretrained model (eg. the VGG model)
   - The tail end will contain our classifier part (<code>flatten</code>, <code>dense</code> & <code>dropout</code> layers)
 
 ```python
@@ -726,7 +726,7 @@ def pretrained_model(head_id):
 
 #### DEFINE TRAINING FUNCTION
 
-- In this case, we will be looping through all the pretrained <code>head</code> models
+- In this case, we will be looping through all the pretrained <code>head</code> models, as some of them showed better metric performance, compared to the base model
 
 ```python
 # Pretrained Loaded Model 
@@ -774,7 +774,7 @@ history = pretrain_eval(lst_heads)
 
 ### 10 | Model Inference
 
-- As the pretrained models quite substantially outperformed the CNN model we defined in Section 7
+- As the pretrained models quite substantially outperformed the CNN model we defined in **Section 7**
 - Let's check how well these models perform on unseen test data
 
 ```python
