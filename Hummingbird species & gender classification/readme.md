@@ -242,7 +242,9 @@ Found 80 images belonging to 4 classes.
   - a <code>flattern</code> layer, which creates a single dimension tensor
   - <code>dropout</code> & <code>dense</code> layers interchangably
   - The final <code>dense</code> layer containing a <code>softmax</code> activation function
-- Compile the model with an <code>optimiser</code> set to **Adam** & <code>loss</code> function set to **categorical_crossentropy**, which is suited to multiclass classification tasks 
+- Compile the model:
+  - With an <code>optimiser</code> set to **Adam**
+  - <code>loss</code> function set to **categorical_crossentropy** (multiclass classification tasks)
 
 ```python
 
@@ -313,7 +315,7 @@ callbacks = [ReduceLROnPlateau(monitor='val_accuracy',patience=2,verbose=0,
              TqdmCallback(verbose=0)] 
 ```
 
-- Traing the model, using the <code>fit</code> method 
+- Traing the model, using the <code>fit</code> method for 50 <code>iterations</code>
 
 ```python
 
