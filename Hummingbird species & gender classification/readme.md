@@ -7,7 +7,7 @@ Project Keywords: <br>
 <code>keras</code> <code>CNN</code> <code>multiclass</code> <code>classification</code> <code>augmentation</code> <code>dataset from folder</code> <code>pretrained</code> <code>inference</code>
 
 
-### 1 | Hummingbird monitoring
+### 1 | Hummingbird monitoring 📹
 
 - The purpose of this project is to create an image <code>classifier</code> for hummingbird **species** and **genders** that visit feeders. 
 - Such a classifier should be applicable to anywhere that hummingbirds migrate or breed, given additional datasets for those species.
@@ -23,11 +23,11 @@ Project Keywords: <br>
 - In the entire process of <b>expert identification</b> & dealing with various image related inconsistencies outlied previously, manual identification for monitoring can be quite labourous, so an automated system of identification can go a long way.
 - In our quest to create an automated approach, we can be left with a collection or under or over exposed images that will create difficulties for the model to distinguish between different classes correctly. 
 
-### 3 | Project goal 
+### 3 | Project goal 📑
 
 - The ultimate goal is to have a <code>classification system</code> that can address such the above stated varieties in an image & correctly distinguish very similar bird species, it should be deployable at any feeder, which is important to the continued monitoring of hummingbird species and bird  migration patterns. 
 
-### 4 | Model Exploration
+### 4 | Model Exploration ☑️
 
 - In this study, we'll be looking at creating a few <code>classification</code> models:
   - Create a base convolution neural network (CNN) model & test its performance (**Section 7**)
@@ -133,7 +133,7 @@ Broadtailed_female:20
 Broadtailed_male:20
 ```
 
-### 7 | Image Exploration
+### 7 | Image Exploration 
 
 - Using the function <code>show_grid</code>, we can visualise the various types of class images
 - We have **four** classes, let's make some remarks about each class after visualising the sample data
@@ -212,7 +212,7 @@ def show_grid(image_list,nrows,ncols,label_list=None,
   - So 1 channel CNN input network would be less effective, compared to a 3 channel network, and we have to rely on all colour channels to distinguish the species.
 - Having gone through the images, we can see that the current dataset is quite a challenging one. A lot of other hummingbirds, especially male have very <b>identifiable feather colours</b>, however in this dataset, aside from the <b>broadtail male</b>, broadtail and rufus female hummingbirds <b>seem amost identical to the naked eye</b>.
 
-### 8 | Baseline model
+### 8 | Baseline model 📉
 
 #### CREATE DATA GENERATORS
 
@@ -424,7 +424,7 @@ def plot_keras_metric(history):
     fig.show()
 ```
 
-### 9 | Image Agumentation Models
+### 9 | Image Agumentation Models 📈
 
 #### CREATE A CUSTOM TRAINING FUNCTION
 - Let's create a helper function, that will input a <code>list</code> of <code>ImageDataGenerators</code>, containing the relevant image data augmentations that we want to apply to the dataset
@@ -634,7 +634,7 @@ Found 80 images belonging to 4 classes.
   - Models with lots of augmentation combinations (<b>Combination 4</b>) tended to learned slower, ended up with lower training accuracies but generalised better on unseen data
   - Simple Horizontal flipping, [0,1] (<b>Combination 1</b>) and the combination of four augmentations (shearing,zooming,flipping) [0,1,5,6], both were more effective than simply applying a brightness augmentation adjustments [0,3]
 
-### 10 | Transfer Learning Models
+### 10 | Transfer Learning Models 📈
 
 #### DEFINE DATALOADERS
 
@@ -815,7 +815,7 @@ Downloading data from https://storage.googleapis.com/keras-applications/efficien
 50/50 [01:51<00:00, 1.97s/epoch, loss=1.39, acc=0.25, get_f1=0, get_precision=0, get_recall=0, val_loss=1.39, val_acc=0.25, val_get_f1=0, val_get_precision=0, val_get_recall=0, lr=0.001]
 ```
 
-### 10 | Model Inference
+### 10 | Model Inference 📊
 
 - As the pretrained models quite substantially outperformed the CNN model we defined in **Section 7**
 - Let's check how well these models perform on unseen test data
@@ -853,7 +853,8 @@ Head Model: efficientnet
 
 ```
 
-### 11 | Concluding Remarks 
+### 11 | Concluding Remarks 📝 
+
 - In this project, we aimed at creating a <code>classifier</code> that could distinguish between both <code>gender</code> & <code>species</code>
 - Despite how similar birds of different specie & gender look to the naked eye, our models were able to perform quite well on all three; <code>training</code>, <code>validation</code> & <code>test</code> datasets, which was encouraging
  - The base model was able to achieve a generalisation <code>f1</code> score of **81.6** on the <code>validation</code> set, without any augmentations
