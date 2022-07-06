@@ -35,7 +35,7 @@ Project Keywords: <br>
   - Use the combination of <code>augmentations</code> that resulted in the best performance & test different pretrained models, find the best performing model (**Section 9**)
   - If the pretrained models outperform the base CNN model, use them for inference on unseen data (**Section 10**)
 
-### 5 | Configuration File
+### 5 | Configuration File ⚙️
 
 - We'll create a simple configuration class, that will contain all the important control settings
 - number of class labels, shape of the images, number of training epochs & seed value
