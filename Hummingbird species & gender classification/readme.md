@@ -54,7 +54,7 @@ class CFG:
 cfg = CFG()
 ```
 
-### 6 | The Dataset
+### 6 | The Dataset Folders 📁
 
 - The dataset contains a main folder; <code>hummingbirds</code>, which contains image data split into <code>training</code>, <code>validation</code> & <code>test</code> sets, so the <code>train/test</code> split has already been done for us
 
