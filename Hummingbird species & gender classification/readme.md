@@ -15,7 +15,7 @@ Project Keywords: <br>
 - If avid bird lovers setup a similar system, then conservation organizations would have better information on migratory and breeding patterns. 
 - This knowledge can be used to determine if specific changes in the environment or ecology has positively or negatively impacted bird life.
 
-### 2 | Reasons for turning to machine learning
+### 2 | Reasons for turning to machine learning 📄
 
 - With the increased affordability of visual monitoring equipment, it has become practical for anyone to contribute to such a wonderful cause & help make each sighting more valid. 
 - Often, due to <b>limitations of gear</b>, <b>poor photography/videography technique</b>, or **<span style='color:#B6DA32'>simply poor lighting conditions</span>**, it can be difficult for users, <b>let alone experts</b> to distinguish what specific bird was seen at the time of monitoring.
@@ -133,7 +133,7 @@ Broadtailed_female:20
 Broadtailed_male:20
 ```
 
-### 7 | Image Exploration 
+### 7 | Image Exploration 🔎
 
 - Using the function <code>show_grid</code>, we can visualise the various types of class images
 - We have **four** classes, let's make some remarks about each class after visualising the sample data
