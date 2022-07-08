@@ -40,6 +40,14 @@ Project Keywords: <br>
 - The dataset contains an <code>csv</code> file, which contains the labels for all the images in both folders
 
 ```python
+os.listdir('/kaggle/input/histopathologic-cancer-detection/')
+```
+
+```
+['sample_submission.csv', 'train_labels.csv', 'test', 'train']
+```
+
+```python
 labels_df = pd.read_csv('/kaggle/input/histopathologic-cancer-detection/train_labels.csv')
 labels_df.head()
 ```
