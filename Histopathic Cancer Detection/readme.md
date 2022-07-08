@@ -62,7 +62,7 @@ labels_df.head()
 
 #### Target Class Distribution
 
-- The <code>dataset</code> contains quite an evenly distributed class balance between malignant & non-malingant cases
+- The <code>dataset</code> contains quite an evenly distributed class balance between <code>malignant</code> & <code>non-malingant</code> cases
 
 ```python
 labels_df['label'].value_counts()
@@ -77,8 +77,8 @@ Name: label, dtype: int64
 #### Malignant & Non-Malignant 
 
 - Previewing samples from both datasets, we can see that it's quite difficult to distinguish between the two
-- The malignants class images are outlined with **red boxes**
-- The normal, non-malignant class images are outligned with **green boxes**
+- The <code>malignants</code> class images are outlined with **red boxes**
+- The normal, <code>non-malignant</code> class images are outligned with **green boxes**
 
 ```python
 imgpath ="/kaggle/input/histopathologic-cancer-detection/train/" # training data is stored in this folder
