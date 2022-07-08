@@ -11,7 +11,6 @@ Project Keywords: <br>
 - Microscopic evaluation of histopathalogic stained tissue & its **subsequent digitalisation** is now a more feasible due to the advances in slide scanning technology, as well a reduction in digital storage cost in recent years
 - There are certain advantages that come with such **digitalised pathology**; including remote diagnosis, instant archival access & simplified procedure of consultations with expert pathologists
 
-
 - Examples of digitalised histopathalogic stained tissues:
 
 ![](https://i.imgur.com/9CguKyI.png)
@@ -49,15 +48,59 @@ labels_df.head()
 |  3 | bc3f0c64fb968ff4a8bd33af6971ecae77c75e08 |       0 |
 |  4 | 068aba587a4950175d04c680d38943fd488d6a9d |       0 |
 
+#### Target Class Distribution
+
+- The <code>dataset</code> contains quite an evenly distributed class balance between malignant & non-malingant cases
 
 ```python
 labels_df['label'].value_counts()
 ```
-
-- The <code>dataset</code> contains 
 
 ```
 0    130908
 1     89117
 Name: label, dtype: int64
 ```
+
+- Let's preview the images
+
+```python
+imgpath ="/kaggle/input/histopathologic-cancer-detection/train/" # training data is stored in this folder
+malignant = labels_df.loc[labels_df['label']==1]['id'].values    # get the ids of malignant cases
+normal = labels_df.loc[labels_df['label']==0]['id'].values       # get the ids of the normal cases
+```
+
+```python
+nrows,ncols=6,15
+fig,ax = plt.subplots(nrows,ncols,figsize=(15,6))
+plt.subplots_adjust(wspace=0, hspace=0) 
+for i,j in enumerate(malignant[:nrows*ncols]):
+    fname = os.path.join(imgpath ,j +'.tif')
+    img = Image.open(fname)
+    idcol = ImageDraw.Draw(img)
+    idcol.rectangle(((0,0),(95,95)),outline='red')
+    plt.subplot(nrows, ncols, i+1) 
+    plt.imshow(np.array(img))
+    plt.axis('off')
+```
+
+![](https://www.kaggleusercontent.com/kf/100338295/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..uOM96h0EZBWxG4rzjxQYDA.BrgFx4z8WelP0ZUx_4qQKBArv5LditubwOFuig0pJMEfaPrF879k8iBqvIlFhXDDFosqsTPQZUJSOx6sCJ8YbtMooybd2iXGUxrj2p8lZt0oU2NzY7a9Y3pMWNg076I1uBKGYzkF2iq69glpDoQNH433QBx2xCpb4qNWYajFJCzNyPaM-wTCcD6HUIx2irGhchoUTy4_zpHfXJ25PNkTdrm6seagFqH9iMTJ3u9i9znBe-K_qf7VsjeQN1sNylVPQXU3zsZ8mksViCvtiP3gdIIFeHuV3lOHgvffIRjFWoMiSNISo6aJeYD4wLIAv-htU0YRzkbm6bi0fVO83nHYoErayoPUQKwxR0gsZAHFCn0b9IenQlJwlOqh5M1OSQVaDCVpfREPr3L_fnD7Tf4aO1vOzGKTghVPvwP9qgQGqZ1jbJMnmSL6aYpF3Z5kG1qvI2FFePPiHBYqMktKbVYEIvl4-kzrGXzzau_OhWbjMc3G83kJVk1FTX0kOnrlnMimmUr5oDah3x-ZRFy_J9hOh3FjVqwQp7QmRDTjBSFKBkb-rhxYvWEaFPHm21v2d64nRzS2zIBMooSMA_TmOfi1zxdi0JxfddgIZd59ioOZaHK_M_8-BAMbYtmR4yU0o9hN-Nj0S_btnZcGbWi1DU0GdDB1pNgNc8FhQGSOvWN_x6cfsxQTH5vLD0urACm-r9Kb.TFfIelyYMMAgF_FM6juENQ/__results___files/__results___17_0.png)
+
+```python
+
+plt.rcParams['figure.figsize'] = (15, 6)
+plt.subplots_adjust(wspace=0, hspace=0)
+
+nrows,ncols=6,15
+for i,j in enumerate(normal[:nrows*ncols]):
+    fname = os.path.join(imgpath ,j +'.tif')
+    img = Image.open(fname)
+    idcol = ImageDraw.Draw(img)
+    idcol.rectangle(((0,0),(95,95)),outline='green')
+    plt.subplot(nrows, ncols, i+1) 
+    plt.imshow(np.array(img))
+    plt.axis('off')
+```
+
+![](https://www.kaggleusercontent.com/kf/100338295/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..uOM96h0EZBWxG4rzjxQYDA.BrgFx4z8WelP0ZUx_4qQKBArv5LditubwOFuig0pJMEfaPrF879k8iBqvIlFhXDDFosqsTPQZUJSOx6sCJ8YbtMooybd2iXGUxrj2p8lZt0oU2NzY7a9Y3pMWNg076I1uBKGYzkF2iq69glpDoQNH433QBx2xCpb4qNWYajFJCzNyPaM-wTCcD6HUIx2irGhchoUTy4_zpHfXJ25PNkTdrm6seagFqH9iMTJ3u9i9znBe-K_qf7VsjeQN1sNylVPQXU3zsZ8mksViCvtiP3gdIIFeHuV3lOHgvffIRjFWoMiSNISo6aJeYD4wLIAv-htU0YRzkbm6bi0fVO83nHYoErayoPUQKwxR0gsZAHFCn0b9IenQlJwlOqh5M1OSQVaDCVpfREPr3L_fnD7Tf4aO1vOzGKTghVPvwP9qgQGqZ1jbJMnmSL6aYpF3Z5kG1qvI2FFePPiHBYqMktKbVYEIvl4-kzrGXzzau_OhWbjMc3G83kJVk1FTX0kOnrlnMimmUr5oDah3x-ZRFy_J9hOh3FjVqwQp7QmRDTjBSFKBkb-rhxYvWEaFPHm21v2d64nRzS2zIBMooSMA_TmOfi1zxdi0JxfddgIZd59ioOZaHK_M_8-BAMbYtmR4yU0o9hN-Nj0S_btnZcGbWi1DU0GdDB1pNgNc8FhQGSOvWN_x6cfsxQTH5vLD0urACm-r9Kb.TFfIelyYMMAgF_FM6juENQ/__results___files/__results___18_0.png)
+    
