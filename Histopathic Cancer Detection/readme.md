@@ -41,7 +41,13 @@ labels_df = pd.read_csv('/kaggle/input/histopathologic-cancer-detection/train_la
 labels_df.head()
 ```
 
-'|    | id                                       |   label |\n|---:|:-----------------------------------------|--------:|\n|  0 | f38a6374c348f90b587e046aac6079959adf3835 |       0 |\n|  1 | c18f2d887b7ae4f6742ee445113fa1aef383ed77 |       1 |\n|  2 | 755db6279dae599ebb4d39a9123cce439965282d |       0 |\n|  3 | bc3f0c64fb968ff4a8bd33af6971ecae77c75e08 |       0 |\n|  4 | 068aba587a4950175d04c680d38943fd488d6a9d |       0 |'
+|    | id                                       |   label |
+|---:|:-----------------------------------------|--------:|
+|  0 | f38a6374c348f90b587e046aac6079959adf3835 |       0 |
+|  1 | c18f2d887b7ae4f6742ee445113fa1aef383ed77 |       1 |
+|  2 | 755db6279dae599ebb4d39a9123cce439965282d |       0 |
+|  3 | bc3f0c64fb968ff4a8bd33af6971ecae77c75e08 |       0 |
+|  4 | 068aba587a4950175d04c680d38943fd488d6a9d |       0 |
 
 
 ```python
