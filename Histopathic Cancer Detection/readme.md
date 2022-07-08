@@ -267,5 +267,4 @@ print(x_grid_val.shape)
 plot_img(x_grid_val,y_grid_val,'Validation Dataset Preview')
 
 ```
-
-![](https://i.imgur.com/mI4PrEw.png)
+<img src="i.imgur.com/mI4PrEw.png" height="300">
