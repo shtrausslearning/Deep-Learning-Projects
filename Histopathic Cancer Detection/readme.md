@@ -249,7 +249,7 @@ print(x_grid_train.shape)
 plot_img(x_grid_train,y_grid_train,'Training Subset Examples')
 ```
 
-![](https://i.imgur.com/J0ge3nI.png)
+<img src="https://i.imgur.com/J0ge3nI.png" height="300">
 
 - Validation data samples:
 
@@ -267,4 +267,4 @@ print(x_grid_val.shape)
 plot_img(x_grid_val,y_grid_val,'Validation Dataset Preview')
 
 ```
-<img src="i.imgur.com/mI4PrEw.png" height="300">
+<img src="https://i.imgur.com/mI4PrEw.png" height="300">
