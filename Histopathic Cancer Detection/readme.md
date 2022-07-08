@@ -120,7 +120,7 @@ for i,j in enumerate(normal[:nrows*ncols]):
 
 ![](https://www.kaggleusercontent.com/kf/100338295/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..uOM96h0EZBWxG4rzjxQYDA.BrgFx4z8WelP0ZUx_4qQKBArv5LditubwOFuig0pJMEfaPrF879k8iBqvIlFhXDDFosqsTPQZUJSOx6sCJ8YbtMooybd2iXGUxrj2p8lZt0oU2NzY7a9Y3pMWNg076I1uBKGYzkF2iq69glpDoQNH433QBx2xCpb4qNWYajFJCzNyPaM-wTCcD6HUIx2irGhchoUTy4_zpHfXJ25PNkTdrm6seagFqH9iMTJ3u9i9znBe-K_qf7VsjeQN1sNylVPQXU3zsZ8mksViCvtiP3gdIIFeHuV3lOHgvffIRjFWoMiSNISo6aJeYD4wLIAv-htU0YRzkbm6bi0fVO83nHYoErayoPUQKwxR0gsZAHFCn0b9IenQlJwlOqh5M1OSQVaDCVpfREPr3L_fnD7Tf4aO1vOzGKTghVPvwP9qgQGqZ1jbJMnmSL6aYpF3Z5kG1qvI2FFePPiHBYqMktKbVYEIvl4-kzrGXzzau_OhWbjMc3G83kJVk1FTX0kOnrlnMimmUr5oDah3x-ZRFy_J9hOh3FjVqwQp7QmRDTjBSFKBkb-rhxYvWEaFPHm21v2d64nRzS2zIBMooSMA_TmOfi1zxdi0JxfddgIZd59ioOZaHK_M_8-BAMbYtmR4yU0o9hN-Nj0S_btnZcGbWi1DU0GdDB1pNgNc8FhQGSOvWN_x6cfsxQTH5vLD0urACm-r9Kb.TFfIelyYMMAgF_FM6juENQ/__results___files/__results___18_0.png)
     
-### 5 | Data Preparation
+### 5 | Data Preparation (preview)
 - The dataset contains two separate folders <code>train</code> & <code>test</code>
 - The special data class, contains <code>__len__</code> & <code>__getitem__</code> special methods, returning the dataset size & (image & label) 
 
@@ -165,10 +165,107 @@ class pytorch_data(Dataset):
 #### Data transformations 
 
 - Let's apply data transformations, by creating a <code>data_transformer</code> for the <code>training</code> data
+- We'll use slightly smaller resolution (46,46,3) tensors, so let's preview how it will look like first
 
 ```python
 # define transformation that converts a PIL image into PyTorch tensors
 import torchvision.transforms as transforms
 data_transformer = transforms.Compose([transforms.ToTensor(),
                                        transforms.Resize((46,46))])
-```                                       
+
+# Define an object of the custom dataset for the train folder.
+data_dir = '/kaggle/input/histopathologic-cancer-detection/'
+img_dataset = pytorch_data(data_dir, data_transformer, "train") 
+
+len_img=len(img_dataset)
+len_train=int(0.8*len_img)
+len_val=len_img-len_train
+
+# Split Pytorch tensor
+train_ts,val_ts=random_split(img_dataset,
+                             [len_train,len_val]) # random split 80/20
+
+print("train dataset size:", len(train_ts))
+print("validation dataset size:", len(val_ts))
+```
+
+```
+train dataset size: 3200
+validation dataset size: 800
+```
+
+- Let's view the tensor data for every image & corresponding class <code>label</code>
+
+```python
+# getting the torch tensor image & target variable
+ii=-1
+for x,y in train_ts:
+    print(x.shape,y)
+    ii+=1
+    if(ii>5):
+        break
+```
+
+```
+torch.Size([3, 46, 46]) 0
+torch.Size([3, 46, 46]) 1
+torch.Size([3, 46, 46]) 0
+torch.Size([3, 46, 46]) 1
+torch.Size([3, 46, 46]) 0
+torch.Size([3, 46, 46]) 0
+torch.Size([3, 46, 46]) 1
+```
+
+- Visualise the tensor data using <code>plotly</code>
+
+```
+import plotly.express as px
+
+def plot_img(x,y,title=None):
+
+    npimg = x.numpy() # convert tensor to numpy array
+    npimg_tr=np.transpose(npimg, (1,2,0)) # Convert to H*W*C shape
+    fig = px.imshow(npimg_tr)
+    fig.update_layout(template='plotly_white')
+    fig.update_layout(title=title,height=300,margin={'l':10,'r':20,'b':10})
+    fig.show()
+    
+```
+
+- Training data samples:
+
+```python
+# Create grid of sample images 
+grid_size=30
+rnd_inds=np.random.randint(0,len(train_ts),grid_size)
+print("image indices:",rnd_inds)
+
+x_grid_train=[train_ts[i][0] for i in rnd_inds]
+y_grid_train=[train_ts[i][1] for i in rnd_inds]
+
+x_grid_train=utils.make_grid(x_grid_train, nrow=10, padding=2)
+print(x_grid_train.shape)
+    
+plot_img(x_grid_train,y_grid_train,'Training Subset Examples')
+```
+
+![](https://i.imgur.com/J0ge3nI.png)
+
+- Validation data samples:
+
+```python
+
+grid_size=30
+rnd_inds=np.random.randint(0,len(val_ts),grid_size)
+print("image indices:",rnd_inds)
+x_grid_val=[val_ts[i][0] for i in range(grid_size)]
+y_grid_val=[val_ts[i][1] for i in range(grid_size)]
+
+x_grid_val=utils.make_grid(x_grid_val, nrow=10, padding=2)
+print(x_grid_val.shape)
+
+plot_img(x_grid_val,y_grid_val,'Validation Dataset Preview')
+
+```
+
+![](https://i.imgur.com/mI4PrEw.png)
