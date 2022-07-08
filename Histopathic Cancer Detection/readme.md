@@ -120,3 +120,55 @@ for i,j in enumerate(normal[:nrows*ncols]):
 
 ![](https://www.kaggleusercontent.com/kf/100338295/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..uOM96h0EZBWxG4rzjxQYDA.BrgFx4z8WelP0ZUx_4qQKBArv5LditubwOFuig0pJMEfaPrF879k8iBqvIlFhXDDFosqsTPQZUJSOx6sCJ8YbtMooybd2iXGUxrj2p8lZt0oU2NzY7a9Y3pMWNg076I1uBKGYzkF2iq69glpDoQNH433QBx2xCpb4qNWYajFJCzNyPaM-wTCcD6HUIx2irGhchoUTy4_zpHfXJ25PNkTdrm6seagFqH9iMTJ3u9i9znBe-K_qf7VsjeQN1sNylVPQXU3zsZ8mksViCvtiP3gdIIFeHuV3lOHgvffIRjFWoMiSNISo6aJeYD4wLIAv-htU0YRzkbm6bi0fVO83nHYoErayoPUQKwxR0gsZAHFCn0b9IenQlJwlOqh5M1OSQVaDCVpfREPr3L_fnD7Tf4aO1vOzGKTghVPvwP9qgQGqZ1jbJMnmSL6aYpF3Z5kG1qvI2FFePPiHBYqMktKbVYEIvl4-kzrGXzzau_OhWbjMc3G83kJVk1FTX0kOnrlnMimmUr5oDah3x-ZRFy_J9hOh3FjVqwQp7QmRDTjBSFKBkb-rhxYvWEaFPHm21v2d64nRzS2zIBMooSMA_TmOfi1zxdi0JxfddgIZd59ioOZaHK_M_8-BAMbYtmR4yU0o9hN-Nj0S_btnZcGbWi1DU0GdDB1pNgNc8FhQGSOvWN_x6cfsxQTH5vLD0urACm-r9Kb.TFfIelyYMMAgF_FM6juENQ/__results___files/__results___18_0.png)
     
+### 5 | Data Preparation
+- The dataset contains two separate folders <code>train</code> & <code>test</code>
+- The special data class, contains <code>__len__</code> & <code>__getitem__</code> special methods, returning the dataset size & (image & label) 
+
+#### Custom dataset class
+
+```python
+
+torch.manual_seed(0) # fix random seed
+
+class pytorch_data(Dataset):
+    
+    def __init__(self,data_dir,transform,data_type="train"):      
+    
+        # Get Image File Names
+        cdm_data=os.path.join(data_dir,data_type)  # directory of files
+        
+        file_names = os.listdir(cdm_data) # get list of images in that directory  
+        idx_choose = np.random.choice(np.arange(len(file_names)), 
+                                      4000,
+                                      replace=False).tolist()
+        file_names_sample = [file_names[x] for x in idx_choose]
+        self.full_filenames = [os.path.join(cdm_data, f) for f in file_names_sample]   # get the full path to images
+        
+        # Get Labels
+        labels_data=os.path.join(data_dir,"train_labels.csv") 
+        labels_df=pd.read_csv(labels_data)
+        labels_df.set_index("id", inplace=True) # set data frame index to id
+        self.labels = [labels_df.loc[filename[:-4]].values[0] for filename in file_names_sample]  # obtained labels from df
+        self.transform = transform
+      
+    def __len__(self):
+        return len(self.full_filenames) # size of dataset
+      
+    def __getitem__(self, idx):
+        # open image, apply transforms and return with label
+        image = Image.open(self.full_filenames[idx])  # Open Image with PIL
+        image = self.transform(image) # Apply Specific Transformation to Image
+        return image, self.labels[idx]
+
+```
+
+#### Data transformations 
+
+- Let's apply data transformations, by creating a <code>data_transformer</code> for the <code>training</code> data
+
+```python
+# define transformation that converts a PIL image into PyTorch tensors
+import torchvision.transforms as transforms
+data_transformer = transforms.Compose([transforms.ToTensor(),
+                                       transforms.Resize((46,46))])
+```                                       
