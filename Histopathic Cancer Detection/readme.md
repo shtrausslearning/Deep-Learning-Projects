@@ -1,10 +1,10 @@
 ![](https://i.imgur.com/0oW3bQA.png)
 
 Project available on Kaggle: **[PyTorch | CNN Binary Image Classification](https://www.kaggle.com/code/shtrausslearning/hummingbird-classification-keras-cnn-models)** <br>
-Dataset available on Kaggle: **[Histopathologic Cancer Detection]([https://www.kaggle.com/datasets/akimball002/hummingbirds-at-my-feeders](https://www.kaggle.com/competitions/histopathologic-cancer-detection))** <br>
+Dataset available on Kaggle: **[Histopathologic Cancer Detection](https://www.kaggle.com/competitions/histopathologic-cancer-detection)** <br>
 
 Project Keywords: <br>
-<code>keras</code> <code>CNN</code> <code>multiclass</code> <code>classification</code> <code>augmentation</code> <code>dataset from folder</code> <code>pretrained</code> <code>inference</code>
+<code>PyTorch</code> <code>CNN</code> <code>binary</code> <code>classification</code> <code>image</code> <code>augmentation</code> <code>inference</code>
 
 ### 1 | Introduction
 
@@ -21,7 +21,7 @@ Project Keywords: <br>
 - Examples from literature: [Gulshan et al](https://jamanetwork.com/journals/jama/fullarticle/2588763) | [Esteva et al](https://pubmed.ncbi.nlm.nih.gov/28117445/) 
 - Both these papers demonstrated the <b>potential of deep learning for diabetic retinopathy screening</b> and <b>skin lesion classification</b>, respectively
 - An essential task performed by pathologist; **accurate breast cancer staging**
-- Assessment of the extent of cancer spread by **histopathological analysis** of sentinel axillary lymph nodes (SLNs) is an essential part of breast cancer staging process
+- Assessment of the extent of cancer spread by **histopathological analysis** of Sentinel axillary lymph nodes (**SLNs**) is an essential part of **breast cancer staging process**
 
 ### 2 | Problem Statement
 
@@ -33,4 +33,4 @@ Project Keywords: <br>
 
 ### 3 | Study Aim
 
-- The aim of this study is to investigate the potential of using <code>Pytorch</code> Deep Learning module for the <b>detection of metastases</b> in SLN slides and compare them with the predefined pathologist diagnosis (expert evaluations)
+- The aim of this study is to investigate the potential of using <code>Pytorch</code> Deep Learning module for the <b>detection of metastases</b> in **SLN** slides and compare them with the predefined pathologist diagnosis (expert evaluations)
