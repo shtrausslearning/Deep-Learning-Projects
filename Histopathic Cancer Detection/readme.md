@@ -34,6 +34,10 @@ Project Keywords: <br>
 
 - The aim of this study is to investigate the potential of using <code>Pytorch</code> Deep Learning module for the <b>detection of metastases</b> in **SLN** slides and compare them with the predefined pathologist diagnosis (expert evaluations)
 
+### 4 | Reading Data
+
+- The dataset is split into two folders <code>training</code> & <code>test</code> sets
+- The dataset contains an <code>csv</code> file, which contains the labels for all the images in both folders
 
 ```python
 labels_df = pd.read_csv('/kaggle/input/histopathologic-cancer-detection/train_labels.csv')
@@ -62,7 +66,11 @@ labels_df['label'].value_counts()
 Name: label, dtype: int64
 ```
 
-- Let's preview the images
+#### Malignant & Non-Malignant 
+
+- Previewing samples from both datasets, we can see that it's quite difficult to distinguish between the two
+- The malignants class images are outlined with **red boxes**
+- The normal, non-malignant class images are outligned with **green boxes**
 
 ```python
 imgpath ="/kaggle/input/histopathologic-cancer-detection/train/" # training data is stored in this folder
