@@ -418,12 +418,6 @@ Total Time: 18.386
 
 ### 9 | Visualise Training Results
 
-<div style="color:white;display:fill;border-radius:8px;
-            background-color:#03112A;font-size:150%;
-            letter-spacing:1.0px">
-    <p style="padding: 8px;color:white;"><b><b><span style='color:#94D4F6'>1.2 |</span></b> Visualise Results</b></p>
-</div>
-
 - Create a function that will plot the <code>loss</code> & <code>metric</code> stored in **loss_hist**,**metric_hist**
 - During training, <code>precision</code>, <code>recall</code>, <code>f1</code>, <code>accuracy</code> are all stored
 - Let's only view the harmonic mean of <code>precision</code> & <code>recall</code>, since the two classes are slightly <code>imbalanced</code>
