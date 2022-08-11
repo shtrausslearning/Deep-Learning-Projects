@@ -1,5 +1,5 @@
 
-## PyTorch Basic Setup
+## PyTorch Basic Binary Classifier Setup
 
 - We'll be utilising a simple dataset, containing two classes [0,1]
 - Our problem will be a <code>binary</code> classification problem
