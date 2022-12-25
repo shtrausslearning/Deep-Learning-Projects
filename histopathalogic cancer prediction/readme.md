@@ -145,4 +145,23 @@ val_ts.transform=val_transf
 
 ```
 
+#### PYTORCH DATALOADERS
+
+- Once we have defined a `Dataset`, we need to create `Dataloaders`
+- `Dataloaders` help optimise the process of training the model by using batches of data
+
+```python
+
+from torch.utils.data import DataLoader
+
+# Training DataLoader
+train_dl = DataLoader(train_ts,
+                      batch_size=32, 
+                      shuffle=True)
+
+# Validation DataLoader
+val_dl = DataLoader(val_ts,
+                    batch_size=32,
+                    shuffle=False)
+                    
 ```
