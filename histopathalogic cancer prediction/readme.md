@@ -48,7 +48,7 @@ Kaggle notebook workflow
 
 Main takeways for this study are related to `PyTorch` usage, we'll go through the project
 
-#### CONVERTING PIL IMAGES TO TENSORS
+#### CONVERTING PIL IMAGES TO `TENSORS`
 
 - We start off by placing all the image data into two folders `train` & `test`
   - `Training` images are used to create training & validation **image subsets** (custom `dataset` class)
@@ -97,4 +97,22 @@ class pytorch_data(Dataset):
         return image, self.labels[idx]
         
 ```
+
+#### PYTORCH `TRANSFORMATIONS`
+
+- The `torchvision` module contains the relevant transformations we want to apply to the images
+- Having defined the `transformations`, we call (using **pytorch_data()** and pass it to our custom data class)
+
+```python
+
+# define transformation that converts a PIL image into PyTorch tensors
+import torchvision.transforms as transforms
+data_transformer = transforms.Compose([transforms.ToTensor(),
+                                       transforms.Resize((46,46))])
+
+# Define an object of the custom dataset for the train folder
+img_dataset = pytorch_data(data_dir, data_transformer, "train") 
+```
+
+
 
