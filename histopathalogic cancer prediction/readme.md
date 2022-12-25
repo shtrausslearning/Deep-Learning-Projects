@@ -48,6 +48,8 @@ Kaggle notebook workflow
 
 Main takeways for this study are related to `PyTorch` usage, we'll go through the project
 
+The first takeaway is the process of preparing folder(s) of images for training in `PyTorch` (`2` to `6`)
+
 #### CONVERTING PIL IMAGES TO `TENSORS`
 
 - We start off by placing all the image data into two folders `train` & `test`
