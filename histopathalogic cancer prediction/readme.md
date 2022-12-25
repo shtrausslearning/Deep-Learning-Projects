@@ -48,8 +48,10 @@ Kaggle notebook workflow
 
 Main takeways for this study are related to `PyTorch` usage, we'll go through the project
 
+#### CONVERTING PIL IMAGES TO TENSORS
+
 - We start off by placing all the image data into two folders `train` & `test`
-  - `Training` images are used to create training & validation **image subsets** (custom dataset class)
+  - `Training` images are used to create training & validation **image subsets** (custom `dataset` class)
 
 The custom `dataset` class requires:
 - `__getitem__` (returns tensor,label for specific index)
