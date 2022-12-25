@@ -114,5 +114,35 @@ data_transformer = transforms.Compose([transforms.ToTensor(),
 img_dataset = pytorch_data(data_dir, data_transformer, "train") 
 ```
 
+#### SPLITTING INTO TRAINING/VALIDATION SUBSET
 
+- As there is a method `train_test_split` in `sklearn`, `PyTorch` has its own implementation
+- Minor detail is that upon input of `Dataset` classes, `Outputs` of the split will be `Subset` class
+- Before creating `dataloaders` we should define `.transform` for the subset or create a new Dataset class with relevant transformations, as shown [here](https://github.com/shtrausslearning/DL-lib-references/blob/main/PyTorch/Subset_to_Dataset.py)
 
+```python
+len_img=len(img_dataset)
+len_train=int(0.8*len_img)
+len_val=len_img-len_train
+
+# Split Pytorch tensor
+train_ts,val_ts=random_split(img_dataset,
+                             [len_train,len_val]) # random split 80/20
+```
+
+```python
+
+# Define the following transformations for the training dataset
+tr_transf = transforms.Compose([transforms.Resize((40,40)),
+                                transforms.ToTensor()])
+
+# For the validation dataset, we don't need any augmentation; simply convert images into tensors
+val_transf = transforms.Compose([transforms.ToTensor()])
+
+# After defining the transformations, overwrite the transform functions of train_ts, val_ts
+train_ts.transform=tr_transf
+val_ts.transform=val_transf
+
+```
+
+```
