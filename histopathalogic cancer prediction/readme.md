@@ -26,6 +26,25 @@
 
 ### Kaggle Notebook 📖
 
-Kaggle offer a very neat `ipynb` render, if you'd like to read the notebook on `Kaggle`
+- Kaggle offer a very neat `ipynb` render: **[PyTorch | CNN Binary Image Classification](https://www.kaggle.com/code/shtrausslearning/pytorch-cnn-binary-image-classification)**
 
-**[PyTorch | CNN Binary Image Classification](https://www.kaggle.com/code/shtrausslearning/pytorch-cnn-binary-image-classification)**
+### Project Pipeline 📑
+
+Kaggle notebook workflow
+
+- `1` Introduction
+- `2` The Dataset
+- `3` Data Preparation
+- `4` Splitting the Dataset (Training,Vaidation)
+- `5` Creating Dataloaders
+- `6` Image Augmentation
+- `7` Binary Classifier Model
+- `8` Defining Loss Function 
+- `9` Defining Optimiser
+- `10` Training Model
+- `11` Inference on Test Set
+
+### Main Takeaways 📤
+
+Main takeways for this study are related to `PyTorch` usage
+
